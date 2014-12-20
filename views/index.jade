@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form(method="post" action="/adduser")
+    label email
+    input(type="email" name="email" required)
+    label nome
+    input(type="text" name="nome")
+    label cpf
+    input(type="text" name="cpf")
+    label senha
+    input(type="password" name="senha")  
+    input(type="submit" value="entrar")
