@@ -1,0 +1,12 @@
+extends layout
+
+block content
+	script(src="controller/usercontroller.js")
+	div(ng-app="UserApp")
+		form
+			input(ng-model="searchStr")
+		div(ng-controller="UserCtrl")
+			ol
+				li(ng-repeat="user in users | filter:searchStr")
+					div {{user.name}}
+			p{{erro}}

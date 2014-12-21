@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  form( role="form" method="post" action="/adduser")
+    .form-grup
+      label nome
+      input(class="form-control" type="text" name="name")
+    .form-grup  
+      label email
+      input(class="form-control" type="email" name="email" required)
+    .form-grup
+      label cpf
+      input(class="form-control" type="text" name="cpf")
+    .form-grup
+      label senha
+      input(class="form-control" type="password" name="senha")
+    .form-grup
+      input(class="btn btn-primary" type="submit" value="entrar")
