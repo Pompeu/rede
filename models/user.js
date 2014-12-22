@@ -1,24 +1,23 @@
 var db = require('./neo.js');
 
-var User = module.exports =  function () {
+var User = module.exports =  function (_node) {
+		this.node = _node;	
 		return {
 			create : function (data,callback) {
-				var node = db.createNode(data);
-				callback(err,node);
-				// var query = [
-				// 	'CREATE (user:User {data})',
-    //     			'RETURN user',
-    //     			].join('\n');
-    //     		var params = {
-    //     			data: data
-    //     		};	
-				// db.query(query,params, function (err, results) {
-				// 	if (err) return callback(err);
-			 //        var user = results.map(function(result) {
-			 //        	return result['user'].data;
-			 //        });
-			 //        callback(null, user);
-				// });
+				var query = [
+					'CREATE (user:User {data})',
+        			'RETURN user',
+        			].join('\n');
+        		var params = {
+        			data: data
+        		};	
+				db.query(query,params, function (err, results) {
+					if (err) return callback(err);
+			        var user = results.map(function(result) {
+			        	return result['user'].data;
+			        });
+			        callback(null, user);
+				});
 
 			},
 			getAll :  function (callback) {
@@ -30,7 +29,7 @@ var User = module.exports =  function () {
 			    db.query(query, null, function (err, results) {
 			        if (err) return callback(err);
 			        var users = results.map(function (result) {
-			        	return  result['user'].data;    
+			        	return 	result['user']._data
 			        });
 			        
 			        callback(null, users);
@@ -77,3 +76,6 @@ var User = module.exports =  function () {
 		};
 };
 
+Object.defineProperty(User.prototype, 'id', {
+    get: function () { return this._node.id; }
+});

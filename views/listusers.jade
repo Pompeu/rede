@@ -8,5 +8,9 @@ block content
 		div(ng-controller="UserCtrl")
 			ol
 				li(ng-repeat="user in users | filter:searchStr")
-					div {{user.name}}
+					p ID : {{user.metadata.id}}
+					p Name : {{user.data.name}}
+					p CPF : {{user.data.cpf}}
+					p Email : {{user.data.email}}
+					p Senha : {{user.data.senha}}
 			p{{erro}}

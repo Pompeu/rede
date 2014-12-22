@@ -7,18 +7,24 @@ module.exports = function  (app) {
 		res.render('caduser');
 	};
 
-	add = function (req, res) {
-		var user =  new User(req.body);
-		user.create(function  () {
-			res.json(user);	
+	add = function (req, res, next) {
+		User().create(req.body ,function(err, user) {
+			if(err) return next(err);
+			return res.json(user);
 		});
-		
+	};
+
+	update = function (req, res , nex) {
+		User().getOneById(req.params.id, function (err, _user) {
+			if(err) return next(err);
+			 _user = req.body;
+		});
 	};
 
 	list = function (req, res, next) {
-		new User().getAll(function (err, _users) {
+		User().getAll(function (err, _users) {
 			if(err) return next(err);
-				res.json(_users);	
+			return	res.json(_users);	
 		});        
     };
 
@@ -27,27 +33,28 @@ module.exports = function  (app) {
 	};
 
 	findById = function (req, res , next){
-		new User().getOneById(req.params.id, function (err, _user) {
+		User().getOneById(req.params.id, function (err, _user) {
 			if(err) return next(err);
-				res.json(_user)
+			return	res.json(_user)
 		});
 	};
 
 	findByName = function (req, res , next){
-		new User().getOneByName(req.params.name, function (err, _users) {
+		User().getOneByName(req.params.name, function (err, _users) {
 			if(err) return next(err);
-				res.json(_users)
+			return	res.json(_users)
 		});
 	};
 
 	app.post('/user', add);
-	app.get('/caduser',cadUser);
+	app.get('/caduser',cadUser);//pagina Cadastro
 	app.get('/users' ,list);
 	app.get('/listusers',listUsers);//pagina
 	app.get('/user/:id',findById);
 	app.get('/user/name/:name',findByName);
-	/*app.post('/userLogar',logar);
 	app.put('/user/:id', update);
+	/*app.post('/userLogar',logar);
+	
   	app.delete('/user/:id', del);
   	app.get('/users' ,findAll);
   	app.get('/user/:id',findById);*/	
