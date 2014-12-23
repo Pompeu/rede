@@ -1,18 +1,20 @@
 extends layout
 
 block content
-  form( role="form" method="post" action="/adduser")
-    .form-grup
-      label nome
-      input(class="form-control" type="text" name="name")
-    .form-grup  
-      label email
-      input(class="form-control" type="email" name="email" required)
-    .form-grup
-      label cpf
-      input(class="form-control" type="text" name="cpf")
-    .form-grup
-      label senha
-      input(class="form-control" type="password" name="senha")
-    .form-grup
-      input(class="btn btn-primary" type="submit" value="entrar")
+  script(src="controller/cadausercontroller.js")
+  div(ng-app='AppUserCad' , ng-controller='CadCtrl' ,  layout="column")
+      md-content(class="md-padding" style="height: 600px;")
+        section(layout="column", layout-sm="row" , layout-align="start center") 
+          form(style="padding: 20px;", class="md-input-group")
+            div(layout="row")
+              md-text-float(label="NOME" , ng-model="user.name")
+              md-text-float(label="SOBRE NOME" , ng-model="user.sname")
+            div(layout="row")
+              md-text-float(label="CPF" , ng-model="user.cpf")
+              md-text-float(label="EMAIL" , ng-model="user.email" , type="email")
+            div(layout="row")
+              md-text-float(label="PASSWORD" , ng-model="user.password", type="password")
+              md-text-float(label="RE-PASSWORD" , ng-model="user.password2", type="password")
+            section(layout="row" layout-sm="column" layout-align="end center")
+              md-button(class="md-raised md-primary" ng-click="cadUser()") Gravar
+  

@@ -2,15 +2,19 @@ extends layout
 
 block content
 	script(src="controller/usercontroller.js")
-	div(ng-app="UserApp")
-		form
-			input(ng-model="searchStr")
-		div(ng-controller="UserCtrl")
-			ol
-				li(ng-repeat="user in users | filter:searchStr")
-					p ID : {{user.metadata.id}}
-					p Name : {{user.data.name}}
-					p CPF : {{user.data.cpf}}
-					p Email : {{user.data.email}}
-					p Senha : {{user.data.senha}}
-			p{{erro}}
+	div(class="app-content")
+		div(ng-app="UserApp", ng-controller="UserCtrl")
+			form
+				md-text-float(label="Buscar Users" , class="long" , ng-model="searchStr")
+			md-content
+				md-list
+					md-item(ng-repeat="user in users | filter:searchStr")
+						md-item-content
+							div(class="md-title-left")
+								p ID : {{user.metadata.id}}
+							div(class="md-title-content")
+								p Name : {{user.data.name}}
+								p CPF : {{user.data.cpf}}
+								p Email : {{user.data.email}}
+								p Senha : {{user.data.senha}}
+					p{{erro}}
