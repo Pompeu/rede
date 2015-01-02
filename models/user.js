@@ -1,81 +1,27 @@
-var db = require('./neo.js');
+// file: models/user.js - created at 2015-01-01, 02:26
 
-var User = module.exports =  function (_node) {
-		this.node = _node;	
-		return {
-			create : function (data,callback) {
-				var query = [
-					'CREATE (user:User {data})',
-        			'RETURN user',
-        			].join('\n');
-        		var params = {
-        			data: data
-        		};	
-				db.query(query,params, function (err, results) {
-					if (err) return callback(err);
-			        var user = results.map(function(result) {
-			        	return result['user'].data;
-			        });
-			        callback(null, user);
-				});
+var User = module.exports = function(data) {
+	var name = data.name;
+	var sname = data.sname;
+	var password = data.password;
+	var email = data.email;
+	var dateCadastro = data.dateCadastro;
+	//existe uma falha no model...
+	var lenUser = function (data) {
+		var tam = 0;
+		for(var i in data){
+			tam++;
+		}
+		return tam === 5;
+	} 
+	if(lenUser(data)){
+		return {		
+			name : name,
+			sname : sname,
+			email : email,
+			password : password,
+			dateCadastro : dateCadastro,
+		}
+	}
+}
 
-			},
-			getAll :  function (callback) {
-				var query = [
-			        'MATCH (user:User)',
-			        'RETURN user',
-			    ].join('\n');
-
-			    db.query(query, null, function (err, results) {
-			        if (err) return callback(err);
-			        var users = results.map(function (result) {
-			        	return 	result['user']._data
-			        });
-			        
-			        callback(null, users);
-			    });
-			},
-			getOneById : function (id, callback) {
-				 var query = [
-			        'MATCH (user:User)',
-			        'WHERE id(user) = {id}',
-			        'RETURN user',
-			    ].join('\n');
-			    var params = {
-			    	id : new Number(id)
-			    };
-			    db.query(query, params, function (err, results) {
-			        if (err) return callback(err);;
-			        var users = results.map(function (result) {
-			        	return  result['user'].data;    
-			        });
-			        
-			        callback(null, users);
-			    });
-			},
-			getOneByName : function(name, callback) {
-				var query = [
-			        'MATCH (user:User)',
-			        'WHERE user.name = {name}',
-			        'RETURN user',
-			    ].join('\n');
-
-			    var params = {
-			    	name : name
-			    };
-
-			    db.query(query, params, function (err, results) {
-			        if (err) return callback(err);;
-			        var users = results.map(function (result) {
-			        	return  result['user'].data;    
-			        });
-			        
-			        callback(null, users);
-			    });
-			}
-		};
-};
-
-Object.defineProperty(User.prototype, 'id', {
-    get: function () { return this._node.id; }
-});
