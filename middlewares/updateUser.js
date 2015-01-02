@@ -32,12 +32,41 @@ function updateUserHandler(req, res, next) {
 	  	}
 	};
 
-	db.getNodeById(id, function (err, _user) {
-		if (err) updateHandler(err,null);
-		_user += user;
-		_user.save(updateHandler(null, _user));
+	var query = [
+		'MATCH (user:User)',
+		'WHERE ID(user) = {id}',
+		'SET user = {user}',
+		'RETURN user',
+		].join('\n');
 		
+	var params = {
+		id: new Number(id),
+		user : user
+	};
+	db.query(query, params, function (err, results) {
+		if(err) updateHandler(err, null)
+		var user = 	{ id : results[0]['user'].id , data : results[0]['user'].data };
+		updateHandler(null, user);
 	});
-
+	
 }
 module.exports = exports = updateUserHandler;
+/*
+cypher('MATCH (n:User) WHERE ID(n) = '+6+' SET n.name = '
+ +JSON.stringify("Jorico")+' , n.sname ='+JSON.stringify(user.sname)+'
+  , n.email ='+JSON.stringify(user.email)+'  RETURN  n')
+var query = [
+		'CREATE (user:User {data})',
+		'RETURN user',
+		].join('\n');
+		
+	var params = {
+		data: user
+	};
+	db.query(query, params, function (err, results) {
+		if (err) return createHandler(err,null);
+		var user = results[0]['user'];
+			createHandler(null,{id : user.id , data : user.data })
+	});
+
+*/

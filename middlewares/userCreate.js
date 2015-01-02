@@ -34,6 +34,7 @@ function userCreateHandler(req, res, next) {
 		'CREATE (user:User {data})',
 		'RETURN user',
 		].join('\n');
+		
 	var params = {
 		data: user
 	};
