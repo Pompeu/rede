@@ -18,7 +18,7 @@ function getAllUserHandler(req, res, next) {
 	function failHandler(err) {
 		debug("get all user fail handler");
 		res.locals.out.err = err;
-		next(err);
+		next();
 
 	};
 

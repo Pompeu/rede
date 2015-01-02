@@ -8,7 +8,7 @@ router
 	.get('/',middlewares.getAllUser, controllers.getAllUser);
 
 router
-	.put('/:id',middlewares.updateUser,controllers.updateUser);
+	.put('/:id', middlewares.updateUser,controllers.updateUser);
 
 router
 	.get('/:id',middlewares.getUser, controllers.getUser);

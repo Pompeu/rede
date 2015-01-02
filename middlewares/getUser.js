@@ -21,7 +21,7 @@ function getUserHandler(req, res, next) {
 	function failHandler(err) {
 		debug("get user fail handler");
 		res.locals.out.err = err;
-		next(err);
+		next();
 
 	};
 
@@ -35,30 +35,21 @@ function getUserHandler(req, res, next) {
 		}
 	};
 
-	db.getNodeById(id, function (err, user) {
-		if (err) return getOneHandler(err,null);
-		var userFound = {id : user.id , data : user.data };
-		getOneHandler(null, userFound);
-	});
-	
-}
-module.exports = exports = getUserHandler;
-
-	/*	var query = [
+	var query = [
 	        'MATCH (user:User)',
 	        'WHERE id(user) = {id}',
 	        'RETURN user',
 	    ].join('\n');
 
 	    var params = {
-	    	id : new Number(_id)
+	    	id : new Number(id)
 	    };
 	    db.query(query, params, function (err, results) {
-	        if (err) return callback(err);
-	        var user = results.map(function (result) {
-	        	return {
-	        		id :result['user']._data.metadata.id,
-	        		data : result['user'].data }
-	        });
-	        callback(null, user);
-	    });*/
+	        if (err) return getOneHandler(err,null);
+	        var user = 	{ id : results[0]['user'].id , data : results[0]['user'].data };
+			getOneHandler(null,user);
+	       
+	    });
+	
+}
+module.exports = exports = getUserHandler;

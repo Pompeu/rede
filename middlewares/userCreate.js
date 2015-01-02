@@ -11,7 +11,7 @@ function userCreateHandler(req, res, next) {
 	function failHandler(err) {
 	  	debug('create user fail handler');
 	  	res.locals.out.err = err;
-	  	next(err);
+	  	next();
 	};
 
 	function successHandler(result) {
@@ -39,9 +39,9 @@ function userCreateHandler(req, res, next) {
 		data: user
 	};
 	db.query(query, params, function (err, results) {
-		if (err) return createHandler(err,null);
-		var user = results[0]['user'];
-			createHandler(null,{id : user.id , data : user.data })
+		if (err) return createHandler(err,{});
+		var user = 	{ id : results[0]['user'].id , data : results[0]['user'].data };
+		createHandler(null,user);
 	});
 	
 	

@@ -20,7 +20,7 @@ function deleteUserHandler(req, res, next) {
 	function failHandler(err) {
 		debug("delete one user fail handler");
 		res.locals.out.err = err;
-		next(err);
+		next();
 	};
 
 	function deleteUser(err) {

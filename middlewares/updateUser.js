@@ -4,7 +4,7 @@ var db = require('../models/neo');
 function updateUserHandler(req, res, next) {
   // start here with updateUser.js
 	debug('user update middlerware handler')
-	
+
 	var user = models.User(req.body);
 	var id = req.params.id;
 
@@ -13,7 +13,7 @@ function updateUserHandler(req, res, next) {
 	function failHandler(err) {
 	  	debug('update user fail handler');
 	  	res.locals.out.err = err;
-	  	next(err);
+	  	next();
 	};
 
 	function successHandler(result) {
