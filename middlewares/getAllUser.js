@@ -1,5 +1,5 @@
 // file: middlewares/getAllUser.js - created at 2015-01-01, 05:19
-var db = require('../models/neo');
+'use strict';
 
 function getAllUserHandler(req, res, next) {
   // start here with getAllUser.js
@@ -31,26 +31,11 @@ function getAllUserHandler(req, res, next) {
 			failHandler(err);
 		}
 	};
-
-	function getAll(callback) {
-		debug('get all users')
-
-		var query = [
-	        'MATCH (user:User)',
-	        'RETURN user',
-	    ].join('\n');
-
-	    db.query(query, null, function (err, results) {
-	        if (err) return callback(err);
-	        var users = results.map(function (result) {
-	        	return 	{
-	        		id :result['user']._data.metadata.id,
-	        		data : result['user'].data }
-	        });
-	        callback(null, users);
-	    });
-	};
-
-	getAll(getAllHanler);
+	
+    models.db.find({},function (err, users) {
+    	if(err) getAllHanler(err)
+    		getAllHanler(null,users);
+    });
+	
 }
 module.exports = exports = getAllUserHandler;

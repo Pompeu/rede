@@ -1,5 +1,5 @@
 // file: middlewares/deleteUser.js - created at 2015-01-01, 07:57
-var db = require('../models/neo');
+'use strict';
 
 function deleteUserHandler(req, res, next) {
   // start here with deleteUser.js
@@ -32,17 +32,8 @@ function deleteUserHandler(req, res, next) {
 			failHandler(err);
 		}
 	};
-
-	var query = [
-        'MATCH (user:User)',
-        'WHERE ID(user) = {id}',
-        'DELETE user',
-    ].join('\n')
-
-    var params = {
-    	id : new Number(id)
-    };
-    db.query(query, params, deleteUser)
+	
+    models.db.delete(id,deleteUser)
 	
 }
 module.exports = exports = deleteUserHandler;

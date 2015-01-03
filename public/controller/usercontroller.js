@@ -1,6 +1,6 @@
 
 (function() {
-	'user strict';
+	'use strict';
 	angular.module('UserApp',['ngMaterial']).
 	controller('UserCtrl', ['$scope','$http', function($scope,$http){
 		$http.get('/users').

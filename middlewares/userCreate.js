@@ -1,5 +1,5 @@
 // file: middlewares/userCreate.js - created at 2015-01-01, 02:39
-var db = require('../models/neo');
+'use strict';
 
 function userCreateHandler(req, res, next) {
 	debug('user create middlerware handler')
@@ -38,11 +38,8 @@ function userCreateHandler(req, res, next) {
 	var params = {
 		data: user
 	};
-	db.query(query, params, function (err, results) {
-		if (err) return createHandler(err,{});
-		var user = 	{ id : results[0]['user'].id , data : results[0]['user'].data };
-		createHandler(null,user);
-	});
+	
+	models.db.query(query, params, createHandler)
 	
 	
 }
