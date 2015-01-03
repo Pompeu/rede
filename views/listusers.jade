@@ -1,19 +1,16 @@
-extends layout
-
-block content
-	div(class="app-content")
-		div(ng-app="UserApp", ng-controller="UserCtrl")
-			form
-				md-text-float(label="Buscar Users" , class="long" , ng-model="searchStr")
-			md-content
-				md-list
-					md-item(ng-repeat="user in users | filter:searchStr")
-						md-item-content
-							div(class="md-title-left")
-								p ID : {{user.metadata.id}}
-							div(class="md-title-content")
-								p Name : {{user.data.name}}
-								p CPF : {{user.data.cpf}}
-								p Email : {{user.data.email}}
-								p Senha : {{user.data.senha}}
-					p{{erro}}
+div(class="app-content")
+	div(ng-controller="UserCtrl")
+		form
+			md-text-float(label="Buscar Users" , class="long" , ng-model="searchStr")
+		md-content
+			md-list
+				md-item(ng-repeat="user in users | filter:searchStr")
+					md-item-content
+						div(class="md-title-content")
+							p ID : {{user.id}}
+							p Name : {{user.name}}
+							p Sobre Nome : {{user.sname}}
+							p Email : {{user.email}}
+							p Senha : {{user.password}}
+							p Data Cadastro : {{user.dateCadastro}}
+				p{{erro}}

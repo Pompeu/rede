@@ -1,20 +1,14 @@
-extends layout
-
-block content
-  script(src="controller/cadausercontroller.js")
-  div(ng-app='AppUserCad' , ng-controller='CadCtrl' ,  layout="column")
-      md-content(class="md-padding" style="height: 600px;")
-        section(layout="column", layout-sm="row" , layout-align="start center") 
-          form(style="padding: 20px;", class="md-input-group")
-            div(layout="row")
-              md-text-float(label="NOME" , ng-model="user.name")
-              md-text-float(label="SOBRE NOME" , ng-model="user.sname")
-            div(layout="row")
-              md-text-float(label="CPF" , ng-model="user.cpf")
-              md-text-float(label="EMAIL" , ng-model="user.email" , type="email")
-            div(layout="row")
-              md-text-float(label="PASSWORD" , ng-model="user.password", type="password")
-              md-text-float(label="RE-PASSWORD" , ng-model="user.password2", type="password")
-            section(layout="row" layout-sm="column" layout-align="end center")
-              md-button(class="md-raised md-primary" ng-click="cadUser()") Gravar
-  
+md-content(ng-controller='CadCtrl' ,class="md-padding" style="height: 600px;")
+  section(layout="column", layout-sm="row" , layout-align="start center") 
+    form(style="padding: 20px;", class="md-input-group")
+      div(layout="row")
+        md-text-float(label="NOME" , ng-model="user.name")
+        md-text-float(label="SOBRE NOME" , ng-model="user.sname")
+      div(layout="row")
+        md-text-float(label="CPF" , ng-model="user.cpf")
+        md-text-float(label="EMAIL" , ng-model="user.email" , type="email")
+      div(layout="row")
+        md-text-float(label="PASSWORD" , ng-model="user.password", type="password")
+        md-text-float(label="RE-PASSWORD" , ng-model="user.password2", type="password")
+      section(layout="row" layout-sm="column" layout-align="end center")
+        md-button(class="md-raised md-primary" ng-click="cadUser()") Gravar

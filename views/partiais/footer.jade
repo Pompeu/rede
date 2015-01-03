@@ -1,0 +1,27 @@
+block content
+	div(ng-app="AppFooter")
+		div(ng-controller="FooterCrtl")
+			md-tabs(class="md-accent" md-selected="data.selectedIndex")
+				md-tab( id="tab1" ,aria-controls="tab1-content").
+					DashBoard
+				md-tab(id="tab2" ,aria-controls="tab2-content").
+					Projetos
+				md-tab(id="tab3" ,aria-controls="tab3-content").
+					Pesquisadores
+				md-tab(id="tab4" ,aria-controls="tab4-content").
+					Orientandos
+				md-tab(id="tab5" ,aria-controls="tab5-content").
+					Sign in / Login
+			ng-switch(on="data.selectedIndex"  class="tabpanel-container")
+				div(role="tabpanel" , id="tab1-content" , aria-labelledby="tab1",ng-switch-when="0", md-swipe-left="next()",md-swipe-right="previous()")
+					h1 Your DashBoard
+				div(role="tabpanel", id="tab2-content" ,aria-labelledby="tab2", ng-switch-when="1", md-swipe-left="next()" ,md-swipe-right="previous()")
+					h1 Projetos
+				div(role="tabpanel", id="tab3-content" ,aria-labelledby="tab3", ng-switch-when="2", md-swipe-left="next()" ,md-swipe-right="previous()")
+					h1 Pesquisadores
+				div(role="tabpanel", id="tab4-content" ,aria-labelledby="tab4", ng-switch-when="3", md-swipe-left="next()" ,md-swipe-right="previous()")
+					h1 Orientandos
+					include ../listusers
+				div(role="tabpanel", id="tab5-content" ,aria-labelledby="tab5", ng-switch-when="4", md-swipe-left="next()" ,md-swipe-right="previous()")
+					h1 Sign in / Login
+					include ../caduser
