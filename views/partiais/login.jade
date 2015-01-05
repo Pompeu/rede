@@ -1,0 +1,7 @@
+md-content(ng-controller='LoginCrtl' ,class="md-padding" , style="height: 300px;")
+	section(layout="column", layout-sm="row" , layout-align="end end") 
+		form(style="padding: 5px;", class="md-input-group")
+			div(layout="row")
+				md-text-float(label="EMAIL" , ng-model="user.email", type="email" , required)
+				md-text-float(label="PASSWORD" , ng-model="user.password" , type="password" , required)
+				md-button(class="md-raised md-primary" ,ng-click="login(user)") Logar

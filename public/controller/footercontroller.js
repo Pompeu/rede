@@ -19,13 +19,27 @@
       };
   })
   .controller('UserCtrl', function($scope,$http){
-    $http.get('/api/user').
-      success(function (data) {
-        $scope.users = data.result;
-        console.log(data)
-      }).
-      error(function (data,status) {
-        $scope.erro = status;
-      });
+    console.log($scope.users)
+    if(!$scope.users){
+      $http.get('/api/user').
+        success(function (data) {
+          $scope.users = data.result;
+        }).
+        error(function (data,status) {
+          $scope.erro = status;
+        });
+    }
+  })
+  .controller('LoginCrtl', function ($scope, $http) {
+     $scope.login = function(user) {
+        $http.post('/login',user)
+          .success(function(data) {
+            console.log(data)
+          })
+          .error(function(data) {
+            console.log(data)
+          })
+     };
+     
   });
 })();

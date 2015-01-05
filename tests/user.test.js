@@ -10,6 +10,7 @@ describe('userCreate', function () {
 
 	var body = null;
 	var id = 0;
+
 	it('expect be create a user', function (done) {
 		body = {
 			name : ch.Name.firstName(),
@@ -36,6 +37,24 @@ describe('userCreate', function () {
 			.send(body)
 			.end(endHandler);
 
+	});
+
+	it('expect empty result if post is empty',function(done) {
+		function endHandler(err,res) {
+			expect(err).to.be.null();
+			expect(res).to.exist;
+			expect(res.body.status).to.false;
+			expect(res.body.err).to.have.property('neo4jError');
+			expect(res.body.err).to.be.not.empty();
+			expect(res.body.err).to.not.null;
+			expect(res.status).to.eql(200);
+			done();
+		};
+
+		superagent
+			.post(url.resolve(baseURL,'user'))
+			.send({})
+			.end(endHandler)
 	});
 
 	it('expect getall user from database',function (done) {
@@ -70,10 +89,10 @@ describe('userCreate', function () {
 		
 		superagent
 			.get(url.resolve(baseURL,'user/'+id))
-			.send(body)
 			.end(endHandler);
 	});
 
+	
 	it('expect one user update by id',function(done) {
 
 		var bodyNew = {
