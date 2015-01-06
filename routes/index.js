@@ -9,14 +9,18 @@ router.get('/', function (req, res) {
 router.get('/user', function (req, res) {
   	res.render('listusers');
 });
+
 router.get('/caduser', function (req, res) {
   	res.render('caduser');
 });
-router.post('/login',function(req, res) {
-	if(req.body.email === req.body.password)
-		res.status(200).end();
-	else
-		res.status(500).end();
+
+router
+	.get('/login',function (req, res) {
+		res.render('partiais/login');
 });
 
+router.
+	post('/login',middlewares.auth,controllers.auth);
+	
+	
 module.exports = router;

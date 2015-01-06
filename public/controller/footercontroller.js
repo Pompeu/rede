@@ -35,6 +35,7 @@
         $http.post('/login',user)
           .success(function(data) {
             console.log(data)
+
           })
           .error(function(data) {
             console.log(data)
@@ -42,4 +43,5 @@
      };
      
   });
+
 })();

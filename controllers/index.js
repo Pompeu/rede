@@ -1,6 +1,7 @@
 // file: controllers/index.js
-exports.userCreate = require('./userCreate');
-exports.getAllUser = require('./getAllUser');
-exports.getUser = require('./getUser');
-exports.deleteUser = require('./deleteUser');
-exports.updateUser = require('./updateUser');
+
+exports.userCreate 	= require('./user/userCreate');
+exports.getAllUser 	= require('./user/getAllUser');
+exports.getUser 	= require('./user/getUser');
+exports.deleteUser 	= require('./user/deleteUser');
+exports.updateUser 	= require('./user/updateUser');exports.auth = require('./auth');
