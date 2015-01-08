@@ -11,3 +11,10 @@ exports.updateUser 	= require('./user/updateUser');
 
 /* auth middleware */
 exports.auth = require('./auth');
+
+/* pesquisador module */
+exports.createPesquisador = require('./createPesquisador');
+exports.getPesquisador = require('./getPesquisador');
+exports.getAllPesquisador = require('./getAllPesquisador');
+exports.updatePesquisador = require('./updatePesquisador');
+exports.deletePesquisador = require('./deletePesquisador');

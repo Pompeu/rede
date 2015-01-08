@@ -3,7 +3,7 @@ var should = require('chai').should;
 
 var User = require('../models/user');
 
-describe('should be testing user model',function() {
+describe('user model testing',function() {
 	
 	var data = {
 		name : "Pompeu",

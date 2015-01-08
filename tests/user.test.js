@@ -6,7 +6,7 @@ var url = require('url');
 var baseURL = 'http://localhost:3000/api/user';
 
 
-describe('userCreate', function () {
+describe('user restful testing', function () {
 
 	var body = null;
 	var id = 0;

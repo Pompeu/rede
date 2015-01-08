@@ -33,7 +33,7 @@ function deleteUserHandler(req, res, next) {
 		}
 	};
 	
-    models.db.delete(id,deleteUser)
+    models.db.delete(id,deleteUser);
 	
 }
 module.exports = exports = deleteUserHandler;

@@ -32,10 +32,7 @@ function getAllUserHandler(req, res, next) {
 		}
 	};
 	
-    models.db.find({},function (err, users) {
-    	if(err) getAllHanler(err)
-    		getAllHanler(null,users);
-    });
+    models.db.find({},getAllHanler);
 	
 }
 module.exports = exports = getAllUserHandler;

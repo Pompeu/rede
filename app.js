@@ -13,6 +13,7 @@ var controllers = global.controllers = require('./controllers');
 
 
 var user =  require('./routes/user');
+var pesquisador =  require('./routes/pesquisador');
 var index =  require('./routes/index');
 
 
@@ -45,6 +46,7 @@ app.use(sessions({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/user', user);
+app.use('/api/pesquisador', pesquisador);
 app.use('/',index)
 
 // catch 404 and forward to error handler

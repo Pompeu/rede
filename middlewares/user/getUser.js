@@ -35,10 +35,7 @@ function getUserHandler(req, res, next) {
 		}
 	};
 
-	models.db.read(id,function (err, user) {
-    	if(err) getOneHandler(err);
-    	getOneHandler(null,user);
-    });
+	models.db.read(id,getOneHandler)
 	
 }
 module.exports = exports = getUserHandler;
