@@ -11,7 +11,7 @@ var models = global.models = require('./models');
 var middlewares = global.middlewares = require('./middlewares');
 var controllers = global.controllers = require('./controllers');
 
-
+/*routes*/
 var user =  require('./routes/user');
 var pesquisador =  require('./routes/pesquisador');
 var index =  require('./routes/index');
@@ -32,6 +32,7 @@ app.locals.pretty = true;
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(sessions({
     cookieName: 'session',
     secret : '3120j0wej0134ja0j9013asj0575a0934'+Math.floor((Math.random() * 10000) + 1),

@@ -5,7 +5,7 @@ var ch = require('charlatan');
 var url = require('url');
 var baseURL = 'http://localhost:3000/api/pesquisador';
 
-describe('pequisador rest testing', function () {
+describe('pequisador restful testing', function () {
 
 	var body = {
 		nome : 'Itacir Ferreira Pompeu',

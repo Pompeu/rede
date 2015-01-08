@@ -2,7 +2,7 @@
 
 function authHandler(req, res, next) {
 	// start here with auth.js
-	debug('auth handler');
+	debug('auth handler middlerware');
 	var email =  req.body.email;
 	var password = req.body.password;
 	
@@ -17,6 +17,7 @@ function authHandler(req, res, next) {
 
 	function failHandler(err) {
 		debug('auth fail handler');
+		res.status(401)
 		res.locals.out.err = err || 'login or passoword error';
 		next();
 	}
@@ -32,7 +33,6 @@ function authHandler(req, res, next) {
 		}else{
 			failHandler(err);
 		}		 
-			
 	}
 
 	models.db.find({email : email} , authUserHandler);
