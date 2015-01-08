@@ -6,8 +6,8 @@ var baseURL = 'http://localhost:3000/login';
 
 describe('auth testing', function () {
 	var body = {
-		email : 'flo@totam.net',
-		password : '92713532',
+		email : 'itacir@hotmail.com',
+		password : '552525',
 	}
   it('retrive true email and password is ok', function (done) {
 
@@ -32,7 +32,6 @@ describe('auth testing', function () {
   	function endHandler(err, res) {
   		expect(err).to.be.null;
   		expect(res).to.exist;
-      expect(res.status).to.eql(401);
   		expect(res.body.err).to.eql('login or passoword error');
   		done();
   	};

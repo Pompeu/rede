@@ -9,14 +9,14 @@ function updatePesquisadorHandler(req, res, next) {
   res.locals.out = {err : null , result : {} , status : false};	
 
   function successHandler(result) {
-  	debug('pesquisador update success handler');
+  	debug('update pesquisador success handler');
   	res.locals.out.result = result;
   	res.locals.out.status = true;
   	next();
   }
 
   function failHandler(err) {
-  	debug('pesquisador update fail handler');
+  	debug('update pesquisador fail handler');
   	res.locals.out.err = err;
   	next();
   }

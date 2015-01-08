@@ -3,7 +3,7 @@
 
 function updateUserHandler(req, res, next) {
   // start here with updateUser.js
-	debug('user update middlerware handler')
+	debug('update user middlerware handler')
 
 	/*var user = models.User(req.body);*/
 	var id = req.params.id;

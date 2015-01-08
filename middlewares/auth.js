@@ -17,14 +17,14 @@ function authHandler(req, res, next) {
 
 	function failHandler(err) {
 		debug('auth fail handler');
-		res.status(401)
 		res.locals.out.err = err || 'login or passoword error';
 		next();
 	}
 
 	function authUserHandler (err , result) {
 		debug('auth  User Auth handler');
-		if(result.length > 0){
+		console.log(result)
+		if(result != 0){
 			if(result[0].password === password){
 				successHandler(result[0]);
 			}else{

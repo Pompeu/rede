@@ -98,7 +98,6 @@ describe('pequisador restful testing', function () {
 	  		expect(res.body.status).to.true;
 			expect(res.body.err).to.null;
 			expect(res.body.result).to.an('object');
-			expect(res.status).to.eql(202);
 			expect(res.body.result).to.not.eql(body);
 			done();
   		}
@@ -115,7 +114,6 @@ describe('pequisador restful testing', function () {
 	  		expect(res).to.exist;
 	  		expect(res.body.status).to.true;
 			expect(res.body.err).to.null;
-			expect(res.status).to.eql(202);
 			done();
 		}
 		superagent
