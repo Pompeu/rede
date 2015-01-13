@@ -21,15 +21,22 @@ exports.deletePesquisador = require('./pesquisadores/deletePesquisador');
 
 
 /* banca de editais module */
-exports.bancaEditaisCreate = require('./bancaEditais/bancaEditaisCreate');
-exports.getEditais = require('./bancaEditais/getEditais');
-exports.getAllEditais = require('./bancaEditais/getAllEditais');
-exports.updateEdital = require('./bancaEditais/updateEdital');
-exports.deleteEdital = require('./bancaEditais/deleteEdital');
+exports.bancaEditaisCreate 	= require('./bancaEditais/bancaEditaisCreate');
+exports.getEditais 			= require('./bancaEditais/getEditais');
+exports.getAllEditais 		= require('./bancaEditais/getAllEditais');
+exports.updateEdital 		= require('./bancaEditais/updateEdital');
+exports.deleteEdital 		= require('./bancaEditais/deleteEdital');
 
-
+/* banca de projeto pesquisa module */
 exports.projetodePesquisaCreate = require('./projetodePesquisa/projetodePesquisaCreate');
 exports.getAllprojetodePesquisa = require('./projetodePesquisa/getAllprojetodePesquisa');
-exports.getprojetodePesquisa = require('./projetodePesquisa/getprojetodePesquisa');
+exports.getprojetodePesquisa 	= require('./projetodePesquisa/getprojetodePesquisa');
 exports.updateprojetodePesquisa = require('./projetodePesquisa/updateprojetodePesquisa');
 exports.deleteprojetodePesquisa = require('./projetodePesquisa/deleteprojetodePesquisa');
+
+/* banca de empresa module */
+exports.createEmpresa 	= require('./empresa/createEmpresa');
+exports.getEmpresa 		= require('./empresa/getEmpresa');
+exports.getAllEmpresa 	= require('./empresa/getAllEmpresa');
+exports.updateEmpresa 	= require('./empresa/updateEmpresa');
+exports.deleteEmpresa 	= require('./empresa/deleteEmpresa');

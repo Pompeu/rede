@@ -92,7 +92,7 @@ describe('bancaEditais api restful testing', function () {
 			.end(endHandler);
   	});
 
-  	it('expect delete one bancaEditais by id from db',function (done) {
+  	it('expect delete one bancaEdital by id from db',function (done) {
 
   		function endHandler (err, res) {
   			expect(err).to.not.exist;
