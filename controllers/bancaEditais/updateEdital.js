@@ -1,5 +1,6 @@
 // file: controllers/updateEdital.js - created at 2015-01-13, 03:26
 function updateEditalHandler(req, res) {
-  res.send('updateEdital');
+	debug('update edital controller')
+  	res.send(res.locals.out);
 }
 module.exports = exports = updateEditalHandler;

@@ -72,8 +72,9 @@ describe('bancaEditais api restful testing', function () {
 			agencia : ch.Name.name(),
 			dataAbertura: new Date(),
 			dataEncerramento : new Date(),
-			paginaEdital : 'www.uol1.com.br'
+			paginaEdital : 'www.uol2.com.br'
 		}
+
   		function endHandler(err, res) {
   			expect(err).to.not.exist;
 			expect(res).to.exist;		
@@ -81,16 +82,17 @@ describe('bancaEditais api restful testing', function () {
 			expect(res.body.err).to.null;
 			expect(res.body.result).to.an('object');
 			expect(res.body.result.id).to.eql(id);
-			expect(res.body.result).to.not.eql(bodyNew);
+			expect(res.body.result.paginaEdital).to.eql(bodyNew.paginaEdital);
 			done();
   		}
 
   		superagent
-			.get(url.resolve(baseURL,'bancaeditais/'+id))
+			.put(url.resolve(baseURL,'bancaeditais/'+id))
+			.send(bodyNew)
 			.end(endHandler);
   	});
 
-  	it('expect delete one user by id from db',function (done) {
+  	it('expect delete one bancaEditais by id from db',function (done) {
 
   		function endHandler (err, res) {
   			expect(err).to.not.exist;

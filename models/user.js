@@ -1,7 +1,7 @@
 // file: models/user.js - created at 2015-01-01, 02:26
 'use strict';
 
-var User = module.exports = function(data) {
+var User = module.exports = function (data) {
 	var name = data.name;
 	var sname = data.sname;
 	var password = data.password;

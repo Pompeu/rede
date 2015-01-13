@@ -23,7 +23,7 @@ function authHandler(req, res, next) {
 
 	function authUserHandler (err , result) {
 		debug('auth  User Auth handler');
-		console.log(result)
+		
 		if(result != 0){
 			if(result[0].password === password){
 				successHandler(result[0]);

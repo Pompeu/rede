@@ -10,7 +10,7 @@ exports.updateUser 	= require('./user/updateUser');
 
 
 /* auth middleware */
-exports.auth = require('./auth');
+exports.auth = require('./auth/auth');
 
 /* pesquisador module middlewares*/
 exports.createPesquisador = require('./pesquisadores/createPesquisador');
@@ -26,3 +26,10 @@ exports.getEditais = require('./bancaEditais/getEditais');
 exports.getAllEditais = require('./bancaEditais/getAllEditais');
 exports.updateEdital = require('./bancaEditais/updateEdital');
 exports.deleteEdital = require('./bancaEditais/deleteEdital');
+
+
+exports.projetodePesquisaCreate = require('./projetodePesquisa/projetodePesquisaCreate');
+exports.getAllprojetodePesquisa = require('./projetodePesquisa/getAllprojetodePesquisa');
+exports.getprojetodePesquisa = require('./projetodePesquisa/getprojetodePesquisa');
+exports.updateprojetodePesquisa = require('./projetodePesquisa/updateprojetodePesquisa');
+exports.deleteprojetodePesquisa = require('./projetodePesquisa/deleteprojetodePesquisa');
