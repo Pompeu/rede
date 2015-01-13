@@ -17,3 +17,11 @@ exports.getPesquisador 	  =	require('./pesquisadores/getPesquisador');
 exports.getAllPesquisador = require('./pesquisadores/getAllPesquisador');
 exports.updatePesquisador = require('./pesquisadores/updatePesquisador');
 exports.deletePesquisador = require('./pesquisadores/deletePesquisador');
+
+
+
+exports.bancaEditaisCreate = require('./bancaEditais/bancaEditaisCreate');
+exports.getEditais = require('./bancaEditais/getEditais');
+exports.getAllEditais = require('./bancaEditais/getAllEditais');
+exports.updateEdital = require('./bancaEditais/updateEdital');
+exports.deleteEdital = require('./bancaEditais/deleteEdital');

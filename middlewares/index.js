@@ -14,7 +14,15 @@ exports.auth = require('./auth');
 
 /* pesquisador module middlewares*/
 exports.createPesquisador = require('./pesquisadores/createPesquisador');
-exports.getPesquisador = require('./pesquisadores/getPesquisador');
+exports.getPesquisador    = require('./pesquisadores/getPesquisador');
 exports.getAllPesquisador = require('./pesquisadores/getAllPesquisador');
 exports.updatePesquisador = require('./pesquisadores/updatePesquisador');
 exports.deletePesquisador = require('./pesquisadores/deletePesquisador');
+
+
+/* banca de editais module */
+exports.bancaEditaisCreate = require('./bancaEditais/bancaEditaisCreate');
+exports.getEditais = require('./bancaEditais/getEditais');
+exports.getAllEditais = require('./bancaEditais/getAllEditais');
+exports.updateEdital = require('./bancaEditais/updateEdital');
+exports.deleteEdital = require('./bancaEditais/deleteEdital');

@@ -1,7 +1,7 @@
 // file: middlewares/getPesquisador.js - created at 2015-01-07, 07:59
 function getPesquisadorHandler(req, res, next) {
   // start here with getPesquisador.js
-    debug('get pesquisador handler')
+  debug('get pesquisador handler')
 
   var pesquisador = models.Pesquisador;
   var id = req.params.id

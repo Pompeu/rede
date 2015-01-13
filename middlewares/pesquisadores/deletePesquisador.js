@@ -30,7 +30,7 @@ function deletePesquisadorHandler(req, res, next) {
 			failHandler(err);
 		}
 	};
-	
+
     models.db.delete(id,deletePesquisador);
 }
 module.exports = exports = deletePesquisadorHandler;
