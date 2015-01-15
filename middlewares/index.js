@@ -40,3 +40,10 @@ exports.getEmpresa 		= require('./empresa/getEmpresa');
 exports.getAllEmpresa 	= require('./empresa/getAllEmpresa');
 exports.updateEmpresa 	= require('./empresa/updateEmpresa');
 exports.deleteEmpresa 	= require('./empresa/deleteEmpresa');
+
+
+exports.createArea = require('./area/createArea');
+exports.getArea    = require('./area/getArea');
+exports.getAllArea = require('./area/getAllArea');
+exports.deleteArea = require('./area/deleteArea');
+exports.updateArea = require('./area/updateArea');

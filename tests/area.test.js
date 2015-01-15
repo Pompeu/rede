@@ -3,25 +3,125 @@ var expect = require('chai').expect;
 var superagent = require('superagent');
 var ch = require('charlatan');
 var url = require('url');
-var baseURL = 'http://localhost:3000/api/user';
-var Area = require('../models').Area;
+var baseURL = 'http://localhost:3000/api/area';
 
+describe('testing area api restful testing', function () {
 
-describe('tests for a grupo', function () {
+  var id = null;
 
-  var data = {
-  		nomeArea 	: "Algorithmic",
-  		subCodigo 	: "Genetic",
-  		subArea 	: "Optimality",
-  		subNivel 	: "Academic"
+  var body = {
+  		nomeArea 	: ch.Name.name(),
+  		subCodigo : ch.Helpers.rand(8000, min = 7001),
+  		subArea 	: ch.Name.name(),
+  		subNivel 	: ch.Name.title(),
   }
   	
-  it('grupo acessible and to be an object', function (done) {
-  	var areaPesquisa = new Area(data);
-  	expect(areaPesquisa).to.be.an('object');
-    expect(Area.calc(2,2)).to.eql(4);
-    expect(data).to.eql(areaPesquisa.show());
-  	done();
+  it('expect  area create on db', function (done) {
+  	
+  	function endHandler(err , res) {
+      expect(err).to.not.exist;
+      expect(res).to.exist;   
+      expect(res.body.status).to.true;
+      expect(res.body.err).to.null;
+      expect(res.body.result).to.an('object');
+      expect(res.body.result.id).to.an('Number');
+      id = res.body.result.id;
+      expect(id).to.an('Number');
+      done();
+    }
+  	
+    superagent
+      .post(url.resolve(baseURL, 'area'))
+      .send(body)
+      .end(endHandler);
+
   });
 
+  it('expect post without body response stats false',function (done) {
+
+    function endHandler(err , res) {
+      expect(err).to.not.exist;
+      expect(res).to.exist;   
+      expect(res.body.status).to.false;
+      expect(res.body.err).to.not.null;
+      expect(res.body.result.id).to.not.exist;
+      done();
+    }
+
+    superagent
+      .post(url.resolve(baseURL, 'area'))
+      .send({})
+      .end(endHandler);
+  })
+
+  it('expect get one Area by id from db',function (done) {
+    function endHandler(err, res) {
+      expect(err).to.not.exist;
+      expect(res).to.exist;   
+      expect(res.body.status).to.true;
+      expect(res.body.err).to.null;
+      expect(res.body.result).to.an('object');
+      expect(res.body.result.id).to.eql(id);      
+      done();
+    }
+    superagent
+      .get(url.resolve(baseURL, 'area/'+id))
+      .end(endHandler);
+
+  })
+  it('expect get all Area from db',function (done) {
+      function endHandler(err, res) {
+        expect(err).to.not.exist;
+        expect(res).to.exist;   
+        expect(res.body.status).to.true;
+        expect(res.body.err).to.null;
+        expect(res.body.result).to.an('Array');           
+        done();
+      }
+
+      superagent
+        .get(url.resolve(baseURL,'area'))
+        .send(body)
+        .end(endHandler);
+  });
+  it('expect update one bancaEditais with id',function (done) {
+      var bodyNew = {
+        id : id ,
+        nomeArea  : ch.Name.name(),
+        subCodigo : ch.Helpers.rand(8000, min = 7001),
+        subArea   : ch.Name.name(),
+        subNivel  : ch.Name.title()
+    }
+
+      function endHandler(err, res) {
+        expect(err).to.not.exist;
+        expect(res).to.exist;   
+        expect(res.body.status).to.true;
+        expect(res.body.err).to.null;
+        expect(res.body.result).to.an('object');
+        expect(res.body.result.id).to.eql(id);
+        expect(res.body.result.paginaEdital).to.eql(bodyNew.paginaEdital);
+        done();
+      }
+
+      superagent
+        .put(url.resolve(baseURL,'area/'+id))
+        .send(bodyNew)
+        .end(endHandler);
+  });
+
+  it('expect delete one area by id form db',function (done) {
+
+    function endHandler (err, res) {
+        expect(err).to.not.exist;
+        expect(res).to.exist;   
+        expect(res.body.status).to.true;
+        expect(res.body.err).to.null;
+        done();
+      }
+
+      superagent
+      .del(url.resolve(baseURL,'area/'+id))
+      .end(endHandler);
+  })
 });

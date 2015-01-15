@@ -54,7 +54,7 @@ describe('empresa api restful testing', function () {
 				.end(endHandler);
   	});
 
-  	it('expect get all empresas by id from db',function (done) {
+  	it('expect get all empresas from db',function (done) {
   		function endHandler(err, res) {
 	  		expect(err).to.not.exist;
 			expect(res).to.exist;		

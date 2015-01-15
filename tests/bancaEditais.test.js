@@ -25,7 +25,7 @@ describe('bancaEditais api restful testing', function () {
 			expect(res.body.result.id).to.an('Number');
 			id = res.body.result.id;
 	  		done();
-	  	}
+	}
 
 	  	superagent
 				.post(url.resolve(baseURL,'bancaeditais'))

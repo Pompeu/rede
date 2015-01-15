@@ -16,6 +16,7 @@ var user =  require('./routes/user');
 var pesquisador =  require('./routes/pesquisador');
 var bancaeditais =  require('./routes/bancaeditais');
 var projetodepesquisa =  require('./routes/projetodepesquisa');
+var area =  require('./routes/area');
 var empresa =  require('./routes/empresa');
 var index =  require('./routes/index');
 
@@ -52,6 +53,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/user', user);
 app.use('/api/pesquisador', pesquisador);
 app.use('/api/projetodepesquisa', projetodepesquisa);
+app.use('/api/area', area);
 app.use('/api/empresa', empresa);
 app.use('/api/bancaeditais', bancaeditais);
 
