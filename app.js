@@ -19,6 +19,7 @@ var projetodepesquisa =  require('./routes/projetodepesquisa');
 var area =  require('./routes/area');
 var empresa =  require('./routes/empresa');
 var publicacao =  require('./routes/publicacao');
+var equipetecnica =  require('./routes/equipetecnica');
 var index =  require('./routes/index');
 
 
@@ -57,6 +58,7 @@ app.use('/api/projetodepesquisa', projetodepesquisa);
 app.use('/api/area', area);
 app.use('/api/empresa', empresa);
 app.use('/api/publicacao', publicacao);
+app.use('/api/equipetecnica', equipetecnica);
 app.use('/api/bancaeditais', bancaeditais);
 
 

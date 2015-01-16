@@ -54,3 +54,11 @@ exports.getAllPublicacao = require('./publicacao/getAllPublicacao');
 exports.getPublicacao 	 = require('./publicacao/getPublicacao');
 exports.deletePublicacao = require('./publicacao/deletePublicacao');
 exports.updatePublicacao = require('./publicacao/updatePublicacao');
+
+
+
+exports.createEquipeTecnica = require('./equipeTecnica/createEquipeTecnica');
+exports.getAllEquipeTecnica	 = require('./equipeTecnica/getAllEquipeTecnica');
+exports.getEquipeTecnica 	 = require('./equipeTecnica/getEquipeTecnica');
+exports.deleteEquipeTecnica  = require('./equipeTecnica/deleteEquipeTecnica');
+exports.updateEquipeTecnica  = require('./equipeTecnica/updateEquipeTecnica');
