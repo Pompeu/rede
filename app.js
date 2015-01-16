@@ -18,6 +18,7 @@ var bancaeditais =  require('./routes/bancaeditais');
 var projetodepesquisa =  require('./routes/projetodepesquisa');
 var area =  require('./routes/area');
 var empresa =  require('./routes/empresa');
+var publicacao =  require('./routes/publicacao');
 var index =  require('./routes/index');
 
 
@@ -55,6 +56,7 @@ app.use('/api/pesquisador', pesquisador);
 app.use('/api/projetodepesquisa', projetodepesquisa);
 app.use('/api/area', area);
 app.use('/api/empresa', empresa);
+app.use('/api/publicacao', publicacao);
 app.use('/api/bancaeditais', bancaeditais);
 
 

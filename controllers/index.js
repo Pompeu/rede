@@ -40,9 +40,16 @@ exports.getAllEmpresa 	= require('./empresa/getAllEmpresa');
 exports.updateEmpresa 	= require('./empresa/updateEmpresa');
 exports.deleteEmpresa 	= require('./empresa/deleteEmpresa');
 
-
+/*controller area mudole*/
 exports.createArea = require('./area/createArea');
 exports.getArea    = require('./area/getArea');
 exports.getAllArea = require('./area/getAllArea');
 exports.deleteArea = require('./area/deleteArea');
 exports.updateArea = require('./area/updateArea');
+
+/*controller publicacai module*/
+exports.createPublicacao = require('./publicacao/createPublicacao');
+exports.getAllPublicacao = require('./publicacao/getAllPublicacao');
+exports.getPublicacao 	 = require('./publicacao/getPublicacao');
+exports.deletePublicacao = require('./publicacao/deletePublicacao');
+exports.updatePublicacao = require('./publicacao/updatePublicacao');

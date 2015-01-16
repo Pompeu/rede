@@ -26,9 +26,9 @@ describe('auth testing', function () {
 
   it('expect error if email or password is not ok', function (done) {
   	var login = {
-		email : 'flo@totam.net.com',
-		password : '927135321',
-	}
+  		email : 'flo@totam.net.com',
+  		password : '927135321',
+  	}
   	function endHandler(err, res) {
   		expect(err).to.be.null;
   		expect(res).to.exist;

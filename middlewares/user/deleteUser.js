@@ -32,8 +32,8 @@ function deleteUserHandler(req, res, next) {
 			failHandler(err);
 		}
 	};
-	
-    models.db.delete(id,deleteUser);
-	
+
+	models.db.delete(id,deleteUser);
+
 }
 module.exports = exports = deleteUserHandler;

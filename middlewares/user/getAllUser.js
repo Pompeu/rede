@@ -3,9 +3,11 @@
 
 function getAllUserHandler(req, res, next) {
   // start here with getAllUser.js
-  	debug('get all user middlerware')
-	res.locals.out = {err : null , result: [] , status :  false};
+  	debug('get all user middlerware');
 
+  	var user = models.User;
+
+	res.locals.out = {err : null , result: [ ] , status :  false};
 
 	function successHandler(result) {
 		debug("get all user sucess handler");
@@ -23,8 +25,7 @@ function getAllUserHandler(req, res, next) {
 	};
 
 	function getAllHanler(err, result) {
-		debug('get all user handler');
-		
+		debug('get all user handler');		
 		if(!err){
 			successHandler(result);
 		}else{
@@ -32,7 +33,7 @@ function getAllUserHandler(req, res, next) {
 		}
 	};
 	
-    models.db.find({},getAllHanler);
+    user.findAll({},getAllHanler);
 	
 }
 module.exports = exports = getAllUserHandler;

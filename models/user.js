@@ -1,28 +1,21 @@
 // file: models/user.js - created at 2015-01-01, 02:26
 'use strict';
 
-var User = module.exports = function (data) {
-	var name = data.name;
-	var sname = data.sname;
-	var password = data.password;
-	var email = data.email;
-	var dateCadastro = data.dateCadastro;
-	//existe uma falha no model...
-	var lenUser = function (data) {
-		var tam = 0;
-		for(var i in data){
-			tam++;
-		}
-		return tam === 5;
-	} 
-	if(lenUser(data)){
-		return {		
-			name : name,
-			sname : sname,
-			email : email,
-			password : password,
-			dateCadastro : dateCadastro,
-		}
-	}
+var model = require('seraph-model');
+
+var db = require('./neo');
+
+var user = model(db,'User');
+
+var emailEr  = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+var passwordEr  = /^\w{8}$/;
+
+user.schema = {
+	name  : { type : String , required: true},
+	sname : { type : String , required: true},
+	password : { type : String , match: passwordEr , required: true},
+	email  : { type : String ,  match: emailEr , required: true},
+	dateCadastro : { type : Date , default: Date.now() , required : true},
 }
 
+module.exports = exports = user;

@@ -4,7 +4,7 @@
 function getUserHandler(req, res, next) {
   // start here with getUser.js
  	debug('get user middleware')
-
+ 	var user = models.User;
  	var body = req.body;
  	var id = req.params.id;
  	
@@ -35,7 +35,7 @@ function getUserHandler(req, res, next) {
 		}
 	};
 
-	models.db.read(id,getOneHandler)
+	user.read(id,getOneHandler)
 	
 }
 module.exports = exports = getUserHandler;

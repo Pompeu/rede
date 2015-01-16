@@ -34,16 +34,23 @@ exports.getprojetodePesquisa 	= require('./projetodePesquisa/getprojetodePesquis
 exports.updateprojetodePesquisa = require('./projetodePesquisa/updateprojetodePesquisa');
 exports.deleteprojetodePesquisa = require('./projetodePesquisa/deleteprojetodePesquisa');
 
-/* banca de empresa module */
+/* banca de editais module */
 exports.createEmpresa 	= require('./empresa/createEmpresa');
 exports.getEmpresa 		= require('./empresa/getEmpresa');
 exports.getAllEmpresa 	= require('./empresa/getAllEmpresa');
 exports.updateEmpresa 	= require('./empresa/updateEmpresa');
 exports.deleteEmpresa 	= require('./empresa/deleteEmpresa');
 
-
+/*Area  de pesquisa module*/
 exports.createArea = require('./area/createArea');
 exports.getArea    = require('./area/getArea');
 exports.getAllArea = require('./area/getAllArea');
 exports.deleteArea = require('./area/deleteArea');
 exports.updateArea = require('./area/updateArea');
+
+/* Publicacao module*/
+exports.createPublicacao = require('./publicacao/createPublicacao');
+exports.getAllPublicacao = require('./publicacao/getAllPublicacao');
+exports.getPublicacao 	 = require('./publicacao/getPublicacao');
+exports.deletePublicacao = require('./publicacao/deletePublicacao');
+exports.updatePublicacao = require('./publicacao/updatePublicacao');

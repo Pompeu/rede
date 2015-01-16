@@ -5,7 +5,7 @@ function updateUserHandler(req, res, next) {
   // start here with updateUser.js
 	debug('update user middlerware handler')
 
-	/*var user = models.User(req.body);*/
+	var user = models.User;
 	var id = req.params.id;
 
 	res.locals.out = {err : null , result : {} ,status : false};	
@@ -33,9 +33,9 @@ function updateUserHandler(req, res, next) {
 	  	}
 	};
 
-	models.db.read(id,function(err,result) {
+	user.read(id,function(err,result) {
 		result = req.body
-		models.db.save(result,updateHandler)	
+		user.save(result,updateHandler)	
 	});
 	
 }

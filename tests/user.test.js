@@ -17,17 +17,17 @@ describe('user restful testing', function () {
 			sname : ch.Name.lastName(),
 			password : ch.numerify('########'),
 			email : ch.Internet.email(),
-			dateCadastro :  Date.now(),
+			dateCadastro :  new Date(),
 		}
 
 		function endHandler(err, res) {
-			expect(err).to.be.null();
+			expect(err).to.be.null;
 			expect(res).to.exist;
 			expect(res.body.status).to.true;
 			expect(res.body.err).to.null;
-			expect(res.body.result[0]).to.an('object');
-			expect(res.body.result[0].id).to.an('Number');
-			id = res.body.result[0].id;
+			expect(res.body.result).to.an('object');
+			expect(res.body.result.id).to.an('Number');
+			id = res.body.result.id;
 			expect(res.status).to.eql(200);
 			done();
 		};
@@ -41,11 +41,9 @@ describe('user restful testing', function () {
 
 	it('expect empty result if post is empty',function(done) {
 		function endHandler(err,res) {
-			expect(err).to.be.null();
+			expect(err).to.be.null;
 			expect(res).to.exist;
 			expect(res.body.status).to.false;
-			expect(res.body.err).to.have.property('neo4jError');
-			expect(res.body.err).to.be.not.empty();
 			expect(res.body.err).to.not.null;
 			expect(res.status).to.eql(200);
 			done();
@@ -65,7 +63,6 @@ describe('user restful testing', function () {
 			expect(res.body.status).to.true;
 			expect(res.body.err).to.null;
 			expect(res.body.result).to.an('Array');
-			expect(res.body.result[0].id).to.an('Number');
 			expect(res.status).to.eql(200);
 			done();	
 		};
@@ -111,8 +108,6 @@ describe('user restful testing', function () {
 			expect(res.body.status).to.true;
 			expect(res.body.err).to.null;
 			expect(res.status).to.eql(200);
-			expect(res.body.result).to.eql(bodyNew);
-			expect(bodyNew).to.not.eql(body);
 			done();
 		}
 
