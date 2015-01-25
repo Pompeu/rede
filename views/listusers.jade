@@ -12,5 +12,5 @@ div(class="app-content")
 							p Sobre Nome : {{user.sname}}
 							p Email : {{user.email}}
 							p Senha : {{user.password}}
-							p Data Cadastro : {{user.dateCadastro}}
+							p Data Cadastro : {{user.dateCadastro | date:'medium'}}
 				p{{erro}}

@@ -7,6 +7,7 @@ var sessions = require('client-sessions');
 var csrf = require('csurf');
 
 
+
 var models = global.models = require('./models');
 var middlewares = global.middlewares = require('./middlewares');
 var controllers = global.controllers = require('./controllers');
@@ -23,9 +24,8 @@ var equipetecnica =  require('./routes/equipetecnica');
 var index =  require('./routes/index');
 
 
+
 var app = express();
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
