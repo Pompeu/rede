@@ -7,7 +7,7 @@ function createPublicacaoHandler(req, res, next) {
 
   var body = req.body;
 
-  res.locals.out = {err : null , result : {} , status : false};	
+  res.locals.out = {err : null , result : { } , status : false};	
 
   function successHandler(result) {
   	debug('Publicacao create success handler');

@@ -5,11 +5,18 @@ var db = require('./neo');
 
 var publicacao = model(db,'publicacao');
 
+publicacao.fields = [
+	'ano',  
+	'tipo',  
+	'formato',
+	'name' 
+]
+
 publicacao.schema = {
-	ano  : { type : String , required: true},
-	tipo : { type : String , required: true},
+	ano  	: { type : Number , required: true},
+	tipo 	: { type : String , required: true},
 	formato : { type : String , required: true},
-	nome  : { type : String , required: true},
+	name  	: { type : String , required: true}
 }
 
 module.exports = exports = publicacao;

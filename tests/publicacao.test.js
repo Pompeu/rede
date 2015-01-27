@@ -12,22 +12,22 @@ describe('publicacao api restful testing', function () {
   it('expect create a publicaccao', function (done) {
   	
   	body = {
-  		ano  : ch.Helpers.rand(2015, min = 1900),
-		tipo : ch.Name.title(),
-		formato : ch.Company.bs(),
-		nome  : ch.Name.name() ,
+  		ano  : ch.Helpers.rand(2015, 2000),
+  		tipo : ch.Name.title(),
+  		formato : ch.Company.bs(),
+  		name  : ch.Name.name() ,
   	}
-
+    
   	function endHandler	(err , res) {
-		expect(err).to.not.exist;
-		expect(res).to.exist;   
-		expect(res.body.status).to.true;
-		expect(res.body.err).to.null;
-		expect(res.body.result).to.an('object');
-		expect(res.body.result.id).to.an('Number');
-		id = res.body.result.id;
-		expect(id).to.an('Number');
-		done();
+  		expect(err).to.not.exist;
+  		expect(res).to.exist;   
+  		expect(res.body.status).to.true;
+  		expect(res.body.err).to.null;
+  		expect(res.body.result).to.an('object');
+  		expect(res.body.result.id).to.an('Number');
+  		id = res.body.result.id;
+  		expect(id).to.an('Number');
+  		done();
   	}
 
   	superagent
@@ -38,12 +38,12 @@ describe('publicacao api restful testing', function () {
 
   it('expect get all publicacao from db' , function (done) {
   	function endHandler	(err , res) {
-		expect(err).to.not.exist;
-		expect(res).to.exist;   
-		expect(res.body.status).to.true;
-		expect(res.body.err).to.null;
-		expect(res.body.result).to.an('Array');
-		done();
+  		expect(err).to.not.exist;
+  		expect(res).to.exist;   
+  		expect(res.body.status).to.true;
+  		expect(res.body.err).to.null;
+  		expect(res.body.result).to.an('Array');
+  		done();
   	}
   	superagent
   		.get(url.resolve(baseURL,'publicacao'))
@@ -52,12 +52,12 @@ describe('publicacao api restful testing', function () {
 
    it('expect get one publicacao by id from db' , function (done) {
   	function endHandler	(err , res) {
-		expect(err).to.not.exist;
-		expect(res).to.exist;   
-		expect(res.body.status).to.true;
-		expect(res.body.err).to.null;
-		expect(res.body.result).to.an('object');
-		done();
+  		expect(err).to.not.exist;
+  		expect(res).to.exist;   
+  		expect(res.body.status).to.true;
+  		expect(res.body.err).to.null;
+  		expect(res.body.result).to.an('object');
+  		done();
   	}
   	superagent
   		.get(url.resolve(baseURL,'publicacao/'+id))
@@ -67,20 +67,20 @@ describe('publicacao api restful testing', function () {
    it('expect update one publicacao by id from db' , function (done) {
    	
    	bodyNew = {
-  		ano  : ch.Helpers.rand(2015, min = 1900),
-		tipo : ch.Name.title(),
-		formato : ch.Company.bs(),
-		nome  : ch.Name.name() ,
+  		ano  : ch.Helpers.rand(2015, 1900),
+  		tipo : ch.Name.title(),
+  		formato : ch.Company.bs(),
+  		name  : ch.Name.name() ,
   	}
 
   	function endHandler	(err , res) {
-		expect(err).to.not.exist;
+		  expect(err).to.not.exist;
   		expect(res).to.exist;
   		expect(res.body.status).to.true;
-		expect(res.body.err).to.null;
-		expect(res.body.result).to.an('object');
-		expect(res.body.result).to.not.eql(body);
-		done();
+  		expect(res.body.err).to.null;
+  		expect(res.body.result).to.an('object');
+  		expect(res.body.result).to.not.eql(body);
+  		done();
   	}
 
   	superagent
@@ -91,11 +91,11 @@ describe('publicacao api restful testing', function () {
 
    it('expect delete one publicacao by id from db' , function (done) {
   	function endHandler	(err , res) {
-		expect(err).to.not.exist;
+		  expect(err).to.not.exist;
   		expect(res).to.exist;
   		expect(res.body.status).to.true;
-		expect(res.body.err).to.null;
-		done();
+		  expect(res.body.err).to.null;
+		  done();
   	}
   	superagent
   		.del(url.resolve(baseURL,'publicacao/'+id))

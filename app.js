@@ -1,13 +1,14 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
-var sessions = require('client-sessions');
-var csrf = require('csurf');
+//dependencies
+var express = require('express'),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    bodyParser = require('body-parser'),
+    sessions = require('client-sessions'),
+    csrf = require('csurf');
 
 
-
+//globals
 var models = global.models = require('./models');
 var middlewares = global.middlewares = require('./middlewares');
 var controllers = global.controllers = require('./controllers');
@@ -52,6 +53,8 @@ app.use(sessions({
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+/* routes */
 app.use('/api/user', user);
 app.use('/api/pesquisador', pesquisador);
 app.use('/api/projetodepesquisa', projetodepesquisa);

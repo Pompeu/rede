@@ -121,7 +121,7 @@ describe('testing area api restful testing', function () {
       }
 
       superagent
-      .del(url.resolve(baseURL,'area/'+id))
-      .end(endHandler);
+        .del(url.resolve(baseURL,'area/'+id))
+        .end(endHandler);
   })
 });
