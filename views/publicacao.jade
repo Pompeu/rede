@@ -1,0 +1,11 @@
+div(ng-controller="PublicacaoCtrl", style="width:500px; margin:0 auto")
+  md-content
+    md-list
+      md-item(ng-repeat="p in publicacoes")
+        md-item-content
+          .md-tile-content
+            h3 Nome {{p.name}}
+            h4 Ano {{p.ano}}
+            h5 Tipo {{p.tipo}}
+            h5 Formato {{p.formato}}
+           

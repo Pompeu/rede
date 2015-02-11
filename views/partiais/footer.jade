@@ -1,25 +1,28 @@
-block content
-	div(ng-app="AppFooter")
-		div(ng-controller="FooterCrtl")
-			md-tabs(class="md-accent" md-selected="data.selectedIndex")
-				md-tab( id="tab1" ,aria-controls="tab1-content").
-					DashBoard
-				md-tab(id="tab2" ,aria-controls="tab2-content").
-					Areas
-				md-tab(id="tab3" ,aria-controls="tab3-content").
-					Users
-				md-tab(id="tab4" ,aria-controls="tab4-content").
-					Sign in 
-				md-tab(id="tab5" ,aria-controls="tab5-content").
-					Login
-			ng-switch(on="data.selectedIndex"  class="tabpanel-container")
-				div(role="tabpanel" , id="tab1-content" , aria-labelledby="tab1",ng-switch-when="0", md-swipe-left="next()",md-swipe-right="previous()")
-					include ../dashboard
-				div(role="tabpanel", id="tab2-content" ,aria-labelledby="tab2", ng-switch-when="1", md-swipe-left="next()" ,md-swipe-right="previous()")
-					include ../area
-				div(role="tabpanel", id="tab3-content" ,aria-labelledby="tab3", ng-switch-when="2", md-swipe-left="next()" ,md-swipe-right="previous()")
-					include ../listusers
-				div(role="tabpanel", id="tab4-content" ,aria-labelledby="tab4", ng-switch-when="3", md-swipe-left="next()" ,md-swipe-right="previous()")
-					include ../caduser
-				div(role="tabpanel", id="tab5-content" ,aria-labelledby="tab5", ng-switch-when="4", md-swipe-left="next()" ,md-swipe-right="previous()")
-					include login
+div(ng-app="AppFooter")
+	div(ng-controller="FooterCrtl")
+		md-tabs(class="md-accent" md-selected="data.selectedIndex")
+			md-tab( id="tab1" ,aria-controls="tab1-content").
+				DashBoard
+			md-tab( id="tab2" ,aria-controls="tab2-content").
+				Publicacao		
+			md-tab(id="tab3" ,aria-controls="tab3-content").
+				Areas
+			md-tab(id="tab4" ,aria-controls="tab4-content").
+				Users
+			md-tab(id="tab5" ,aria-controls="tab5-content").
+				Sign in 
+			md-tab(id="tab6" ,aria-controls="tab6-content").
+				Login
+		ng-switch(on="data.selectedIndex"  class="tabpanel-container")
+			div(role="tabpanel" , id="tab1-content" , aria-labelledby="tab1",ng-switch-when="0", md-swipe-left="next()",md-swipe-right="previous()")
+				include ../dashboard
+			div(role="tabpanel" , id="tab2-content" , aria-labelledby="tab2",ng-switch-when="1", md-swipe-left="next()",md-swipe-right="previous()")
+				include ../publicacao
+			div(role="tabpanel", id="tab3-content" ,aria-labelledby="tab3", ng-switch-when="2", md-swipe-left="next()" ,md-swipe-right="previous()")
+				include ../area
+			div(role="tabpanel", id="tab4-content" ,aria-labelledby="tab4", ng-switch-when="3", md-swipe-left="next()" ,md-swipe-right="previous()")
+				include ../listusers
+			div(role="tabpanel", id="tab5-content" ,aria-labelledby="tab5", ng-switch-when="4", md-swipe-left="next()" ,md-swipe-right="previous()")
+				include ../caduser
+			div(role="tabpanel", id="tab6-content" ,aria-labelledby="tab6", ng-switch-when="5", md-swipe-left="next()" ,md-swipe-right="previous()")
+				include login

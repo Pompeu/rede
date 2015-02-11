@@ -73,6 +73,16 @@
         notes: " I'll be in your neighborhood doing errands"
       },
     ];
+  }])
+  .controller('PublicacaoCtrl', ['$scope', '$http', function ($scope , $http) {
+    $scope.publicacoes = []
+    $http.get('/api/publicacao')
+      .success(function(data) {
+        $scope.publicacoes = data.result;
+      })
+      .error(function(err, status) {
+
+      })
   }]);
 
 })();

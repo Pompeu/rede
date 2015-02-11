@@ -1,15 +1,11 @@
-extends layout
-
-block content  
-  div(ng-controller="AreaCtrl", style="width:500px; margin:0 auto")
-    md-content
-      md-list
-        md-item(ng-repeat="item in todos")
-          md-item-content
-            .md-tile-left
-                img(ng-src="{{item.face}}" class="face" alt="{{item.who}}")
-            .md-tile-content
-              h3{{item.what}}
-              h4{{item.who}}
-              p
-                {{item.notes}}
+div(ng-controller="AreaCtrl", style="width:500px; margin:0 auto; padding: 10px")
+  md-content
+    md-list
+      md-item(ng-repeat="item in todos")
+        md-item-content
+          .md-tile-left
+              img(ng-src="{{item.face}}" class="face" alt="{{item.who}}")
+          .md-tile-content
+            h3 {{item.what}}
+            h4 {{item.who}}
+            p  {{item.notes}}
