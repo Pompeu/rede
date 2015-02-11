@@ -52,6 +52,7 @@ app.use(sessions({
 /*app.use(csrf());*/
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
 
 
 /* routes */

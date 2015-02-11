@@ -5,7 +5,7 @@ block content
 				md-tab( id="tab1" ,aria-controls="tab1-content").
 					DashBoard
 				md-tab(id="tab2" ,aria-controls="tab2-content").
-					Projetos
+					Areas
 				md-tab(id="tab3" ,aria-controls="tab3-content").
 					Users
 				md-tab(id="tab4" ,aria-controls="tab4-content").
@@ -16,6 +16,7 @@ block content
 				div(role="tabpanel" , id="tab1-content" , aria-labelledby="tab1",ng-switch-when="0", md-swipe-left="next()",md-swipe-right="previous()")
 					include ../dashboard
 				div(role="tabpanel", id="tab2-content" ,aria-labelledby="tab2", ng-switch-when="1", md-swipe-left="next()" ,md-swipe-right="previous()")
+					include ../area
 				div(role="tabpanel", id="tab3-content" ,aria-labelledby="tab3", ng-switch-when="2", md-swipe-left="next()" ,md-swipe-right="previous()")
 					include ../listusers
 				div(role="tabpanel", id="tab4-content" ,aria-labelledby="tab4", ng-switch-when="3", md-swipe-left="next()" ,md-swipe-right="previous()")

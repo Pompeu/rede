@@ -22,6 +22,6 @@ router
 
 router.
 	post('/login',middlewares.auth,controllers.auth);
-	
+
 	
 module.exports = router;

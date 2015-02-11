@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('AppFooter', ['ngMaterial'] )  
+  angular.module('AppRede', ['ngMaterial'] )  
     .controller('FooterCrtl', function($scope){
     $scope.data = {
       selectedIndex : 0
@@ -45,6 +45,34 @@
             $scope.messege = data;
           })
      };     
-  });
+  })
+  .controller('DashCtrl', ['$scope', function ($scope) {
+    
+  }])
+  .controller('AreaCtrl', ['$scope', function ($scope) {
+    $scope.todos = [
+      {
+        face : '/image/rede.jpeg',
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : '/image/rede.jpeg',
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : '/image/rede.jpeg',
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+    ];
+  }]);
 
 })();

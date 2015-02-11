@@ -1,3 +1,5 @@
 node_modules/
-.agni
+.agni/
+.ideia/
+.sw*
 npm-debug.log

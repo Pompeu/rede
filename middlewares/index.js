@@ -56,8 +56,8 @@ exports.deletePublicacao = require('./publicacao/deletePublicacao');
 exports.updatePublicacao = require('./publicacao/updatePublicacao');
 
 
-
-exports.createEquipeTecnica = require('./equipeTecnica/createEquipeTecnica');
+/* Equipe Tecnicia module*/
+exports.createEquipeTecnica  = require('./equipeTecnica/createEquipeTecnica');
 exports.getAllEquipeTecnica	 = require('./equipeTecnica/getAllEquipeTecnica');
 exports.getEquipeTecnica 	 = require('./equipeTecnica/getEquipeTecnica');
 exports.deleteEquipeTecnica  = require('./equipeTecnica/deleteEquipeTecnica');

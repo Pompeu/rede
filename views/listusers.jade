@@ -1,9 +1,10 @@
 div(class="app-content")
 	div(ng-controller="UserCtrl")
-		form
+		form(ng-if='users.length')
 			md-text-float(label="Buscar Users" , class="long" , ng-model="searchStr")
 		md-content
 			md-list
+				md-progress-circular(ng-if="!users.length" ,md-mode="indeterminate")
 				md-item(ng-repeat="user in users | filter:searchStr")
 					md-item-content
 						div(class="md-title-content")
@@ -13,4 +14,4 @@ div(class="app-content")
 							p Email : {{user.email}}
 							p Senha : {{user.password}}
 							p Data Cadastro : {{user.dateCadastro | date:'medium'}}
-				p{{erro}}
+				p {{erro}}
