@@ -13,7 +13,7 @@ a:link, a:visited {
   text-decoration: none
   }
 a:hover{
-   background:#dcedc8;
+  /* background:#dcedc8; */
   text-decoration: underline; 
   color: #f00
   }
