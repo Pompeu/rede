@@ -26,32 +26,13 @@
       })
       .when('/pesquisadores', {
         templateUrl: '../partials/pesquisadores.html',
-        controller: 'PesquisadoresCtrl'
+        controller: 'PesquisadoresCtrl',
+        controllerAs: 'vm'
       })
       .otherwise({ redirectTo: '/' })
     
     $mdThemingProvider.theme('default')
       .primaryPalette('light-blue')
       .accentPalette('blue');
-  }]) 
-  .controller('LoginCtrl',function () {
-    var vm = this;
-    vm.main = 'Ola LoginCtrl';
-  })
-  .controller('SingCtrl',function () {
-    var vm = this;
-    vm.main = 'Ola SingCtrl';
-  })
-  .controller('BancaCtrl', function () {
-    var vm = this;
-    vm.main = 'Ola BancaCtrl';
-  })
-  .controller('EmpresasCtrl',function () {
-    var vm = this;
-    vm.main = 'Ola EmpresasCtrl'
-  })
-  .controller('PesquisadoresCtrl', ['$scope', function ($scope) {
-    var vm = this;
-    vm.main = 'Ola EmpresasCtrl'
   }]) 
 })();
