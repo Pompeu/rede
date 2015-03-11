@@ -1,0 +1,28 @@
+<md-dialog aria-label="Login Users">
+  <md-content>
+  <md-subheader class="md-primary md-sticky-no-effect">
+     <md-icon md-svg-src="/image/person.svg"></md-icon>
+  </md-subheader>  
+  <md-content class="md-primary md-sticky-no-effect md-padding">
+    <form name="loginform">
+      <md-input-container md-no-float>
+        <md-icon md-svg-src="/image/email.svg"></md-icon>
+        <input md-maxlength="30" type="email" required name="Email" ng-model="vm.user.name">       
+        <!-- <div ng-messages="loginform.username.$error">
+          <div ng-message="required">nome requerido.</div>
+          <div ng-message="md-maxlength">nome nao deve ser maior que 30 characteres</div>
+        </div> -->
+      </md-input-container>
+      <md-input-container md-no-float>       
+        <md-icon md-svg-src="/image/password.svg"></md-icon>       
+        <input md-minlength="8" md-maxlength="8" required type="password" name="password" ng-model="vm.user.password">
+        <!-- <div ng-messages="loginform.userpassword.$error">
+          <div ng-message="required">senha requerida</div>
+        </div> -->
+      </md-input-container>
+      <md-button class="md-raised md-primary"ng-click="vm.logar(vm.user)">logar</md-button>
+      <md-button class="md-raised md-warn" ng-click="vm.cancel()">cancel</md-button>
+    </form>
+    <md-content>
+  </md-content>
+</md-dialog>

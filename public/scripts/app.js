@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('RedeApp', ['ngRoute','ngMaterial'] )
+  angular.module('RedeApp', ['ngRoute','ngMaterial'])
   .config(['$routeProvider','$mdThemingProvider',
   function($routeProvider , $mdThemingProvider) {
     $routeProvider
