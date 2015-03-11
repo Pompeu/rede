@@ -1,4 +1,6 @@
 // file: models/bancaEditais.js - created at 2015-01-13, 01:19
+'use strict';
+
 var model = require('seraph-model');
 
 var db = require('./neo');

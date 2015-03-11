@@ -12,9 +12,11 @@ var express = require('express'),
 var models = global.models = require('./models');
 var middlewares = global.middlewares = require('./middlewares');
 var controllers = global.controllers = require('./controllers');
+var clientDir =  global.clientDir =  path.join(__dirname, 'views');
 
 /*routes*/
 var user =  require('./routes/user');
+var auth =  require('./routes/auth');
 var pesquisador =  require('./routes/pesquisador');
 var bancaeditais =  require('./routes/bancaeditais');
 var projetodepesquisa =  require('./routes/projetodepesquisa');
@@ -22,23 +24,16 @@ var area =  require('./routes/area');
 var empresa =  require('./routes/empresa');
 var publicacao =  require('./routes/publicacao');
 var equipetecnica =  require('./routes/equipetecnica');
-var index =  require('./routes/index');
+var routes = require('./routes/index');
 
 
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-// deixando html legivel
-app.locals.pretty = true;
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(sessions({
     cookieName: 'session',
@@ -51,11 +46,7 @@ app.use(sessions({
 }));
 /*app.use(csrf());*/
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'views')));
-
-
-/* routes */
+/* routes api*/
 app.use('/api/user', user);
 app.use('/api/pesquisador', pesquisador);
 app.use('/api/projetodepesquisa', projetodepesquisa);
@@ -65,8 +56,9 @@ app.use('/api/publicacao', publicacao);
 app.use('/api/equipetecnica', equipetecnica);
 app.use('/api/bancaeditais', bancaeditais);
 
-
-app.use('/',index)
+/* routes api comuns*/
+app.use('/',routes);
+app.use('/login', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/bower_components/angular-material/angular-material.min.css">
+  <title>Rede</title>
+</head>
+<body ng-app="RedeApp">
+ 
+  <md-content class="sample" layout="column">
+    <md-tabs class="md-accent" flex> 
+      <a href="#logar">
+        <md-tab><label class="md-label"> Logar </label></md-tab>
+      </a>
+      <a href="#signin">
+        <md-tab><label class="md-label"> Sign in </label></md-tab>
+      </a>
+      <a href="#bancas">
+        <md-tab><label class="md-label"> Bancas </label></md-tab>
+      </a>
+      <a href="#empresas">
+        <md-tab><label class="md-label"> Empresas </label></md-tab>
+      </a>
+      <a href="#pesquisadores">
+        <md-tab><label class="md-label"> Pesquisadores </label></md-tab>
+      </a>
+      <md-tab>
+        <md-input-container>
+          <label>Buscar</label>
+          <input ng-model="vm.search" type="text">
+        </md-input-container>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+  <div ng-view></div>
+  
+  <script src="bower_components/angular/angular.min.js" ></script>
+  <script src="bower_components/angular-route/angular-route.min.js" ></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js" ></script>
+  <script src="bower_components/angular-aria/angular-aria.min.js" ></script>
+  <script src="bower_components/angular-material/angular-material.min.js" ></script>
+  <script src="bower_components/hammerjs/hammer.min.js" ></script>
+  <script src="scripts/app.js" ></script>
+</body>
+</html>

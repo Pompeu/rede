@@ -5,7 +5,7 @@ var ch = require('charlatan');
 var url = require('url');
 var baseURL = 'http://localhost:3000/api/area';
 
-describe('testing area api restful testing', function () {
+describe('testing Area api restful testing', function () {
 
   var id = null;
 
@@ -16,7 +16,7 @@ describe('testing area api restful testing', function () {
   		subNivel 	: ch.Name.title(),
   }
   	
-  it('expect  area create on db', function (done) {
+  it('expect Area create on db', function (done) {
   	
   	function endHandler(err , res) {
       expect(err).to.not.exist;
@@ -84,7 +84,7 @@ describe('testing area api restful testing', function () {
         .send(body)
         .end(endHandler);
   });
-  it('expect update one bancaEditais with id',function (done) {
+  it('expect update one Area with id',function (done) {
       var bodyNew = {
         id : id ,
         nomeArea  : ch.Name.name(),
@@ -110,7 +110,7 @@ describe('testing area api restful testing', function () {
         .end(endHandler);
   });
 
-  it('expect delete one area by id form db',function (done) {
+  it('expect delete one Area by id form db',function (done) {
 
     function endHandler (err, res) {
         expect(err).to.not.exist;

@@ -1,4 +1,5 @@
 // file: models/empresa.js - created at 2015-01-13, 05:29
+'use strict';
 
 var model = require('seraph-model');
 

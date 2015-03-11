@@ -1,4 +1,5 @@
 // file: models/area.js - created at 2015-01-15, 02:19
+'use strict';
 
 var model = require('seraph-model');
 
