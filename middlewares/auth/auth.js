@@ -23,8 +23,8 @@ function authHandler(req, res, next) {
 
 	function authUserHandler (err , result) {
 		debug('auth  User Auth handler');
-		
-		if(result != 0){
+		console.log(result);
+		if(result && result != 0){
 			if(result[0].password === password){
 				successHandler(result[0]);
 			}else{
@@ -37,7 +37,6 @@ function authHandler(req, res, next) {
 
 	models.db.find({email : email} , authUserHandler);
 	
-  
 }
 
 module.exports = exports = authHandler;

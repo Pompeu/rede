@@ -6,7 +6,7 @@ function userCreateHandler(req, res, next) {
 	
 	var user = models.User;
 	
-  	var body = req.body;
+  var body = req.body;
 	
 	res.locals.out = {err : null , result : {} , status : false};	
 

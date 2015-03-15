@@ -34,5 +34,17 @@
     $mdThemingProvider.theme('default')
       .primaryPalette('light-blue')
       .accentPalette('blue');
-  }]) 
+  }])
+  .controller('IndexCrtl',['$rootScope',
+  function ($rootScope) {
+    var vm = this;
+    vm.sair =function() {
+      $rootScope.user = null;
+    };
+    
+  }])
+  .run(function ($rootScope) {
+    $rootScope.user = null;
+    $rootScope.img = 'image/pompeu.jpg'
+  }) 
 })();

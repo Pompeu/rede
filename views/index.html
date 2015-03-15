@@ -7,40 +7,51 @@
   <title>Rede</title>
 </head>
 <body ng-app="RedeApp">
- 
-  <md-content class="sample" layout="column">
-    <md-tabs class="md-accent" flex>
-
+    <md-tabs class="md-accent">
       <a href="#logar">
-        <md-tab> 
-        <md-icon md-svg-src="/image/person.svg"><h3> Logar </h3></md-icon>
-        
-      <!--   <h3 class="md-label"> Logar </h3> -->
+        <md-tab class="md-toolbar-tools">
+          <md-icon md-svg-src="/image/personmail.svg"></md-icon>
+          <span class="md-label"> Logar </span>
+        </md-tab>
+      </a>   
+      <a href="#signin">
+        <md-tab class="md-toolbar-tools">
+          <md-icon md-svg-src="/image/person.svg"></md-icon> 
+          <span class="md-label"> Sign in </span>
         </md-tab>
       </a>
-      <a href="#signin">
-        <md-tab> <h3 class="md-label"> Sign in </h3></md-tab>
-      </a>
       <a href="#bancas">
-        <md-tab> <h3 class="md-label"> Bancas </h3></md-tab>
+        <md-tab class="md-toolbar-tools">
+          <md-icon md-svg-src="/image/password.svg"></md-icon>  
+          <span class="md-label"> Bancas </span>
+        </md-tab>
       </a>
       <a href="#empresas">
-        <md-tab> <h3 class="md-label"> Empresas </h3></md-tab>
+        <md-tab class="md-toolbar-tools"> 
+          <md-icon md-svg-src="/image/password.svg"></md-icon> 
+          <span class="md-label"> Empresas </span>
+        </md-tab>
       </a>
-      <a href="#pesquisadores">
-        <md-tab> <h3 class="md-label"> Pesquisadores </h3></md-tab>
-      </a>
-      <md-tab>
-        <md-input-container>
-          <label>Buscar</label>
-          <input ng-model="vm.search" type="text">
-        </md-input-container>
-      </md-tab>
-    </md-tabs>
-  </md-content>
 
-  <div ng-view></div>
-  
+      <a href="#pesquisadores">
+        <md-tab class="md-toolbar-tools">
+          <md-icon md-svg-src="/image/checkdone.svg"></md-icon> 
+          <span class="md-label"> Pesquisadores </span>
+        </md-tab>
+      </a>
+      <div  ng-controller="IndexCrtl as vm">                
+          <md-tab ng-if="$parent.user" class="md-toolbar-tools">
+            <img ng-src="{{$parent.img}}"
+             alt="{{$parent.user.result.name}}"
+            style="width: 30px; height: 30px;">
+            <span class="md-label"> {{$parent.user.result.name}} </span>
+            <a href="#">
+            <md-icon md-svg-src="image/poweroff.svg" class="s24" alt="SAIR" ng-click="vm.sair()"> </md-icon>
+            </a>
+          </md-tab>        
+      </div>
+    </md-tabs>  
+  <div ng-view></div>  
   <script src="bower_components/angular/angular.min.js" ></script>
   <script src="bower_components/angular-route/angular-route.min.js" ></script>
   <script src="bower_components/angular-animate/angular-animate.min.js" ></script>

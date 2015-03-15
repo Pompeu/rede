@@ -1,20 +1,20 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* background: url("/image/bk600x499.png"); */
+  background-color: red;
+  padding-left: 10px; 
 }
+
 a {
+
   color: #00B7FF;
-}
-.md-label {
-  color: #000; 
 }
 
 a:link, a:visited {
   text-decoration: none
   }
 a:hover{
-  /* background:#dcedc8; */
-  text-decoration: underline; 
   color: #f00
   }
 a:active {

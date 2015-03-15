@@ -1,0 +1,12 @@
+<md-toast>
+  <div>
+   <img ng-src="{{$parent.img}}"
+        alt="{{$parent.user.result.name}}"
+        style="width: 20px; height: 20px;">
+  </div>
+  <span flex> Ola {{vm.user.nivel}} {{vm.user.name}} bem vindo</span>
+  <md-button ng-click="vm.closeToast()">
+    fechar!
+  </md-button>
+</md-toast>
+
