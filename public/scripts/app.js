@@ -43,8 +43,4 @@
     };
     
   }])
-  .run(function ($rootScope) {
-    $rootScope.user = null;
-    $rootScope.img = 'image/pompeu.jpg'
-  }) 
 })();

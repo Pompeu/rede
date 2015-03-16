@@ -1,5 +1,9 @@
 (function(){
 angular.module('RedeApp')
+  .run(function ($rootScope) {
+    $rootScope.user = null;
+    $rootScope.img = 'image/pompeu.jpg'
+  }) 
   .controller('LoginCtrl',['$mdDialog','$rootScope',
     function ($mdDialog, $rootScope) {
 
@@ -21,19 +25,23 @@ angular.module('RedeApp')
       $mdDialog.cancel();
       return false;
     };   
-    vm.logar = function(user) {
+    vm.logar = function(user,ev) {
       $http.post('/login',user)
       .success(function(user) {
         if(user.status) {
           $rootScope.user = user;
           vm.showCustomToast();
           vm.cancel();
+        }else if(user.err){
+          $rootScope.err = user.err;
+          vm.showCustomToast();
         }
       })
       .error(function(err) {
         console.log(err);
       })
     };
+    
      vm.toastPosition = {
       bottom: false,
       top: true,
@@ -50,14 +58,19 @@ angular.module('RedeApp')
         controller: ToastCtrl,
         controllerAs: 'vm',
         templateUrl: '../../partials/tmpl/toastok.tmpl.html',
-        hideDelay: 4000,
+        hideDelay: 3000,
         position: vm.getToastPosition()
       });
     };    
   };
   function ToastCtrl($mdToast,$rootScope) {
     var vm = this;
-    vm.user = $rootScope.user.result;
+    vm.err = null;
+    if($rootScope.user){
+      vm.user = $rootScope.user.result;
+    }else{
+      vm.err = $rootScope.err
+    }
     vm.closeToast = function() {
       $mdToast.hide();
     };

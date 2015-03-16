@@ -39,14 +39,23 @@
           <span class="md-label"> Pesquisadores </span>
         </md-tab>
       </a>
-      <div  ng-controller="IndexCrtl as vm">                
+      <div ng-controller="IndexCrtl as vm">                
           <md-tab ng-if="$parent.user" class="md-toolbar-tools">
-            <img ng-src="{{$parent.img}}"
-             alt="{{$parent.user.result.name}}"
-            style="width: 30px; height: 30px;">
-            <span class="md-label"> {{$parent.user.result.name}} </span>
             <a href="#">
-            <md-icon md-svg-src="image/poweroff.svg" class="s24" alt="SAIR" ng-click="vm.sair()"> </md-icon>
+              <md-tooltip>
+                  Perfil
+              </md-tooltip>
+              <img ng-src="{{$parent.img}}"
+               alt="{{$parent.user.result.name}}"
+              style="width: 30px; height: 30px;">
+              <span class="md-label"> {{$parent.user.result.name}} </span>
+            </a>
+            <a ng-click="vm.sair()" href="#">
+              <md-tooltip>
+                  SAIR
+              </md-tooltip>
+              <md-icon md-svg-src="image/poweroff.svg" class="s24" alt="SAIR" >
+              </md-icon>
             </a>
           </md-tab>        
       </div>

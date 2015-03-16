@@ -5,7 +5,6 @@ function authHandler(req, res, next) {
 	debug('auth handler middlerware');
 	var email =  req.body.email;
 	var password = req.body.password;
-	console.log(req.body)
 	res.locals.out = {err : null , result : { } , status : false};
 
 	function successHandler(result) {
