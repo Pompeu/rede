@@ -40,7 +40,6 @@
     var vm = this;
     vm.sair =function() {
       $rootScope.user = null;
-    };
-    
+    };    
   }])
 })();

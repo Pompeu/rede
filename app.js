@@ -36,15 +36,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(sessions({
-    cookieName: 'session',
-    secret : '3120j0wej0134ja0j9013asj0575a0934'+Math.floor((Math.random() * 10000) + 1),
-    duration : 7 * 60 * 1000,
-    activeDuration: 5 * 60 * 1000,
-    httpOnly: true, //navegador nunca acesse meus cookies
-    secure: true, //cookier samento https
-    ephemeral: true, //deletar cookie quando nevagador fechar
+  cookieName: 'session',
+  secret : '3120j0wej0134ja0j9013asj0575a0934'+Math.floor((Math.random() * 10000) + 1),
+  duration : 7 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000,
+  httpOnly: true, //navegador nunca acesse meus cookies
+  secure: true, //cookier samento https
+  ephemeral: true, //deletar cookie quando nevagador fechar
 }));
-/*app.use(csrf());*/
+
+app.use(csrf());
+
+app.use(function(req, res, next) {
+  res.cookie('XSRF-TOKEN', req.csrfToken()); 
+  next();
+});
 
 /* routes api*/
 app.use('/api/user', user);

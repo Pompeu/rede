@@ -2,7 +2,8 @@
 angular.module('RedeApp')
   .run(function ($rootScope) {
     $rootScope.user = null;
-    $rootScope.img = 'image/pompeu.jpg'
+    $rootScope.img = 'image/pompeu.jpg';
+    $rootScope.XSRF = document.cookie.substring(11,47);
   }) 
   .controller('LoginCtrl',['$mdDialog','$rootScope',
     function ($mdDialog, $rootScope) {
@@ -21,13 +22,15 @@ angular.module('RedeApp')
   }]); 
   function DialogController($mdDialog, $http ,$mdToast ,$rootScope) {
     var vm = this;
+    vm.XSRF = $rootScope.XSRF;
     vm.cancel = function() {
       $mdDialog.cancel();
       return false;
     };   
     vm.logar = function(user,ev) {
       $http.post('/login',user)
-      .success(function(user) {
+      .success(function(user ) {
+        console.log(arguments[3].headers['X-XSRF-TOKEN']);
         if(user.status) {
           $rootScope.user = user;
           vm.showCustomToast();
