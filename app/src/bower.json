@@ -1,0 +1,31 @@
+{
+  "name": "rede",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Pompeu/rede",
+  "authors": [
+    "Pompeu <itacir@hotmail.com>"
+  ],
+  "main": "bower",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "rede",
+    "ifGoiano",
+    "neo4j",
+    "pequisa"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.3.14",
+    "angular-route": "^1.3.14",
+    "angular-material": "^0.8.3"
+  }
+}
