@@ -1,0 +1,24 @@
+<md-dialog aria-label="Login Users" layout-align="end start">
+  <md-content>
+    <md-subheader class="md-primary md-sticky-no-effect">
+      <a ng-click="vm.cancel()" href="#signin">
+        <p>Sign in</p>
+        <md-icon md-svg-src="/image/person.svg"></md-icon>
+      </a>
+    </md-subheader>  
+  <md-content class="md-primary md-sticky-no-effect md-padding">
+    <form name="loginform">
+      <md-input-container md-no-float>
+        <md-icon md-svg-src="/image/email.svg"></md-icon>
+        <input md-maxlength="30" type="email" required placeholder="Email" ng-model="vm.user.email">       
+      </md-input-container>
+      <md-input-container md-no-float>       
+        <md-icon md-svg-src="/image/password.svg"></md-icon>       
+        <input md-minlength="8" md-maxlength="8" required type="password" placeholder="PassWord" ng-model="vm.user.password">
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-click="vm.logar(vm.user,$event)">logar</md-button>
+      <md-button class="md-raised md-warn" ng-click="vm.cancel()">cancel</md-button>
+    </form>
+    <md-content>
+  </md-content>
+</md-dialog>

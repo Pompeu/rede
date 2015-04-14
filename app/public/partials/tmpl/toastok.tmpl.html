@@ -1,15 +1,1 @@
-<md-toast>
-  <div ng-if="!vm.err">
-     <img ng-src="{{$parent.img}}"
-          alt="{{$parent.user.result.name}}"
-          style="width: 20px; height: 20px;">
-    <span flex> Ola {{vm.user.nivel}} {{vm.user.name}} bem vindo </span>
-    <md-button ng-click="vm.closeToast()">
-      fechar!
-    </md-button>
-  </div>
-  <div ng-if="vm.err" style="color:red;" >
-    <span>{{vm.err.toUpperCase()}}</span>
-  </div>  
-</md-toast>
-
+<md-toast><div ng-if="!vm.err"><img ng-src="{{$parent.img}}" alt="{{$parent.user.result.name}}" style="width: 20px; height: 20px"> <span flex>Ola {{vm.user.nivel}} {{vm.user.name}} bem vindo</span><md-button ng-click="vm.closeToast()">fechar!</md-button></div><div ng-if="vm.err" style="color:red"><span>{{vm.err.toUpperCase()}}</span></div></md-toast>

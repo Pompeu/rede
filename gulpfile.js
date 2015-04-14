@@ -2,8 +2,21 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     connect = require('gulp-connect'),
-    minifyCSS = require('gulp-minify-css');   
- 
+    minifyCSS = require('gulp-minify-css'),
+    htmlmin = require('gulp-htmlmin');   
+
+gulp.task('html-min', function() {
+  return gulp.src('app/src/views/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('app/views/'))
+});
+
+gulp.task('html-partials-min', function() {
+  return gulp.src('app/src/public/partials/**/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('app/public/partials'))
+});
+
 gulp.task('css', function() {
   return gulp.src([
     'app/src/stylesheets/style.css',
@@ -49,4 +62,5 @@ gulp.task('watch',function() {
   })
 });*/
 
-gulp.task('default',['css' ,'scripts','html','watch'])
+gulp.task('default',['css' ,'scripts','html-min','html-partials-min',
+  'html','watch'])

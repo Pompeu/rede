@@ -5,7 +5,8 @@ var express = require('express'),
     logger = require('morgan'),
     bodyParser = require('body-parser'),
     sessions = require('client-sessions'),
-    csrf = require('csurf');
+    csrf = require('csurf'),
+    compression = require('compression');
 
 
 //globals
@@ -27,7 +28,7 @@ var routes = require('./routes/index');
 
 
 var app = express();
-
+app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
