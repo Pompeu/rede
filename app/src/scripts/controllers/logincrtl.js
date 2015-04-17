@@ -1,8 +1,9 @@
 (function(){
-angular
-  .module('RedeApp')
-  .controller('LoginCtrl',LoginCtrl)
-  .run(userGlobal)
+  'use strict';
+  angular
+    .module('RedeApp')
+    .controller('LoginCtrl',LoginCtrl)
+    .run(userGlobal)
 
   userGlobal.$inject = ['$rootScope'];
 
@@ -63,11 +64,13 @@ angular
       left: false,
       right: true
     };
+    
     vm.getToastPosition = function() {
       return Object.keys(vm.toastPosition)
         .filter(function(pos) { return vm.toastPosition[pos]; })
         .join(' ');
     };
+
     vm.showCustomToast = function() {
       $mdToast.show({
         controller: ToastCtrl,

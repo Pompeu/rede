@@ -1,5 +1,7 @@
 (function(){
-  angular.module('RedeApp')
+  'use strict';
+  angular
+  .module('RedeApp')
   .controller('PesquisadoresCtrl',PesquisadoresCtrl)
 
   function PesquisadoresCtrl() {

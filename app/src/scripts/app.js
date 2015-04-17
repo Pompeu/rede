@@ -28,9 +28,19 @@
         controller: 'EmpresasCtrl',
         controllerAs: 'vm'        
       })
+      .when('/equipes', {
+        templateUrl: '../partials/equipe.html',
+        controller: 'EquipeCtrl',
+        controllerAs: 'vm'        
+      })
       .when('/pesquisadores', {
         templateUrl: '../partials/pesquisadores.html',
         controller: 'PesquisadoresCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/timeline', {
+        templateUrl: '../partials/timeline.html',
+        controller: 'TimeLineCtrl',
         controllerAs: 'vm'
       })
       .otherwise({ redirectTo: '/' })

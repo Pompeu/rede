@@ -1,8 +1,15 @@
 .md-button,md-checkbox{-moz-user-select:none;-ms-user-select:none;-webkit-user-select:none}
 .md-button,.md-button:hover,.md-toolbar-tools a,a:active,a:link,a:visited{text-decoration:none}
 body{font:14px "Lucida Grande",Helvetica,Arial,sans-serif;background-color:red}
-a{color:#00B7FF;background:0 0;outline:0}
 a:hover{color:red}
+.gridListdemoBasicUsage,md-grid-list{margin:8px}
+.gray,.gridListdemoBasicUsage{background:#0092ff}
+.green,.gridListdemoBasicUsage{background:#b9f6ca}
+.gridListdemoBasicUsage,.yellow{background:#ffff8d}
+.blue,.gridListdemoBasicUsage{background:#84ffff}
+.gridListdemoBasicUsage,.purple{background:#b388ff}
+.gridListdemoBasicUsage,.red{background:#ff8a80}
+.gridListdemoBasicUsage,md-grid-tile{transition:all 400ms ease-out 50ms}
 /*!
  * Angular Material Design
  * https://github.com/angular/material
@@ -17,6 +24,7 @@ body h3,html h3{display:block;-webkit-margin-before:1em;-webkit-margin-after:1em
 button,html,input,select,textarea{font-family:RobotoDraft,Roboto,'Helvetica Neue',sans-serif}
 body{margin:0;padding:0;outline:0}
 .inset{padding:10px}
+a{color:#00B7FF;background:0 0;outline:0}
 h1{font-size:2em;margin:.67em 0}
 h2{font-size:1.5em;margin:.83em 0}
 h3{font-size:1.17em;margin:1em 0}

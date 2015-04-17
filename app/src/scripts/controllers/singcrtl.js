@@ -1,7 +1,8 @@
 (function(){
-angular
-  .module('RedeApp')
-  .controller('SingCtrl',SingCtrl);
+  'use strict';
+  angular
+    .module('RedeApp')
+    .controller('SingCtrl',SingCtrl);
 
   SingCtrl.$inject = ['$mdDialog'];
 

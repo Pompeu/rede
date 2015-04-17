@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 gulp.task('html-min', function() {
   return gulp.src('app/src/views/*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('app/views/'))
+    .pipe(gulp.dest('app/public/views'))
 });
 
 gulp.task('html-partials-min', function() {
@@ -45,22 +45,25 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('html', function() {
-  return gulp.src('app/views/index.html')
+  return gulp.src('app/**/*.html')
     .pipe(connect.reload());
 });
 
 gulp.task('watch',function() {
-  gulp.watch('app/public/scripts/**/*.js',['scripts']);
-  gulp.watch('app/views/*.html',['html']);
+  gulp.watch('app/src/**/*.js',['scripts']);
+  gulp.watch('app/src/**/*.html',['html']);
+  gulp.watch('app/src/**/*.css',['css']);
 })
 
-/*gulp.task('connect',function() {
+gulp.task('connect',function() {
   connect.server({
-    root:['../pompeu.github.io'],
+    root:['../rede/app/public/',
+    '../rede/app/public/views'],
     port: 8000,
     livereload: true
   })
-});*/
+});
 
-gulp.task('default',['css' ,'scripts','html-min','html-partials-min',
-  'html','watch'])
+gulp.task('default',
+  ['watch','css' ,'scripts','html-min',
+  'html-partials-min','html','connect']);
