@@ -5,11 +5,11 @@
     .controller('LoginCtrl',LoginCtrl)
     .run(userGlobal)
 
-  userGlobal.$inject = ['$rootScope'];
+  userGlobal.$inject = ['$rootScope' , '$window'];
 
-  function userGlobal ($rootScope) {
-    $rootScope.user = null;
-    $rootScope.img = 'image/pompeu.jpg';
+  function userGlobal ($rootScope , $window) {
+    $rootScope
+      .user = JSON.parse($window.localStorage.getItem('user'));
   }
 
   LoginCtrl.$inject = ['$mdDialog','$rootScope']
@@ -29,11 +29,10 @@
    
   };
 
-  DialogController.$inject = ['$mdDialog', '$http' ,'$mdToast' ,'$rootScope'];
+  DialogController.$inject = ['$window','$location','$mdDialog', '$http' ,'$mdToast' ,'$rootScope'];
 
-  function DialogController($mdDialog, $http ,$mdToast ,$rootScope) {
+  function DialogController($window ,$location, $mdDialog, $http ,$mdToast ,$rootScope) {
     var vm = this;
-    vm.XSRF = $rootScope.XSRF;
     vm.cancel = function() {
       $mdDialog.cancel();
       return false;
@@ -42,23 +41,26 @@
       
       $http.post('/login',user)
       .success(function(user) {
-        if(user.status) {
-          window.localStorage.setItem('user' , user.result);
-          $rootScope.user = user;
+        if(user.status && user.result) {
+          user.result.img = 'image/pompeu.jpg';
+          $window.localStorage.setItem('user' , 
+            JSON.stringify(user.result));
+          $rootScope.user =  user.result;
           vm.showCustomToast();
           vm.cancel();
         }else if(user.err){
           $rootScope.err = user.err;
           vm.showCustomToast();
-          window.location.href = "/";
+          $location.url("/");
         }
+        console.log(user);
       })
       .error(function(err) {
         console.log(err);
       })
     };
     
-     vm.toastPosition = {
+    vm.toastPosition = {
       bottom: false,
       top: true,
       left: false,
@@ -88,7 +90,7 @@
     var vm = this;
     vm.err = null;
     if($rootScope.user){
-      vm.user = $rootScope.user.result;
+      vm.user = $rootScope.user;
     }else{
       vm.err = $rootScope.err
     }

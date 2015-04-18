@@ -8,20 +8,10 @@
 
   function rotas ($routeProvider , $mdThemingProvider ) {
       $routeProvider
-      .when('/', {
+      .when('/timeline', {
         templateUrl: '../partials/timeline.html',
         controller: 'TimeLineCtrl',
         controllerAs: 'vm'
-      })
-      .when('/logar', {
-        templateUrl: '../partials/login.html',
-        controller: 'LoginCtrl',
-        controllerAs: 'vm'       
-      })
-      .when('/signin', {
-        templateUrl: '../partials/signin.html',
-        controller: 'SingCtrl',
-        controllerAs: 'vm'        
       })
       .when('/bancas', {
         templateUrl: '../partials/bancaslist.html',
@@ -43,7 +33,12 @@
         controller: 'PesquisadoresCtrl',
         controllerAs: 'vm'
       })
-      .otherwise({ redirectTo: '/' })
+      .when('/publicacoes', {
+        templateUrl: '../partials/publicacoes.html',
+        controller: 'PublicacoesCtrl',
+        controllerAs: 'vm'
+      })
+      .otherwise({ redirectTo: '/timeline' })
     
     $mdThemingProvider.theme('default')
       .primaryPalette('light-blue')

@@ -37,28 +37,34 @@
           <span class="md-label"> Pesquisadores </span>
         </md-tab>
       </a>
-      <a href="#logar">
+      <a href="#publicacoes">
         <md-tab class="md-toolbar-tools">
-          <md-icon md-svg-src="/image/personmail.svg"></md-icon>
-          <span class="md-label"> Logar </span>
+          <md-icon md-svg-src="/image/checkdone.svg"></md-icon> 
+          <span class="md-label"> Publicacoes </span>
         </md-tab>
-      </a>   
-      <a href="#signin">
+      </a>
+      <a ng-show="!$parent.user" href ng-controller="LoginCtrl as vm" ng-click="vm.showLogin($event)">
+          <md-tab class="md-toolbar-tools">
+            <md-icon md-svg-src="/image/personmail.svg"></md-icon>
+            <span class="md-label"> Login </span>
+          </md-tab>
+      </a>
+      <a ng-show="!$parent.user" href ng-controller="SignCtrl as vm"  ng-click="vm.showSignUp($event)">
         <md-tab class="md-toolbar-tools">
           <md-icon md-svg-src="/image/person.svg"></md-icon> 
-          <span class="md-label"> Sign in </span>
+          <span class="md-label"> Sign Up </span>
         </md-tab>
       </a>
       <div ng-controller="IndexCrtl as vm">                
-          <md-tab ng-if="$parent.user" class="md-toolbar-tools">
+          <md-tab ng-show="$parent.user" class="md-toolbar-tools">
             <a href>
               <md-tooltip>
                   Perfil
               </md-tooltip>
-              <img ng-src="{{$parent.img}}"
-               alt="{{$parent.user.result.name}}"
+              <img ng-src="{{$parent.user.img}}"
+               alt="{{$parent.user.name}}"
               style="width: 30px; height: 30px;">
-              <span class="md-label"> {{$parent.user.result.name}} </span>
+              <span class="md-label"> {{$parent.user.name}} </span>
             </a>
             <a ng-click="vm.sair()">
               <md-tooltip>

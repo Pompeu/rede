@@ -51,7 +51,7 @@ gulp.task('html', function() {
 
 gulp.task('watch',function() {
   gulp.watch('app/src/**/*.js',['scripts']);
-  gulp.watch('app/src/**/*.html',['html']);
+  gulp.watch('app/src/**/*.html',['html','html-min' ,'html-partials-min']);
   gulp.watch('app/src/**/*.css',['css']);
 })
 

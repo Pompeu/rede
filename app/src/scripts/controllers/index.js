@@ -4,12 +4,13 @@
   .module('RedeApp')
   .controller('IndexCrtl',IndexCrtl);
 
-  IndexCrtl.$inject = ['$rootScope'];
+  IndexCrtl.$inject = ['$rootScope', "$window"];
 
-  function IndexCrtl($rootScope) {
+  function IndexCrtl($rootScope , $window) {
     var vm = this;
     vm.sair =function() {
       $rootScope.user = null;
+      $window.localStorage.removeItem('user');
     };    
   };
 })();

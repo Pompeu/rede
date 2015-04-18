@@ -2,13 +2,14 @@
   'use strict';
   angular
     .module('RedeApp')
-    .controller('SingCtrl',SingCtrl);
+    .controller('SignCtrl',SignCtrl);
 
-  SingCtrl.$inject = ['$mdDialog'];
+  SignCtrl.$inject = ['$mdDialog'];
 
-  function SingCtrl($mdDialog) {
+  function SignCtrl($mdDialog) {
     var vm = this;
-    vm.showLogin = function(ev) {
+
+    vm.showSignUp = function(ev) {
       $mdDialog.show({
         controller: DialogController,
         controllerAs: 'vm',

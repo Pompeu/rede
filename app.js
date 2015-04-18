@@ -46,20 +46,50 @@ app.use(sessions({
 
 app.use(csrf());
 
+app.use(function(req , res, next) {
+  debug("session aways check ");
+  if(req.session && req.session.user){
+    models.db.find({email : req.session.user.email} ,
+      function(err,user) {
+        debug(user);
+        if(user){
+          req.user = user;
+          delete req.user.password;
+          req.session.user = req.user;
+          res.locals.user =  req.user;
+          debug(req.user);
+        }
+        next();
+      });
+  }else{
+    next();
+  }
+});
+
+function requireLogin(req , res, next) {
+  debug("session aways reqlogin ");
+  if(!req.user){
+    res.redirect('/');
+  }else{
+    debug('aways reqlogin %s',user);
+    next();
+  }
+}
+
 app.use(function(req, res, next) {
   res.cookie('XSRF-TOKEN', req.csrfToken()); 
   next();
 });
 
 /* routes api*/
-app.use('/api/user', user);
-app.use('/api/pesquisador', pesquisador);
-app.use('/api/projetodepesquisa', projetodepesquisa);
-app.use('/api/area', area);
-app.use('/api/empresa', empresa);
-app.use('/api/publicacao', publicacao);
-app.use('/api/equipetecnica', equipetecnica);
-app.use('/api/bancaeditais', bancaeditais);
+app.use('/api/user',requireLogin, user);
+app.use('/api/pesquisador',requireLogin, pesquisador);
+app.use('/api/projetodepesquisa',requireLogin, projetodepesquisa);
+app.use('/api/area',requireLogin, area);
+app.use('/api/empresa',requireLogin, empresa);
+app.use('/api/publicacao',requireLogin, publicacao);
+app.use('/api/equipetecnica',requireLogin, equipetecnica);
+app.use('/api/bancaeditais',requireLogin, bancaeditais);
 
 /* routes api comuns*/
 app.use('/',routes);
