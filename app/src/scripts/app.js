@@ -8,6 +8,11 @@
 
   function rotas ($routeProvider , $mdThemingProvider ) {
       $routeProvider
+      .when('/', {
+        templateUrl: '../partials/timeline.html',
+        controller: 'TimeLineCtrl',
+        controllerAs: 'vm'
+      })
       .when('/logar', {
         templateUrl: '../partials/login.html',
         controller: 'LoginCtrl',
@@ -36,11 +41,6 @@
       .when('/pesquisadores', {
         templateUrl: '../partials/pesquisadores.html',
         controller: 'PesquisadoresCtrl',
-        controllerAs: 'vm'
-      })
-      .when('/timeline', {
-        templateUrl: '../partials/timeline.html',
-        controller: 'TimeLineCtrl',
         controllerAs: 'vm'
       })
       .otherwise({ redirectTo: '/' })
