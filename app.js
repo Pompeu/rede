@@ -34,6 +34,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'app/public')));
+app.disable('x-powered-by');
 
 var jwtCheck = jwt({
   secret: 'redeapi'
