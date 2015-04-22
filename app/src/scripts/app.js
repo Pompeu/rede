@@ -1,12 +1,24 @@
 (function() {
   'use strict';
   angular
-  .module('RedeApp', ['ngRoute','ngMaterial'])
-  .config(rotas);
+  .module('RedeApp',
+  ['ngRoute','ngMaterial','angular-jwt','angular-storage'])
+  .config(rotas) 
+  .run(runConfigs)
 
   rotas.$inject = ['$routeProvider' , '$mdThemingProvider'];
+  runConfigs.$inject = ['$http','$rootScope', 'store'];
+  
 
-  function rotas ($routeProvider , $mdThemingProvider ) {
+  function runConfigs($http ,$rootScope, store) {
+    var user = $rootScope.user = store.get('user');
+    $rootScope.$on("$locationChangeStart",function (event, next, current){
+      if(user)
+        $http.defaults.headers.common.Authorization = 'Bearer '+user.id_token;
+    });
+  };
+
+  function rotas ($routeProvider, $mdThemingProvider) {
       $routeProvider
       .when('/timeline', {
         templateUrl: '../partials/timeline.html',
@@ -43,6 +55,8 @@
     $mdThemingProvider.theme('default')
       .primaryPalette('light-blue')
       .accentPalette('blue');
+   
   }
 
+  
 })();

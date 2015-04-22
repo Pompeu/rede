@@ -4,18 +4,18 @@
   .module('RedeApp')
   .controller('PublicacoesCtrl', PublicacoesCtrl)
   
-  PublicacoesCtrl.$inject = ['$http'];
+  PublicacoesCtrl.$inject = ['$http' , '$location'];
 
-  function PublicacoesCtrl ($http) {
+  function PublicacoesCtrl ($http , $location) {
     var vm = this;
     vm.publicacoes = [];
 
-    $http.get('/api/publicacao')
+    $http.get('http://localhost:3000/api/publicacao')
       .success(function(publicacao) {
-        console.log(publicacao);
+        vm.publicacoes = publicacao.result;
       })
       .error(function(err) {
-        console.log(err);
+        $location.url('/');        
       });
   };  
 })();

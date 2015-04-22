@@ -20,7 +20,9 @@ a:hover{
 a:active {
   text-decoration: none
   }
-
+.publicacao {
+  margin: 0 auto;
+}
 .gridListdemoBasicUsage, md-grid-list {
   margin: 8px; }
 .gridListdemoBasicUsage, .gray {

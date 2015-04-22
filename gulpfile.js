@@ -36,9 +36,18 @@ gulp.task('scripts', function() {
     'app/src/bower_components/angular-aria/angular-aria.min.js',
     'app/src/bower_components/angular-material/angular-material.min.js',
     'app/src/bower_components/hammerjs/hammer.min.js',
+    'app/src//bower_components/a0-angular-storage/dist/angular-storage.min.js',
+    'app/src/bower_components/angular-jwt/dist/angular-jwt.min.js',
     'app/src/scripts/app.js',    
     'app/src/scripts/controllers/*.js'])
     .pipe(concat('all.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('app/public/js'))
+    .pipe(connect.reload());
+});
+
+gulp.task('uglify', function() {
+    return gulp.src('app/public/js/all.min.js')
     .pipe(uglify())
     .pipe(gulp.dest('app/public/js'))
     .pipe(connect.reload());

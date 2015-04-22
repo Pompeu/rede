@@ -2,19 +2,11 @@
   'use strict';
   angular
     .module('RedeApp')
-    .controller('LoginCtrl',LoginCtrl)
-    .run(userGlobal)
+    .controller('LoginCtrl',loginCrtl)
+    
+  loginCrtl.$inject = ['$mdDialog']
 
-  userGlobal.$inject = ['$rootScope' , '$window'];
-
-  function userGlobal ($rootScope , $window) {
-    $rootScope
-      .user = JSON.parse($window.localStorage.getItem('user'));
-  }
-
-  LoginCtrl.$inject = ['$mdDialog','$rootScope']
-
-  function LoginCtrl($mdDialog, $rootScope) {
+  function loginCrtl($mdDialog) {
 
     var vm = this;
     
@@ -29,9 +21,9 @@
    
   };
 
-  DialogController.$inject = ['$window','$location','$mdDialog', '$http' ,'$mdToast' ,'$rootScope'];
+  DialogController.$inject = ['store','$window','$mdDialog', '$http' ,'$mdToast' ,'$rootScope'];
 
-  function DialogController($window ,$location, $mdDialog, $http ,$mdToast ,$rootScope) {
+  function DialogController(store ,$window, $mdDialog, $http ,$mdToast ,$rootScope) {
     var vm = this;
     vm.cancel = function() {
       $mdDialog.cancel();
@@ -39,21 +31,21 @@
     };   
     vm.logar = function(user,ev) {
       
-      $http.post('/login',user)
+      $http.post('http://localhost:3000/login',user)
       .success(function(user) {
         if(user.status && user.result) {
           user.result.img = 'image/pompeu.jpg';
-          $window.localStorage.setItem('user' , 
-            JSON.stringify(user.result));
+          store.set('user', user.result);
           $rootScope.user =  user.result;
           vm.showCustomToast();
           vm.cancel();
+          setTimeout(function() {
+            $window.location.reload()
+          }, 1000);
         }else if(user.err){
           $rootScope.err = user.err;
           vm.showCustomToast();
-          $location.url("/");
         }
-        console.log(user);
       })
       .error(function(err) {
         console.log(err);
@@ -89,8 +81,10 @@
   function ToastCtrl($mdToast,$rootScope) {
     var vm = this;
     vm.err = null;
+    
     if($rootScope.user){
       vm.user = $rootScope.user;
+      console.log(vm.user);
     }else{
       vm.err = $rootScope.err
     }

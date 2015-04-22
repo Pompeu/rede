@@ -2,6 +2,7 @@
 .md-button,.md-button:hover,.md-toolbar-tools a,a:active,a:link,a:visited{text-decoration:none}
 body{font:14px "Lucida Grande",Helvetica,Arial,sans-serif;background-color:red}
 a:hover{color:red}
+.publicacao{margin:0 auto}
 .gridListdemoBasicUsage,md-grid-list{margin:8px}
 .gray,.gridListdemoBasicUsage{background:#0092ff}
 .green,.gridListdemoBasicUsage{background:#b9f6ca}

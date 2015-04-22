@@ -30,7 +30,7 @@
     };
 
     vm.criar = function(user) {
-      $http.post('api/user/',user) 
+      $http.post('http://localhost:3000/api/user/',user) 
       .success(function(user) {
         console.log(user);
         if(user){

@@ -11,6 +11,7 @@
     vm.sair =function() {
       $rootScope.user = null;
       $window.localStorage.removeItem('user');
+      $window.location.reload();
     };    
   };
 })();
