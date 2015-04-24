@@ -1,10 +1,10 @@
 // file: middlewares/getAllEmpresa.js - created at 2015-01-13, 06:04
 function getAllEmpresaHandler(req, res, next) {
   // start here with getAllEmpresa.js
-  debug('getAll empresas handler')
+  'use strict';
+  debug('getAll empresas handler');
 
-  var empresa = models.Empresa;
-  
+  var empresa = models.Empresa;  
 
   res.locals.out = {err : null , result : [] , status : false};	
 

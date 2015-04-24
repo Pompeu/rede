@@ -6,6 +6,6 @@ router
 	.get('/',middlewares.getAllPesquisador, controllers.getAllPesquisador)
 	.get('/:id',middlewares.getPesquisador, controllers.getPesquisador)
 	.put('/:id',middlewares.updatePesquisador,controllers.updatePesquisador)
-	.delete('/:id',middlewares.deletePesquisador,controllers.deletePesquisador)
+	.delete('/:id',middlewares.deletePesquisador,controllers.deletePesquisador);
 
 module.exports = router;

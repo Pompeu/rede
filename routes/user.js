@@ -8,5 +8,4 @@ router
 	.put('/:id', middlewares.updateUser,controllers.updateUser)
 	.delete('/:id',middlewares.deleteUser, controllers.deleteUser);
 
-
 module.exports = router;

@@ -1,9 +1,10 @@
 // file: middlewares/updateUser.js - created at 2015-01-01, 09:23
-'use strict';
+
 
 function updateUserHandler(req, res, next) {
   // start here with updateUser.js
-	debug('update user middlerware handler')
+  'use strict';
+	debug('update user middlerware handler');
 
 	var user = models.User;
 	var id = req.params.id;
@@ -14,7 +15,7 @@ function updateUserHandler(req, res, next) {
 	  	debug('update user fail handler');
 	  	res.locals.out.err = err;
 	  	next();
-	};
+	}
 
 	function successHandler(result) {
 	  	debug('update user success handler');
@@ -22,7 +23,7 @@ function updateUserHandler(req, res, next) {
 	  	res.locals.out.result = result;
 
 	  	next();
-	};
+	}
 	
 	function updateHandler(err, result) {
 		debug('update user handler');
@@ -31,11 +32,11 @@ function updateUserHandler(req, res, next) {
 	  	}else{
 	  		failHandler(err);
 	  	}
-	};
+	}
 
 	user.read(id,function(err,result) {
-		result = req.body
-		user.save(result,updateHandler)	
+		result = req.body;
+		user.save(result,updateHandler)	;
 	});
 	
 }

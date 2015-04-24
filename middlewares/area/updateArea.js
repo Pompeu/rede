@@ -32,9 +32,9 @@ function updateAreaHandler(req, res, next) {
   }
 
 	area.read(id , function (err , result) {
-  		result = req.body;
-  		area.save(result,updateHandler)	
-  	});
+  	result = req.body;
+  	area.save(result,updateHandler);
+  });
 }
 
 module.exports = exports = updateAreaHandler;

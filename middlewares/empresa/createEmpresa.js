@@ -1,6 +1,7 @@
 // file: middlewares/createEmpresa.js - created at 2015-01-13, 05:30
 function createEmpresaHandler(req, res, next) {
   // start here with createEmpresa.js
+  'use strict';
   debug('empresa create handler middlerware');
   
   var empresa =  models.Empresa;

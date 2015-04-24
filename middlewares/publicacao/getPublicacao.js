@@ -1,7 +1,8 @@
 // file: middlewares/getPublicacao.js - created at 2015-01-16, 01:37
 function getPublicacaoHandler(req, res, next) {
   // start here with getPublicacao.js
-  debug('get publicacao handler middleware')
+  'use strict';
+  debug('get publicacao handler middleware');
 
   var publicacao = models.Publicacao;
   var id =  req.params.id;

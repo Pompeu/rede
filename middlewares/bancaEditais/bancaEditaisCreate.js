@@ -1,6 +1,7 @@
 // file: middlewares/bancaEditaisCreate.js - created at 2015-01-13, 02:04
 function bancaEditaisCreateHandler(req, res, next) {
   // start here with bancaEditaisCreate.js
+  'use strict';
   debug('banca editais handler');
   
   var bancaEditais =  models.BancaEditais;

@@ -1,7 +1,8 @@
 // file: middlewares/getAllPesquisador.js - created at 2015-01-07, 08:01
 function getAllEquipeTecnicaHandler(req, res, next) {
   // start here with getAllPesquisador.js
-  debug('get all EquipeTecnica handler')
+  'use strict';
+  debug('get all EquipeTecnica handler');
 
   var EquipeTecnica = models.EquipeTecnica;
 

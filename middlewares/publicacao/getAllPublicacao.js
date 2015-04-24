@@ -1,7 +1,8 @@
 // file: middlewares/getAllPublicacao.js - created at 2015-01-16, 01:30
 function getAllPublicacaoHandler(req, res, next) {
   // start here with getAllPublicacao.js
-   debug('get all publicacao handler middleware')
+  'use strict';
+  debug('get all publicacao handler middleware');
 
   var publicacao = models.Publicacao;
 

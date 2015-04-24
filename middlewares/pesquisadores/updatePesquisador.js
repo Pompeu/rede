@@ -1,6 +1,7 @@
 // file: middlewares/updatePesquisador.js - created at 2015-01-07, 09:16
 function updatePesquisadorHandler(req, res, next) {
   // start here with updatePesquisador.js
+  'use strict';
   debug('update pesquisador handler middleware');
 
   var pesquisador = models.Pesquisador;
@@ -32,7 +33,7 @@ function updatePesquisadorHandler(req, res, next) {
 
 	pesquisador.read(id , function (err , result) {
   		result = req.body;
-  		pesquisador.save(result,updateHandler)	
+  		pesquisador.save(result,updateHandler);	
   });
 
 }

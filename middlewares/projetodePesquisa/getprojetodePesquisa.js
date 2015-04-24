@@ -1,10 +1,11 @@
 // file: middlewares/getprojetodePesquisa.js - created at 2015-01-13, 03:13
 function getprojetodePesquisaHandler(req, res, next) {
   // start here with getprojetodePesquisa.js
-  debug('projeto pesquisa handler')
+  'use strict';
+  debug('projeto pesquisa handler');
 
   var projetoPesquisa = models.ProjetodePesquisa;
-  var id = req.params.id
+  var id = req.params.id;
 
   res.locals.out = {err : null , result : {} , status : false};	
 

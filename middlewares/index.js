@@ -1,5 +1,4 @@
 // file: middlewares/index.js
-'use strict';
 
 /* user module middlewares */
 exports.userCreate 	= require('./user/userCreate');

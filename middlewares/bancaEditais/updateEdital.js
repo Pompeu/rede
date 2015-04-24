@@ -1,6 +1,7 @@
 // file: middlewares/updateEdital.js - created at 2015-01-13, 03:26
 function updateEditalHandler(req, res, next) {
   // start here with updateEdital.js
+  'use strict';
   debug('update edital handler middleware');
 
   var bancaeditais = models.BancaEditais;
@@ -32,7 +33,7 @@ function updateEditalHandler(req, res, next) {
 
 	bancaeditais.read(id , function (err , result) {
   		result = req.body;
-  		bancaeditais.save(result,updateHandler)	
+  		bancaeditais.save(result,updateHandler);	
   });
 }
 module.exports = exports = updateEditalHandler;

@@ -1,5 +1,4 @@
 // file: models/publicacao.js - created at 2015-01-16, 12:44
-'use strict';
 
 var model = require('seraph-model');
 
@@ -20,6 +19,6 @@ EquipeTecnica.fields = [
 		'instituicao',
 		'homePage',
 		'facebook'
-]
+];
 
 module.exports = exports = EquipeTecnica;

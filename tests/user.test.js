@@ -18,7 +18,7 @@ describe('user restful testing', function () {
 			password : ch.numerify('########'),
 			email : ch.Internet.email(),
 			dateCadastro :  new Date(),
-		}
+		};
 
 		function endHandler(err, res) {
 			expect(err).to.be.null;
@@ -30,7 +30,7 @@ describe('user restful testing', function () {
 			id = res.body.result.id;
 			expect(res.status).to.eql(200);
 			done();
-		};
+		}
 
 		superagent
 			.post(url.resolve(baseURL,'user'))
@@ -47,7 +47,7 @@ describe('user restful testing', function () {
 			expect(res.body.err).to.not.null;
 			expect(res.status).to.eql(200);
 			done();
-		};
+		}
 
 		superagent
 			.post(url.resolve(baseURL,'user'))
@@ -65,7 +65,7 @@ describe('user restful testing', function () {
 			expect(res.body.result).to.an('Array');
 			expect(res.status).to.eql(200);
 			done();	
-		};
+		}
 
 		superagent
 			.get(url.resolve(baseURL,'user'))
@@ -99,7 +99,7 @@ describe('user restful testing', function () {
 			password : ch.numerify('########'),
 			email : ch.Internet.email(),
 			dateCadastro :  body.dateCadastro,
-		}
+		};
 
 		function endHandler(err,res) {
 			

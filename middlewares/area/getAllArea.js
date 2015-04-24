@@ -1,6 +1,7 @@
 // file: middlewares/getAllArea.js - created at 2015-01-15, 05:06
 function getAllAreaHandler(req, res, next) {
   // start here with getAllArea.js
+  'use strict';
   debug('Area getAll handler middlerware');
   
   var area = models.Area;

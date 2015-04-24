@@ -1,10 +1,11 @@
 // file: middlewares/getPesquisador.js - created at 2015-01-07, 07:59
 function getEquipeTecnicaHandler(req, res, next) {
   // start here with getPesquisador.js
-  debug('get EquipeTecnica handler')
+  'use strict';
+  debug('get EquipeTecnica handler');
 
   var EquipeTecnica = models.EquipeTecnica;
-  var id = req.params.id
+  var id = req.params.id;
 
   res.locals.out = {err : null , result : {} , status : false};	
 

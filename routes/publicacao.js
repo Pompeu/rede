@@ -6,6 +6,6 @@ router
 	.get('/:id',middlewares.getPublicacao,controllers.getPublicacao)
 	.get('/',middlewares.getAllPublicacao,controllers.getAllPublicacao)
 	.put('/:id',middlewares.updatePublicacao,controllers.updatePublicacao)
-	.delete('/:id',middlewares.deletePublicacao,controllers.deletePublicacao)
+	.delete('/:id',middlewares.deletePublicacao,controllers.deletePublicacao);
 
 module.exports = router;

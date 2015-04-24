@@ -1,10 +1,11 @@
 // file: middlewares/getEmpresa.js - created at 2015-01-13, 06:01
 function getEmpresaHandler(req, res, next) {
   // start here with getEmpresa.js
-  debug('get empresas handler')
+  'use strict';
+  debug('get empresas handler');
 
   var empresa = models.Empresa;
-  var id = req.params.id
+  var id = req.params.id;
 
   res.locals.out = {err : null , result : {} , status : false};	
 

@@ -1,7 +1,8 @@
 // file: middlewares/deletePublicacao.js - created at 2015-01-16, 01:42
 function deletePublicacaoHandler(req, res, next) {
   // start here with deletePublicacao.js
-  debug('delete publicacao handler middleware')
+  'use strict';
+  debug('delete publicacao handler middleware');
 
   var publicacao = models.Publicacao;
 

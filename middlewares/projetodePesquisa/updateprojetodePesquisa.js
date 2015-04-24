@@ -1,6 +1,7 @@
 // file: middlewares/updateprojetodePesquisa.js - created at 2015-01-13, 03:26
 function updateprojetodePesquisaHandler(req, res, next) {
   // start here with updateprojetodePesquisa.js
+  'use strict';
   debug('update projeto pesquisa handler middleware');
 
   var projetoPesquisa = models.ProjetodePesquisa;
@@ -31,8 +32,8 @@ function updateprojetodePesquisaHandler(req, res, next) {
   }
 
   projetoPesquisa.read(id , function (err , result) {
-	result = req.body;
-	projetoPesquisa.save(result,updateHandler)	
+  	result = req.body;
+  	projetoPesquisa.save(result,updateHandler);	
   });
 }
 module.exports = exports = updateprojetodePesquisaHandler;

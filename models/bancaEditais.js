@@ -1,5 +1,4 @@
 // file: models/bancaEditais.js - created at 2015-01-13, 01:19
-'use strict';
 
 var model = require('seraph-model');
 
@@ -12,7 +11,7 @@ bancaEditais.fields = [
 		'dataAbertura',
 		'dataEncerramento',
 		'paginaEdital'		
-]
+];
 
 module.exports = exports = bancaEditais;
 

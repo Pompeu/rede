@@ -1,6 +1,7 @@
 // file: controllers/createArea.js - created at 2015-01-15, 02:19
 function createAreaHandler(req, res) {
+  'use strict';
 	debug('Area create handler controller');
-  	res.send(res.locals.out);
+  res.send(res.locals.out);
 }
 module.exports = exports = createAreaHandler;

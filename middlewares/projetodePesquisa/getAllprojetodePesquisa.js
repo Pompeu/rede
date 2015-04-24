@@ -1,7 +1,8 @@
 // file: middlewares/getAllprojetodePesquisa.js - created at 2015-01-13, 02:36
 function getAllprojetodePesquisaHandler(req, res, next) {
   // start here with getAllprojetodePesquisa.js
-  debug('get all projetopesquisa handler')
+  'use strict';
+  debug('get all projetopesquisa handler');
 
   var projetopesquisa = models.Pesquisador;
 

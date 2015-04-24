@@ -6,6 +6,6 @@ router
 	.get('/',middlewares.getAllEquipeTecnica, controllers.getAllEquipeTecnica)
 	.get('/:id',middlewares.getEquipeTecnica, controllers.getEquipeTecnica)
 	.put('/:id',middlewares.updateEquipeTecnica,controllers.updateEquipeTecnica)
-	.delete('/:id',middlewares.deleteEquipeTecnica,controllers.deleteEquipeTecnica)
+	.delete('/:id',middlewares.deleteEquipeTecnica,controllers.deleteEquipeTecnica);
 
 module.exports = router;

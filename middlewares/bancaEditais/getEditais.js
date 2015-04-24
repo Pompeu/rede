@@ -1,10 +1,11 @@
 // file: middlewares/getEditaisCreate.js - created at 2015-01-13, 02:26
 function getEditaisHandler(req, res, next) {
   // start here with getEditaisCreate.js
-  debug('get banca editais handler')
+  'use strict';
+  debug('get banca editais handler');
 
   var bancaeditais = models.BancaEditais;
-  var id = req.params.id
+  var id = req.params.id;
 
   res.locals.out = {err : null , result : {} , status : false};	
 

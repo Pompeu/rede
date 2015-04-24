@@ -1,6 +1,4 @@
 // file: models/pesquisador.js - created at 2015-01-07, 06:44
-'use strict';
-
 var model = require('seraph-model');
 
 var db = require('./neo');
@@ -20,6 +18,6 @@ Pesquisador.fields = [
 		'instituicao',
 		'homePage',
 		'facebook'
-]
+];
 
 module.exports = exports = Pesquisador;

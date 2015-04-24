@@ -1,5 +1,4 @@
 // file: models/user.js - created at 2015-01-01, 02:26
-'use strict';
 
 var model = require('seraph-model');
 
@@ -16,7 +15,7 @@ user.fields = [
 	'password',
 	'email',
 	'dateCadastro'
-]
+];
 
 user.schema = {
 	name  : { type : String , required: true},
@@ -24,6 +23,6 @@ user.schema = {
 	password : { type : String , match: passwordRE , required: true},
 	email  : { type : String ,  match: emailRE , required: true},
 	dateCadastro : { type : Date , default: Date.now() },
-}
+};
 
 module.exports = exports = user;

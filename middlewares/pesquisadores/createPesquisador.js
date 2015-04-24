@@ -3,6 +3,7 @@
 
 function createPesquisadorHandler(req, res, next) {
   // start here with createPesquisador.js
+  'use strict';
   debug('create pesquisador handler middlerware');
 
   var pesquisador = models.Pesquisador;

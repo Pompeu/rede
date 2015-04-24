@@ -1,6 +1,7 @@
 // file: middlewares/updatePesquisador.js - created at 2015-01-07, 09:16
 function updateEquipeTecnicaHandler(req, res, next) {
   // start here with updatePesquisador.js
+  'use strict';
   debug('update EquipeTecnica handler middleware');
 
   var EquipeTecnica = models.EquipeTecnica;
@@ -32,7 +33,7 @@ function updateEquipeTecnicaHandler(req, res, next) {
 
 	EquipeTecnica.read(id , function (err , result) {
   		result = req.body;
-  		EquipeTecnica.save(result,updateHandler)	
+  		EquipeTecnica.save(result,updateHandler);	
   });
 
 }

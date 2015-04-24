@@ -1,8 +1,9 @@
 // file: middlewares/userCreate.js - created at 2015-01-01, 02:39
-'use strict';
+
 
 function userCreateHandler(req, res, next) {
-	debug('user create middlerware handler')
+	'use strict';
+	debug('user create middlerware handler');
 	
 	var user = models.User;
 	
@@ -14,14 +15,14 @@ function userCreateHandler(req, res, next) {
 	  	debug('create user fail handler');
 	  	res.locals.out.err = err;
 	  	next();
-	};
+	}
 
 	function successHandler(result) {
 	  	debug('create user success handler');
 	  	res.locals.out.status = true;
 	  	res.locals.out.result = result;
 	  	next();
-	};
+	}
 	
 	function createHandler(err, result) {
 		debug('create user handler');
@@ -30,7 +31,7 @@ function userCreateHandler(req, res, next) {
 	  	}else{
 	  		failHandler(err);
 	  	}
-	};
+	}
 	
 	user.save(body,createHandler);
 	

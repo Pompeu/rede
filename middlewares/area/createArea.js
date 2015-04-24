@@ -1,6 +1,7 @@
 // file: middlewares/createArea.js - created at 2015-01-15, 02:19
 function createAreaHandler(req, res, next) {
   // start here with createArea.js
+  'use strict';
   debug('Area create handler middlerware');
   
   var area = models.Area;

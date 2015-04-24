@@ -1,5 +1,4 @@
 // file: models/area.js - created at 2015-01-15, 02:19
-'use strict';
 
 var model = require('seraph-model');
 
@@ -12,13 +11,13 @@ area.fildes = [
 	'subCodigo',
 	'subArea'  ,
 	'subNivel' 
-]
+];
 
 area.schema = {
 	nomeArea  : { type : String , required: true},
 	subCodigo : { type : Number , min : 1 , max : 9000 , required: true},
 	subArea   : { type : String , required: true},
 	subNivel  : { type : String , required: true},
-}
+};
 
 module.exports = exports = area;

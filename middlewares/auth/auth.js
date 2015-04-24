@@ -1,9 +1,12 @@
 // file: middlewares/auth.js - created at 2015-01-05, 08:44
-var jwt = require('jsonwebtoken');
-var  _  = require('lodash');
+var jwt = require('jsonwebtoken'),
+		_  = require('lodash');
 
 function authHandler(req, res, next) {
 	// start here with auth.js
+	'use strict';
+	
+	
 	debug('auth handler middlerware');	
 	
 	var email =  req.body.email;
@@ -28,7 +31,7 @@ function authHandler(req, res, next) {
 	function authUserHandler (err , result) {
 		debug('auth  User Auth handler');
 		
-		if(result && result != 0){
+		if(result && result !== 0){
 			if(result[0].password === password){
 				delete result[0].password;
 				successHandler({ id_token : createToken(result[0])});

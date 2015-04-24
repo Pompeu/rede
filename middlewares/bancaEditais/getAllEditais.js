@@ -1,7 +1,8 @@
 // file: middlewares/getAllEditais.js - created at 2015-01-13, 03:04
 function getAllEditaisHandler(req, res, next) {
   // start here with getAllEditais.js
-  debug('getall bancaeditais handler middlerwares')
+  'use strict';
+  debug('getall bancaeditais handler middlerwares');
 
   var bancaeditais = models.BancaEditais;
  

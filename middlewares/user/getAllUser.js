@@ -1,11 +1,12 @@
 // file: middlewares/getAllUser.js - created at 2015-01-01, 05:19
-'use strict';
+
 
 function getAllUserHandler(req, res, next) {
   // start here with getAllUser.js
-  	debug('get all user middlerware');
+  'use strict';
+	debug('get all user middlerware');
 
-  	var user = models.User;
+	var user = models.User;
 
 	res.locals.out = {err : null , result: [ ] , status :  false};
 
@@ -14,7 +15,7 @@ function getAllUserHandler(req, res, next) {
 		res.locals.out.status =  true;
 		res.locals.out.result = result;
 		next();
-	};
+	}
 
 
 	function failHandler(err) {
@@ -22,7 +23,7 @@ function getAllUserHandler(req, res, next) {
 		res.locals.out.err = err;
 		next();
 
-	};
+	}
 
 	function getAllHanler(err, result) {
 		debug('get all user handler');		
@@ -31,9 +32,9 @@ function getAllUserHandler(req, res, next) {
 		}else{
 			failHandler(err);
 		}
-	};
+	}
 	
-    user.findAll({},getAllHanler);
+  user.findAll({},getAllHanler);
 	
 }
 module.exports = exports = getAllUserHandler;

@@ -1,7 +1,8 @@
 // file: middlewares/getAllPesquisador.js - created at 2015-01-07, 08:01
 function getAllPesquisadorHandler(req, res, next) {
   // start here with getAllPesquisador.js
-  debug('get all pesquisador handler')
+  'use strict';
+  debug('get all pesquisador handler');
 
   var pesquisador = models.Pesquisador;
 

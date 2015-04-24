@@ -1,7 +1,8 @@
 // file: middlewares/updatePublicacao.js - created at 2015-01-16, 01:47
 function updatePublicacaoHandler(req, res, next) {
   // start here with updatePublicacao.js
-   debug('update publicacao handler middleware')
+  'use strict';
+  debug('update publicacao handler middleware');
 
   var publicacao = models.Publicacao;
   var id =  req.params.id;
@@ -32,7 +33,7 @@ function updatePublicacaoHandler(req, res, next) {
   }
   publicacao.read(id , function (err , result) {
   		result = req.body;
-  		publicacao.save(result,updateHandler)	
+  		publicacao.save(result,updateHandler);	
   });
 }
 module.exports = exports = updatePublicacaoHandler;

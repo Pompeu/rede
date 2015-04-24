@@ -1,6 +1,7 @@
 // file: middlewares/updateEmpresa.js - created at 2015-01-13, 06:10
 function updateEmpresaHandler(req, res, next) {
   // start here with updateEmpresa.js
+  'use strict';
   debug('update empresa handler middleware');
 
   var empresa = models.Empresa;
@@ -32,7 +33,7 @@ function updateEmpresaHandler(req, res, next) {
 
 	empresa.read(id , function (err , result) {
   		result = req.body;
-  		empresa.save(result,updateHandler)	
+  		empresa.save(result,updateHandler);	
   });
 }
 module.exports = exports = updateEmpresaHandler;
