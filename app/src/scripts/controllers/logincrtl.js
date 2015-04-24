@@ -2,12 +2,11 @@
   'use strict';
   angular
     .module('RedeApp')
-    .controller('LoginCtrl',loginCrtl)
+    .controller('LoginCtrl',loginCrtl);
     
-  loginCrtl.$inject = ['$mdDialog']
+  loginCrtl.$inject = ['$mdDialog'];
 
   function loginCrtl($mdDialog) {
-
     var vm = this;
     
     vm.showLogin = function(ev) {
@@ -16,10 +15,10 @@
         controllerAs: 'vm',
         templateUrl: '../../partials/tmpl/loginform.tmpl.html',
         targetEvent: ev,
-      })    
+      });    
     };
    
-  };
+  }
 
   DialogController.$inject = ['store','$window','$mdDialog', '$http' ,'$mdToast' ,'$rootScope'];
 
@@ -40,7 +39,7 @@
           vm.showCustomToast();
           vm.cancel();
           setTimeout(function() {
-            $window.location.reload()
+            $window.location.reload();
           }, 1000);
         }else if(user.err){
           $rootScope.err = user.err;
@@ -49,7 +48,7 @@
       })
       .error(function(err) {
         console.log(err);
-      })
+      });
     };
     
     vm.toastPosition = {
@@ -74,7 +73,7 @@
         position: vm.getToastPosition()
       });
     };    
-  };
+  }
   
   ToastCtrl.$inject = ['$mdToast','$rootScope'];
 
@@ -86,10 +85,10 @@
       vm.user = $rootScope.user;
       console.log(vm.user);
     }else{
-      vm.err = $rootScope.err
+      vm.err = $rootScope.err;
     }
     vm.closeToast = function() {
       $mdToast.hide();
     };
-  };
+  }
 })();
