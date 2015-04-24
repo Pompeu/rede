@@ -1,20 +1,21 @@
 // file: middlewares/auth.js - created at 2015-01-05, 08:44
 var jwt = require('jsonwebtoken'),
-		_  = require('lodash');
+		_  = require('lodash'),
+		bcrypt = require('bcryptjs'),
+		getPubKey =  require('../../plugins/getPugKey');
 
 function authHandler(req, res, next) {
 	// start here with auth.js
-	'use strict';
-	
+	'use strict';	
 	
 	debug('auth handler middlerware');	
 	
 	var email =  req.body.email;
 	var password = req.body.password;
+	var User = models.User;
 	
 	res.locals.out = {err : null , result : { } , status : false};
 	
-
 	function successHandler(result) {
 		debug('auth success handler');
 		res.locals.out.status = true;
@@ -30,24 +31,24 @@ function authHandler(req, res, next) {
 
 	function authUserHandler (err , result) {
 		debug('auth  User Auth handler');
-		
-		if(result && result !== 0){
-			if(result[0].password === password){
-				delete result[0].password;
-				successHandler({ id_token : createToken(result[0])});
-			}else{
-				failHandler(err);	
-			}	
+		if(result.length == 1){
+			bcrypt.compare(password, result[0].password, function(err, res) {
+	    	if(res){
+	    		delete result[0].password;
+	    		successHandler({ id_token : createToken(result[0])});
+	    	} 
+	    	else failHandler(err);
+			});							
 		}else{
 			failHandler(err);
 		}
 	}
 
-	models.db.find({email : email} , authUserHandler);
+	User.db.find({ email : email}, authUserHandler);
 }
 
 function createToken(user) {
-  return jwt.sign(user, "redeapi", { expiresInMinutes: 60*5 });
+	return jwt.sign(user, "redeapi", { expiresInMinutes: 60*5 });
 }
 
 module.exports = exports = authHandler;

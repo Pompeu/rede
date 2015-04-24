@@ -4,22 +4,24 @@ var superagent = require('superagent');
 var ch = require('charlatan');
 var url = require('url');
 var baseURL = 'http://localhost:3000/api/user';
-
+var bcrypt = require('bcryptjs');
 
 describe('user restful testing', function () {
 
 	var body = null;
 	var id = 0;
-
+	
 	it('expect be create a user', function (done) {
-		body = {
+	
+    body = {
 			name : ch.Name.firstName(),
 			sname : ch.Name.lastName(),
 			password : ch.numerify('########'),
 			email : ch.Internet.email(),
 			dateCadastro :  new Date(),
 		};
-
+		
+		
 		function endHandler(err, res) {
 			expect(err).to.be.null;
 			expect(res).to.exist;
@@ -27,16 +29,16 @@ describe('user restful testing', function () {
 			expect(res.body.err).to.null;
 			expect(res.body.result).to.an('object');
 			expect(res.body.result.id).to.an('Number');
+			console.log(res.body.result);
 			id = res.body.result.id;
 			expect(res.status).to.eql(200);
 			done();
 		}
-
+				
 		superagent
-			.post(url.resolve(baseURL,'user'))
-			.send(body)
-			.end(endHandler);
-
+					.post(url.resolve(baseURL,'user'))
+					.send(body)
+					.end(endHandler);
 	});
 
 	it('expect empty result if post is empty',function(done) {

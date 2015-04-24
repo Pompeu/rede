@@ -9,7 +9,7 @@ describe('auth testing', function () {
   var body = {
 		email : 'itacir@hotmail.com',
 		password : '552525ia',
-	}
+	};
 
   it('retrive true email and password is ok', function (done) {
 
@@ -18,13 +18,14 @@ describe('auth testing', function () {
   		expect(res).to.exist;
   		expect(res.body.result).to.an('object');
   		done();
-  	};
+  	}
 
   	superagent
   		.post(url.resolve(baseURL,'login'))
   		.send(body)
-  		.end(endHandler)
+  		.end(endHandler);
   });
+
   it('not retrive password in response of login' ,function (done) {
       function endHandler(err, res) {
       expect(err).to.be.null;
@@ -32,31 +33,32 @@ describe('auth testing', function () {
       expect(res.body.result).to.an('object');
       expect(res.body.result.password).to.be.undefined;
       done();
-    };
+    }
 
     superagent
       .post(url.resolve(baseURL,'login'))
       .send(body)
-      .end(endHandler)
+      .end(endHandler);
 
-  })
+  });
+
   it('expect error if email or password is not ok', function (done) {
   	
     var login = {
   		email : 'flo@totam.net.com',
   		password : '927135321',
-  	}
+  	};
 
   	function endHandler(err, res) {
   		expect(err).to.be.null;
   		expect(res).to.exist;
   		expect(res.body.err).to.eql('login or passoword error');
   		done();
-  	};
+  	}
 
   	superagent
   		.post(url.resolve(baseURL,'login'))
   		.send(login)
-  		.end(endHandler)
+  		.end(endHandler);
   });
 });

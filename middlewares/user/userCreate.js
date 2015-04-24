@@ -4,7 +4,8 @@
 function userCreateHandler(req, res, next) {
 	'use strict';
 	debug('user create middlerware handler');
-	
+	var bcrypt = require('bcryptjs');
+
 	var user = models.User;
 	
   var body = req.body;
@@ -32,8 +33,11 @@ function userCreateHandler(req, res, next) {
 	  		failHandler(err);
 	  	}
 	}
-	
-	user.save(body,createHandler);
+
+	bcrypt.hash(body.password, 8, function(err, hash) {
+		body.password = hash;
+		user.save(body,createHandler);
+	});	
 	
 }
 module.exports = exports = userCreateHandler;

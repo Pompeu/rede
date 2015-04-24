@@ -14,7 +14,7 @@ describe('testing Area api restful testing', function () {
   		subCodigo : ch.Helpers.rand(8000, min = 7001),
   		subArea 	: ch.Name.name(),
   		subNivel 	: ch.Name.title(),
-  }
+  };
   	
   it('expect Area create on db', function (done) {
   	
@@ -52,7 +52,7 @@ describe('testing Area api restful testing', function () {
       .post(url.resolve(baseURL, 'area'))
       .send({})
       .end(endHandler);
-  })
+  });
 
   it('expect get one Area by id from db',function (done) {
     function endHandler(err, res) {
@@ -68,7 +68,7 @@ describe('testing Area api restful testing', function () {
       .get(url.resolve(baseURL, 'area/'+id))
       .end(endHandler);
 
-  })
+  });
   it('expect get all Area from db',function (done) {
       function endHandler(err, res) {
         expect(err).to.not.exist;
@@ -91,7 +91,7 @@ describe('testing Area api restful testing', function () {
         subCodigo : ch.Helpers.rand(8000, min = 7001),
         subArea   : ch.Name.name(),
         subNivel  : ch.Name.title()
-    }
+    };
 
       function endHandler(err, res) {
         expect(err).to.not.exist;
@@ -123,5 +123,5 @@ describe('testing Area api restful testing', function () {
       superagent
         .del(url.resolve(baseURL,'area/'+id))
         .end(endHandler);
-  })
+  });
 });

@@ -1,13 +1,14 @@
 // file: middlewares/createPublicacao.js - created at 2015-01-16, 12:44
 function createPublicacaoHandler(req, res, next) {
   // start here with createPublicacao.js
+  'use strict';
   debug('Publicacao create handler middlerware');
   
   var publicacao = models.Publicacao;
 
   var body = req.body;
 
-  res.locals.out = {err : null , result : { } , status : false};	
+  res.locals.out = {err : null , result : {} , status : false};	
 
   function successHandler(result) {
   	debug('Publicacao create success handler');
