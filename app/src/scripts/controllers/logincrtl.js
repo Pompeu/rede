@@ -7,6 +7,7 @@
   loginCrtl.$inject = ['$mdDialog'];
 
   function loginCrtl($mdDialog) {
+    
     var vm = this;
     
     vm.showLogin = function(ev) {
@@ -30,7 +31,7 @@
     };   
     vm.logar = function(user,ev) {
       
-      $http.post('http://localhost:3000/login',user)
+      $http.post('/login',user)
       .success(function(user) {
         if(user.status && user.result) {
           user.result.img = 'image/pompeu.jpg';
@@ -83,7 +84,6 @@
     
     if($rootScope.user){
       vm.user = $rootScope.user;
-      console.log(vm.user);
     }else{
       vm.err = $rootScope.err;
     }

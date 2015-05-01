@@ -3,18 +3,30 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     connect = require('gulp-connect'),
     minifyCSS = require('gulp-minify-css'),
-    htmlmin = require('gulp-htmlmin');   
+    htmlmin = require('gulp-htmlmin'),   
+    imagemin = require('gulp-imagemin'),
+    pngquant = require('imagemin-pngquant');
+
+gulp.task('img', function () {
+    return gulp.src('app/src/image/*')
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            use: [pngquant()]
+        }))
+        .pipe(gulp.dest('app/public/image/'));
+});
 
 gulp.task('html-min', function() {
   return gulp.src('app/src/views/*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('app/public/views'))
+    .pipe(gulp.dest('app/public/views'));
 });
 
 gulp.task('html-partials-min', function() {
   return gulp.src('app/src/public/partials/**/*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('app/public/partials'))
+    .pipe(gulp.dest('app/public/partials'));
 });
 
 gulp.task('css', function() {
@@ -25,7 +37,7 @@ gulp.task('css', function() {
     .pipe(concat('all.min.css'))
     .pipe(minifyCSS({keepBreaks:true}))
     .pipe(gulp.dest('app/public/css'))
-    .pipe(connect.reload())
+    .pipe(connect.reload());
 });
 
 gulp.task('scripts', function() {
@@ -62,7 +74,7 @@ gulp.task('watch',function() {
   gulp.watch('app/src/**/*.js',['scripts']);
   gulp.watch('app/src/**/*.html',['html','html-min' ,'html-partials-min']);
   gulp.watch('app/src/**/*.css',['css']);
-})
+});
 
 gulp.task('connect',function() {
   connect.server({
@@ -70,7 +82,7 @@ gulp.task('connect',function() {
     '../rede/app/public/views'],
     port: 8000,
     livereload: true
-  })
+  });
 });
 
 gulp.task('default',
