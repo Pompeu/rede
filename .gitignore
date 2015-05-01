@@ -1,6 +1,6 @@
 node_modules/*
-app/src/bower_componentes/*
-models/*.json
+/app/src/bower_componentes/*
+/models/*.json
 npm-debug.log
 .agni/*
 .ideia/*
