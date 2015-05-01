@@ -1,5 +1,5 @@
 node_modules/
-app/src/bower_componentes/
+rede/app/src/bower_components/
 models/db.json
 npm-debug.log
 .agni/*
