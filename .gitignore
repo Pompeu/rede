@@ -1,7 +1,8 @@
-node_modules/
-app/src/bower_componentes/
+node_modules/*
+app/src/bower_componentes/*
 models/*.json
-.agni/
-.ideia/
+npm-debug.log
+.agni/*
+.ideia/*
 .sw*
 npm*
