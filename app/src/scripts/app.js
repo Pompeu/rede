@@ -4,7 +4,7 @@
   .module('RedeApp',
   ['ngRoute','ngMaterial','angular-jwt','angular-storage'])
   .config(rotas) 
-  .run(runConfigs)
+  .run(runConfigs);
 
   rotas.$inject = ['$routeProvider' , '$mdThemingProvider'];
   runConfigs.$inject = ['$http','$rootScope', 'store'];
@@ -16,7 +16,7 @@
       if(user)
         $http.defaults.headers.common.Authorization = 'Bearer '+user.id_token;
     });
-  };
+  }
 
   function rotas ($routeProvider, $mdThemingProvider) {
       $routeProvider
@@ -50,13 +50,11 @@
         controller: 'PublicacoesCtrl',
         controllerAs: 'vm'
       })
-      .otherwise({ redirectTo: '/timeline' })
+      .otherwise({ redirectTo: '/timeline' });
     
     $mdThemingProvider.theme('default')
       .primaryPalette('light-blue')
       .accentPalette('blue');
    
   }
-
-  
 })();

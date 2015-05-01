@@ -13,5 +13,5 @@
       $window.localStorage.removeItem('user');
       $window.location.reload();
     };    
-  };
+  }
 })();

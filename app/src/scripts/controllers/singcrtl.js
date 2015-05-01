@@ -15,7 +15,7 @@
         controllerAs: 'vm',
         templateUrl: '../../partials/tmpl/singform.tmpl.html',
         targetEvent: ev,
-      })
+      });
     };    
   }
 
@@ -42,5 +42,5 @@
       });
       return false;        
     };
-  };
+  }
 })();

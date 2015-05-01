@@ -2,7 +2,7 @@
   'use strict';
   angular
   .module('RedeApp')
-  .controller('PublicacoesCtrl', PublicacoesCtrl)
+  .controller('PublicacoesCtrl', PublicacoesCtrl);
   
   PublicacoesCtrl.$inject = ['$http' , '$location'];
 
@@ -17,5 +17,5 @@
       .error(function(err) {
         $location.url('/');        
       });
-  };  
+  } 
 })();
