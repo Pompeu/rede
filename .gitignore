@@ -1,6 +1,6 @@
 node_modules/
 app/src/bower_componentes/
-models/db.json
+models/*.json
 .agni/
 .ideia/
 .sw*
