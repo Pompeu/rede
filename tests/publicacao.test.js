@@ -16,7 +16,7 @@ describe('publicacao api restful testing', function () {
   		tipo : ch.Name.title(),
   		formato : ch.Company.bs(),
   		name  : ch.Name.name() ,
-  	}
+  	};
     
   	function endHandler	(err , res) {
   		expect(err).to.not.exist;
@@ -33,7 +33,7 @@ describe('publicacao api restful testing', function () {
   	superagent
   		.post(url.resolve(baseURL,'publicacao'))
   		.send(body)
-  		.end(endHandler)
+  		.end(endHandler);
   });
 
   it('expect get all publicacao from db' , function (done) {
@@ -47,8 +47,8 @@ describe('publicacao api restful testing', function () {
   	}
   	superagent
   		.get(url.resolve(baseURL,'publicacao'))
-  		.end(endHandler)
-  })
+  		.end(endHandler);
+  });
 
    it('expect get one publicacao by id from db' , function (done) {
   	function endHandler	(err , res) {
@@ -61,7 +61,7 @@ describe('publicacao api restful testing', function () {
   	}
   	superagent
   		.get(url.resolve(baseURL,'publicacao/'+id))
-  		.end(endHandler)
+  		.end(endHandler);
   });
    
    it('expect update one publicacao by id from db' , function (done) {
@@ -71,7 +71,7 @@ describe('publicacao api restful testing', function () {
   		tipo : ch.Name.title(),
   		formato : ch.Company.bs(),
   		name  : ch.Name.name() ,
-  	}
+  	};
 
   	function endHandler	(err , res) {
 		  expect(err).to.not.exist;
@@ -86,7 +86,7 @@ describe('publicacao api restful testing', function () {
   	superagent
   		.put(url.resolve(baseURL,'publicacao/'+id))
   		.send(bodyNew)
-  		.end(endHandler)
+  		.end(endHandler);
   });
 
    it('expect delete one publicacao by id from db' , function (done) {
@@ -99,6 +99,6 @@ describe('publicacao api restful testing', function () {
   	}
   	superagent
   		.del(url.resolve(baseURL,'publicacao/'+id))
-  		.end(endHandler)
-  })
+  		.end(endHandler);
+  });
 });

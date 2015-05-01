@@ -1,4 +1,6 @@
+var dados =  require('./db.json');
 
-var db = module.exports = require("seraph")("http://localhost:7474");
-
-
+var db =  
+  module.exports =
+  require("seraph")
+  (dados);
