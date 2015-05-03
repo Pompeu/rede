@@ -29,7 +29,6 @@ describe('user restful testing', function () {
 			expect(res.body.err).to.null;
 			expect(res.body.result).to.an('object');
 			expect(res.body.result.id).to.an('Number');
-			console.log(res.body.result);
 			id = res.body.result.id;
 			expect(res.status).to.eql(200);
 			done();
@@ -54,7 +53,7 @@ describe('user restful testing', function () {
 		superagent
 			.post(url.resolve(baseURL,'user'))
 			.send({})
-			.end(endHandler)
+			.end(endHandler);
 	});
 
 	it('expect getall user from database',function (done) {

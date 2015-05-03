@@ -27,8 +27,6 @@ function userCreateHandler(req, res, next) {
 	
 	function createHandler(err, result) {
 		debug('create user handler');
-		debug(err);
-		debug(result);
 		if(!err){
 	  		successHandler(result);
 	  	}else{

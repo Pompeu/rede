@@ -11,3 +11,5 @@ exports.area = require('./area.test');
 exports.publicacao = require('./publicacao.test');
 exports.equipeTecnica = require('./equipeTecnica.test');
 exports.getPubkey = require('./getPubkey.test');
+exports.db = require('./db.test');
+exports.neo = require('./neo.test');
