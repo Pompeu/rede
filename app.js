@@ -42,10 +42,11 @@ var jwtCheck = jwt({
 
 /* routes api comuns*/
 app.use('/',routes);
-app.use('/login',auth);
+
 
 /* routes api*/
 app.use('/api/user', user);
+app.use('/api/login',auth);
 app.use('/api/pesquisador', pesquisador);
 app.use('/api/projetodepesquisa', projetodepesquisa);
 app.use('/api/area', area);

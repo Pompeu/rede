@@ -3,7 +3,7 @@ var should = require('chai').should(),
     neo = require('../models/neo');
 
 describe('neo module test', function () {
-  var neoDB = new neo();
+  var neoDB = neo;
 
   it('neo should be a object', function () {
     neoDB.should.be.an("object");

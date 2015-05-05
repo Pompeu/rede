@@ -1,5 +1,6 @@
 function neo() {
   var dados =  require('../configs/db')();
+  var local =   'http://localhost:7474';
   
   var db =  
     module.exports =

@@ -4,13 +4,13 @@
   .module('RedeApp')
   .controller('PublicacoesCtrl', PublicacoesCtrl);
   
-  PublicacoesCtrl.$inject = ['$http' , '$location'];
+  PublicacoesCtrl.$inject = ['generic', '$location'];
 
-  function PublicacoesCtrl ($http , $location) {
+  function PublicacoesCtrl (generic,$location) {
     var vm = this;
     vm.publicacoes = [];
 
-    $http.get('/api/publicacao')
+    generic.get('publicacao')
       .success(function(publicacao) {
         vm.publicacoes = publicacao.result;
       })

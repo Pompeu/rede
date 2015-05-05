@@ -19,6 +19,8 @@
       <md-button class="md-raised md-primary" ng-click="vm.logar(vm.user,$event)">logar</md-button>
       <md-button class="md-raised md-warn" ng-click="vm.cancel()">cancel</md-button>
     </form>
-    <md-content>
+    <div ng-if="vm.tryLogin" layout="row" layout-margin layout-fill layout-padding   layout-align="center">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
   </md-content>
 </md-dialog>

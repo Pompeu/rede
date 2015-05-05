@@ -2,12 +2,11 @@
   'use strict';
   angular
     .module('RedeApp')
-    .controller('LoginCtrl',loginCrtl);
+    .controller('LoginCtrl',LoginCtrl);
     
-  loginCrtl.$inject = ['$mdDialog'];
+  LoginCtrl.$inject = ['$mdDialog'];
 
-  function loginCrtl($mdDialog) {
-    
+  function LoginCtrl ($mdDialog) {
     var vm = this;
     
     vm.showLogin = function(ev) {
@@ -18,26 +17,29 @@
         targetEvent: ev,
       });    
     };
-   
+
   }
 
-  DialogController.$inject = ['store','$window','$mdDialog', '$http' ,'$mdToast' ,'$rootScope'];
+  DialogController.$inject = ['store','$window','$mdDialog', 'generic' ,'$mdToast' ,'$rootScope'];
 
-  function DialogController(store ,$window, $mdDialog, $http ,$mdToast ,$rootScope) {
+  function DialogController(store ,$window, $mdDialog, generic ,$mdToast ,$rootScope) {
     var vm = this;
+    vm.tryLogin = false;
     vm.cancel = function() {
       $mdDialog.cancel();
       return false;
-    };   
+    };
+
     vm.logar = function(user,ev) {
-      
-      $http.post('/login',user)
+      vm.tryLogin = true;
+      generic.post('login',user)
       .success(function(user) {
-        if(user.status && user.result) {
+        if(user.status && user.result) {          
           user.result.img = 'image/pompeu.jpg';
           store.set('user', user.result);
           $rootScope.user =  user.result;
           vm.showCustomToast();
+          vm.tryLogin = false;
           vm.cancel();
           setTimeout(function() {
             $window.location.reload();
