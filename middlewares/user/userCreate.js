@@ -5,9 +5,7 @@ function userCreateHandler(req, res, next) {
 	'use strict';
 	debug('user create middlerware handler');
 	var bcrypt = require('bcryptjs');
-
-	var user = models.User;
-	
+	var user = models.User;	
   var body = req.body;
 	
 	res.locals.out = {err : null , result : {} , status : false};	

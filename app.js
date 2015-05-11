@@ -6,7 +6,8 @@ var express     = require('express'),
     bodyParser  = require('body-parser'),
     compression = require('compression'),
     cors        = require('cors'),
-    jwt         = require('express-jwt');
+    jwt         = require('express-jwt'),
+    secret =  require('./configs/apikey')().value;
 
 
 //globals
@@ -37,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'app/public')));
 app.disable('x-powered-by');
 
 var jwtCheck = jwt({
-  secret: 'redeapi'
+  secret: secret
 });
 
 /* routes api comuns*/

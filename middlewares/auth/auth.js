@@ -2,12 +2,11 @@
 var jwt = require('jsonwebtoken'),
 		_  = require('lodash'),
 		bcrypt = require('bcryptjs'),
-		getPubKey =  require('../../plugins/getPugKey');
+		getSecret =  require('../../configs/apikey');
 
 function authHandler(req, res, next) {
 	// start here with auth.js
 	'use strict';	
-	
 	debug('auth handler middlerware');	
 	
 	var email =  req.body.email;
@@ -48,7 +47,8 @@ function authHandler(req, res, next) {
 }
 
 function createToken(user) {
-	return jwt.sign(user, "redeapi", { expiresInMinutes: 60*5 });
+	var key = getSecret();
+	return jwt.sign(user,key.value , { expiresInMinutes: 60*5 });
 }
 
 module.exports = exports = authHandler;

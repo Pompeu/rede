@@ -2,7 +2,7 @@
 var expect = require('chai').expect;
 var superagent = require('superagent');
 var url = require('url');
-var baseURL = 'http://localhost:3000/login';
+var baseURL = 'http://localhost:3000/api/login';
 
 describe('auth testing', function () {
 	
@@ -17,6 +17,9 @@ describe('auth testing', function () {
   		expect(err).to.be.null;
   		expect(res).to.exist;
   		expect(res.body.result).to.an('object');
+      expect(res.body.result.id_token).to.an('String');
+      expect(res.body.status).to.be.ok;
+      expect(res.body.err).to.be.null;
   		done();
   	}
 
@@ -30,6 +33,7 @@ describe('auth testing', function () {
       function endHandler(err, res) {
       expect(err).to.be.null;
       expect(res).to.exist;
+      expect(res.body.result.id_token).to.be.ok;
       expect(res.body.result).to.an('object');
       expect(res.body.result.password).to.be.undefined;
       done();
@@ -52,6 +56,7 @@ describe('auth testing', function () {
   	function endHandler(err, res) {
   		expect(err).to.be.null;
   		expect(res).to.exist;
+      expect(res.body.result.id_token).to.be.undefined;
   		expect(res.body.err).to.eql('login or passoword error');
   		done();
   	}
