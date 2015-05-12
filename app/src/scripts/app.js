@@ -50,11 +50,16 @@
         controller: 'PublicacoesCtrl',
         controllerAs: 'vm'
       })
+      .when('/paineladm', {
+        templateUrl: '../partials/painel-adm.html',
+        controller: 'PainelCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({ redirectTo: '/timeline' });
     
     $mdThemingProvider.theme('default')
       .primaryPalette('light-blue')
-      .accentPalette('blue');
+      .accentPalette('light-blue');
    
   }
 })();
