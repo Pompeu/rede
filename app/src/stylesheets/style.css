@@ -20,8 +20,11 @@ a:hover{
 a:active {
   text-decoration: none
   }
-.publicacao {
+.publicacao, .btn-adm {
   margin: 0 auto;
+}
+.btn-adm {
+  width: 100%;
 }
 .gridListdemoBasicUsage, md-grid-list {
   margin: 8px; }

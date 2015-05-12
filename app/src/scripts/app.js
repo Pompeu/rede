@@ -3,13 +3,14 @@
   angular
   .module('RedeApp',
   ['ngRoute','ngMaterial','angular-jwt','angular-storage'])
-  .config(rotas) 
+  .config(rotas)
+  .config(theming) 
   .run(runConfigs);
 
-  rotas.$inject = ['$routeProvider' , '$mdThemingProvider'];
+  rotas.$inject = ['$routeProvider'];
+  theming.$inject = ['$mdThemingProvider'];
   runConfigs.$inject = ['$http','$rootScope', 'store'];
   
-
   function runConfigs($http ,$rootScope, store) {
     var user = $rootScope.user = store.get('user');
     $rootScope.$on("$locationChangeStart",function (event, next, current){
@@ -18,7 +19,39 @@
     });
   }
 
-  function rotas ($routeProvider, $mdThemingProvider) {
+  function theming($mdThemingProvider) {
+
+   $mdThemingProvider.definePalette('redePalette', {
+    '50': 'e8f5e9',
+    '100': 'c8e6c9',
+    '200': 'a5d6a7',
+    '300': '81c784',
+    '400': '66bb6a',
+    '500': '4caf50',
+    '600': '43a047',
+    '700': '388e3c',
+    '800': '2e7d32',
+    '900': '1b5e20',
+    'A100': 'b9f6ca',
+    'A200': '69f0ae',
+    'A400': '00e676',
+    'A700': '00c853',
+    'contrastDefaultColor': 'Green',    // whether, by default, text (contrast)
+                                        // on this palette should be dark or light
+    'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
+     '200', '300', '400', 'A100'],
+    'contrastLightColors':  ['A200', 'A400', //hues which contrast should be 'dark' by default
+     'A700']   // could also specify this if default was 'dark'
+    });
+   console.log($mdThemingProvider);
+    $mdThemingProvider
+      .theme('default')
+      .primaryPalette('redePalette');
+     
+    
+  }
+
+  function rotas ($routeProvider) {
       $routeProvider
       .when('/timeline', {
         templateUrl: '../partials/timeline.html',
@@ -55,11 +88,6 @@
         controller: 'PainelCtrl',
         controllerAs: 'vm'
       })
-      .otherwise({ redirectTo: '/timeline' });
-    
-    $mdThemingProvider.theme('default')
-      .primaryPalette('light-blue')
-      .accentPalette('light-blue');
-   
+      .otherwise({ redirectTo: '/timeline' });   
   }
 })();

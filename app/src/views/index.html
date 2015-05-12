@@ -7,7 +7,7 @@
   <title>Rede</title>
 </head>
 <body ng-app="RedeApp">
-    <md-tabs class="md-accent">
+    <md-tabs class="md-primary"flex>
       <a href="#timeline">
         <md-tab class="md-toolbar-tools">
           <md-icon md-svg-src="/image/password.svg"></md-icon>  
@@ -75,6 +75,7 @@
               </md-icon>
             </a>
           </md-tab>
+        </div>
         <div ng-controller="PainelCtrl as vm"> 
           <a href="#paineladm" ng-click="vm.toggleRight()">
             <md-tab class="md-toolbar-tools">
