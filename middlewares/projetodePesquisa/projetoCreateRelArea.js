@@ -22,6 +22,7 @@ function projetoCreateRelAreaHandler(req, res, next) {
   }
 
   function createHandler(err, result) {
+  
     debug('create realation projetos with area  createHandler');
     if(!err){
       successHandler(result);

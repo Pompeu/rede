@@ -8,7 +8,7 @@ function authHandler(req, res, next) {
 	// start here with auth.js
 	'use strict';	
 	debug('auth handler middlerware');	
-	
+
 	var email =  req.body.email;
 	var password = req.body.password;
 	var User = models.User;
@@ -30,7 +30,7 @@ function authHandler(req, res, next) {
 
 	function authUserHandler (err , result) {
 		debug('auth  User Auth handler');
-		if(result.length == 1){
+		if(result && result.length == 1){
 			bcrypt.compare(password, result[0].password, function(err, res) {
 	    	if(res){
 	    		delete result[0].password;

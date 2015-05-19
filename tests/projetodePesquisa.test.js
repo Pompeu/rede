@@ -4,9 +4,25 @@ var superagent = require('superagent');
 var ch = require('charlatan');
 var url = require('url');
 var baseURL = 'http://localhost:3000/api/projetodepesquisa';
+var urlAuth = 'http://localhost:3000/api/login';
 
 describe('projeto de Pesquisa api rest testing', function () {
+	var id_token = 'Bearer ';
 	var id = null;
+	
+	var login = {
+		email : 'itacir@hotmail.com',
+		password : '552525ia',
+	};
+
+	before(function() {
+    superagent
+	  .post(url.resolve(urlAuth,'login'))
+	  .send(login)
+	  .end(function (err , res) {
+	  	id_token +=  res.body.result.id_token;
+	  });
+  });	
 
 	var body = {
 		nome : ch.Company.name(),
@@ -25,6 +41,7 @@ describe('projeto de Pesquisa api rest testing', function () {
 		inovacao: true,
 
 	};
+
 	it('expect create a projeto pesquisa', function (done) {
 
 		function endHandler(err, res) {
@@ -72,7 +89,7 @@ describe('projeto de Pesquisa api rest testing', function () {
 
   		superagent
 	  		.get(url.resolve(baseURL,'projetodepesquisa/'+id))
-	  		.end(endHandler)
+	  		.end(endHandler);
 	});
 
 	it('expect update one projeto pesquisa by id',function (done) {
@@ -128,6 +145,7 @@ describe('projeto de Pesquisa api rest testing', function () {
 			.end(endHandler);
 	});
 	var rel;
+	var id_rel;
 	it('expect project pequisa create RealationShip with Area',function (done) {
 				
 		rel = {
@@ -140,6 +158,7 @@ describe('projeto de Pesquisa api rest testing', function () {
 			expect(res).to.exist;
 			expect(res.body.status).to.true;
 			expect(res.body.err).to.null;
+			id_rel = res.body.result.id;
 			expect('PERTENCE').to.eql(res.body.result.type);
 			expect('Projeto pertence a Area').to.eql(res.body.result.properties.Projeto);
 			done();
@@ -154,6 +173,7 @@ describe('projeto de Pesquisa api rest testing', function () {
 	it('expet project pequisa remove RealationShip with Area',function (done) {
 		
 		function endHandler(err, res) {
+			console.log(res);
 			expect(err).to.not.exist;
 			expect(res).to.exist;
 			expect(res.body.status).to.true;
@@ -162,8 +182,8 @@ describe('projeto de Pesquisa api rest testing', function () {
 		}
 
 		superagent
-			.del(url.resolve(baseURL,'projetodepesquisa/area/rel/'))
-			.send(rel)
+			.del(url.resolve(baseURL,'projetodepesquisa/area/rel/'+id_rel))
+			.set('Authorization', id_token)
 			.end(endHandler);
 	});
 
