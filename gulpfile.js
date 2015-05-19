@@ -76,6 +76,12 @@ gulp.task('scriptprod', function() {
     .pipe(connect.reload());
 });
 
+gulp.task('heroku', function() {
+    return gulp.src(
+        '**/*.*')
+        .pipe(gulp.dest('heroku'));
+});
+
 gulp.task('uglify', function() {
     return gulp.src('app/public/js/all.min.js')
     .pipe(uglify())

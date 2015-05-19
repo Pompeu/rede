@@ -32,6 +32,7 @@ exports.getAllprojetodePesquisa = require('./projetodePesquisa/getAllprojetodePe
 exports.getprojetodePesquisa 	= require('./projetodePesquisa/getprojetodePesquisa');
 exports.updateprojetodePesquisa = require('./projetodePesquisa/updateprojetodePesquisa');
 exports.deleteprojetodePesquisa = require('./projetodePesquisa/deleteprojetodePesquisa');
+exports.projetoCreateRelArea = require('./projetodePesquisa/projetoCreateRelArea');
 
 /* controller empresa module*/
 exports.createEmpresa 	= require('./empresa/createEmpresa');
@@ -60,3 +61,4 @@ exports.getAllEquipeTecnica	= require('./equipeTecnica/getAllEquipeTecnica');
 exports.getEquipeTecnica 	  = require('./equipeTecnica/getEquipeTecnica');
 exports.deleteEquipeTecnica  = require('./equipeTecnica/deleteEquipeTecnica');
 exports.updateEquipeTecnica  = require('./equipeTecnica/updateEquipeTecnica');
+
