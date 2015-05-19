@@ -6,7 +6,7 @@ function neo() {
   var db =  
     module.exports =
     require("seraph")
-    (local); 
+    (dados); 
 
     return db;
 }

@@ -2,13 +2,25 @@
   'use strict';
   angular
     .module('RedeApp')
-    .controller('LoginCtrl',LoginCtrl);
-    
-  LoginCtrl.$inject = ['$mdDialog'];
+    .controller('LoginCtrl',LoginCtrl)    
+    .run(runConfigs);
+
+  runConfigs.$inject = ['$http','$rootScope', 'store'];
+  LoginCtrl.$inject = ['$mdDialog'];  
+  DialogController.$inject = ['store','$window','$mdDialog', 'generic' ,'$mdToast' ,'$rootScope', '$http'];
+  ToastCtrl.$inject = ['$mdToast','$rootScope'];
+
+  function runConfigs($http ,$rootScope, store) {
+    var user = $rootScope.user = store.get('user');
+    $rootScope.$on("$locationChangeStart",
+      function (event, next, current){
+      if(user)
+        $http.defaults.headers.common.Authorization = 'Bearer '+user.id_token;
+    });
+  }
 
   function LoginCtrl ($mdDialog) {
-    var vm = this;
-    
+    var vm = this;    
     vm.showLogin = function(ev) {
       $mdDialog.show({
         controller: DialogController,
@@ -17,12 +29,9 @@
         targetEvent: ev,
       });    
     };
-
   }
 
-  DialogController.$inject = ['store','$window','$mdDialog', 'generic' ,'$mdToast' ,'$rootScope'];
-
-  function DialogController(store ,$window, $mdDialog, generic ,$mdToast ,$rootScope) {
+  function DialogController(store ,$window, $mdDialog, generic ,$mdToast ,$rootScope, $http) {
     var vm = this;
     vm.tryLogin = false;
     vm.cancel = function() {
@@ -38,12 +47,10 @@
           user.result.img = 'image/pompeu.jpg';
           store.set('user', user.result);
           $rootScope.user =  user.result;
+          $http.defaults.headers.common.Authorization = 'Bearer '+user.result.id_token;
           vm.showCustomToast();
           vm.tryLogin = false;
           vm.cancel();
-          setTimeout(function() {
-            $window.location.reload();
-          }, 1000);
         }else if(user.err){
           $rootScope.err = user.err;
           vm.showCustomToast();
@@ -77,8 +84,6 @@
       });
     };    
   }
-  
-  ToastCtrl.$inject = ['$mdToast','$rootScope'];
 
   function ToastCtrl($mdToast,$rootScope) {
     var vm = this;

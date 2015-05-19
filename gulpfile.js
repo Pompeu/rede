@@ -94,7 +94,7 @@ gulp.task('watch',function() {
   gulp.watch('app/src/**/*.css',['css']);
 });
 
-gulp.task('connect',function() {
+gulp.task('serve',function() {
   connect.server({
     root:['../rede/app/public/',
     '../rede/app/public/views'],
@@ -109,4 +109,4 @@ gulp.task('producao',
 
 gulp.task('default',
   ['watch','css' ,'scripts','html-min',
-  'html-partials-min','html','connect']);
+  'html-partials-min','html','serve']);

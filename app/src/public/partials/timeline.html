@@ -3,18 +3,27 @@
         md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
         md-row-height-gt-md="1:1" md-row-height="2:2"
         md-gutter="12px" md-gutter-gt-sm="8px" >
-    <md-grid-tile class="gray"
-        md-rowspan="3" md-colspan="2" md-colspan-sm="1">
-      <md-grid-tile-footer>
-        <h3>#1: (3r x 2c)</h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-    <md-grid-tile class="green">
-      <md-grid-tile-footer>
-        <h3>#2: (1r x 1c)</h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-    <md-grid-tile class="yellow">
+    <div ng-show="$parent.user">
+      <md-grid-tile class="green">
+        <md-grid-tile-header>
+          Selecione A Área 
+        </md-grid-tile-header>
+        <md-select ng-model="area" md-on-open="vm.loadAreas()" style="min-width: 200px;">
+          <md-select-label>
+            {{ area ? area.nomeArea : 'Selecione uma Area' }}
+          </md-select-label>
+          <md-option ng-value="area" ng-repeat="area in vm.areas">
+              {{area.nomeArea}}
+          </md-option>
+        </md-select>   
+        <md-grid-tile-footer>
+          <p class="md-caption">Você deve Selcionar uma Area:
+            {{ area ? area.nomeArea : 'Selecione' }}
+          </p>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+    </div>
+    <md-grid-tile class="yellow" md-rowspan="2">
       <md-grid-tile-footer>
         <h3>#3: (1r x 1c)</h3>
       </md-grid-tile-footer>

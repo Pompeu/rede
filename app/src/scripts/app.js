@@ -4,21 +4,11 @@
   .module('RedeApp',
   ['ngRoute','ngMaterial','angular-jwt','angular-storage'])
   .config(rotas)
-  .config(theming) 
-  .run(runConfigs);
-
+  .config(theming);    
+ 
   rotas.$inject = ['$routeProvider'];
-  theming.$inject = ['$mdThemingProvider'];
-  runConfigs.$inject = ['$http','$rootScope', 'store'];
-  
-  function runConfigs($http ,$rootScope, store) {
-    var user = $rootScope.user = store.get('user');
-    $rootScope.$on("$locationChangeStart",function (event, next, current){
-      if(user)
-        $http.defaults.headers.common.Authorization = 'Bearer '+user.id_token;
-    });
-  }
-
+  theming.$inject = ['$mdThemingProvider']; 
+ 
   function theming($mdThemingProvider) {
 
    $mdThemingProvider.definePalette('redePalette', {
@@ -43,12 +33,9 @@
     'contrastLightColors':  ['A200', 'A400', //hues which contrast should be 'dark' by default
      'A700']   // could also specify this if default was 'dark'
     });
-   console.log($mdThemingProvider);
     $mdThemingProvider
       .theme('default')
       .primaryPalette('redePalette');
-     
-    
   }
 
   function rotas ($routeProvider) {
