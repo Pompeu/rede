@@ -1,13 +1,13 @@
 function neo() {
   'use strict';
-  var dados =  require('../configs/db')();
-  var local =   'http://localhost:7474';
-  
+  var dados = process.env.USER === 'pompeu'? 
+  'http://localhost:7474' : require('../configs/db')(); 
+
   var db =  
     module.exports =
     require("seraph")
-    (dados); 
-
+    (dados);
+    
     return db;
 }
 
