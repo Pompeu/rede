@@ -5,6 +5,9 @@
   .controller('PainelBtnCtrl',PainelBtnCtrl)
   .controller('MenuCtrl',MenuCtrl);
 
+  PainelBtnCtrl.$inject =['$mdDialog'];
+  MenuCtrl.$inject =['$mdDialog'];
+
   function painelAdm() {
     return {
       restrict: 'E',
@@ -12,13 +15,11 @@
       link: function (scope, iElement, iAttrs) {
 
       },
-      templateUrl: '../partials/painel-adm-btn.html',
+      templateUrl: '/partials/tmpl/buttons/painel-adm-btn.html',
       controller : PainelBtnCtrl,
       controllerAs : 'vm'
     };
-  }
-
-  PainelBtnCtrl.$inject =['$mdDialog'];
+  }  
 
   function PainelBtnCtrl($mdDialog) {
     var vm = this;
@@ -26,21 +27,17 @@
     vm.showMenu = function(ev) {
       $mdDialog.show({
         controller: MenuCtrl,
-        controllerAs: 'vm',
-        templateUrl: '../../partials/painel-adm.html',
+        controllerAs: 'mc',
+        templateUrl: '../../partials/tmpl/painel-adm.html',
         targetEvent: ev,
       });    
     };
-  } 
+  }  
 
-  MenuCtrl.$inject =['$mdDialog'];
-
-  function MenuCtrl($mdDialog) {
-     var vm = this;
-
-     vm.close = function() {
+  function MenuCtrl ($mdDialog) {
+    var mc = this;
+    mc.close = function() {
       $mdDialog.cancel();
-      return false;
     };
   }
 

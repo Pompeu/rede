@@ -4,9 +4,9 @@
   .module('RedeApp')
   .controller('PublicacoesCtrl', PublicacoesCtrl);
   
-  PublicacoesCtrl.$inject = ['generic', '$location'];
+  PublicacoesCtrl.$inject = ['generic', '$location' , '$window'];
 
-  function PublicacoesCtrl (generic,$location) {
+  function PublicacoesCtrl (generic,$location , $window) {
     var vm = this;
     vm.publicacoes = [];
 

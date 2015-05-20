@@ -26,7 +26,10 @@ a:active {
 .btn-adm {
   width: 100%;
 }
-
+.area-form{
+  height:450px;
+  width:350px;
+}
 .painel-adm-content {
   height:350px;
   width:400px;
