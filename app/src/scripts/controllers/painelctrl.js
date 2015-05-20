@@ -1,13 +1,13 @@
-(function(){
+/*(function(){
   'use strict';
   angular.module('RedeApp')
     .controller('PainelCtrl',PainelCtrl)
     .controller('RightCtrl',RightCtrl);
 
-    PainelCtrl.$inject =['$mdSidenav' ,'$mdUtil'];
-    RightCtrl.$inject = ['$mdSidenav'];
+  PainelCtrl.$inject =['$mdSidenav' ,'$mdUtil'];
+  RightCtrl.$inject = ['$mdSidenav'];
     
-    function PainelCtrl($mdSidenav , $mdUtil) {
+  function PainelCtrl($mdSidenav , $mdUtil) {
       var vm = this;
 
       vm.toggleRight = buildNave('right');
@@ -35,3 +35,4 @@
 }());
 
 
+*/

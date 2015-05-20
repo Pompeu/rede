@@ -75,17 +75,9 @@
               </md-icon>
             </a>
           </md-tab>
-        </div>
-        <div ng-controller="PainelCtrl as vm"> 
-          <a href="#paineladm" ng-click="vm.toggleRight()">
-            <md-tab class="md-toolbar-tools">
-              <md-icon md-svg-src="/image/checkdone.svg"></md-icon> 
-              <span class="md-label"> Painel Administrativo </span>
-            </md-tab>
-          </a>
-        </div>       
-      </div>
-    </md-tabs>  
+      </div>               
+      <painel-adm ></painel-adm>
+    </md-tabs> 
   <ng-view/>
 </body>
 </html>

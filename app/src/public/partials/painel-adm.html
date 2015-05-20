@@ -1,29 +1,31 @@
-<div layout="column" style="height:500px;">
-  <section class="painel-adm" layout="row" flex>
-    <md-sidenav layout="column" layout-align="start center" class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
-      <md-toolbar class="md-theme-light">
-        <h1 class="md-toolbar-tools">Painel Administrativo</h1>
-      </md-toolbar>
-      <md-content ng-controller="RightCtrl as vm" layout-padding>
-        <md-button ng-click="vm.createArea()" class="btn-adm md-primary md-raised md-hue-3">
-          Cadastrar Area
-        </md-button>
-        <md-button ng-click="vm.createBanca()" class="btn-adm md-primary md-raised md-hue-3">
-          Cadastrar Banca
-        </md-button>
-        <md-button ng-click="vm.createEmpresa()" class="btn-adm md-primary md-raised md-hue-3">
-          Cadastrar Empresa
-        </md-button>
-        <md-button ng-click="vm.createEquipe()" class="btn-adm md-primary md-raised md-hue-3">
-          Cadastrar Equipe Técnica
-        </md-button>
-        <md-button ng-click="vm.createProjeto()" class="btn-adm md-primary md-raised md-hue-3">
-          Cadastrar Projeto de Pesquisa
-        </md-button>
-        <md-button ng-click="vm.close()" class="btn-adm md-primary md-raised md-hue-3">
-         Fechar
-        </md-button>
-      </md-content>
-    </md-sidenav>
-  </section>
-</div>
+<md-dialog aria-label="Painel of admin">
+  <md-content class="painel-adm-content">
+    <section class="painel-adm" layout="column" flex>     
+        <md-toolbar md-scroll-shrink>
+          <div class="md-toolbar-tools">
+            <h1 class="md-toolbar-tools">Painel Administrativo</h1>
+          </div>
+        </md-toolbar>
+        <md-content ng-controller="MenuCtrl as vm" layout-padding>
+          <md-button ng-click="vm.createArea()" class="btn-adm md-primary md-raised md-hue-3">
+            Cadastrar Area
+          </md-button>
+          <md-button ng-click="vm.createBanca()" class="btn-adm md-primary md-raised md-hue-3">
+            Cadastrar Banca
+          </md-button>
+          <md-button ng-click="vm.createEmpresa()" class="btn-adm md-primary md-raised md-hue-3">
+            Cadastrar Empresa
+          </md-button>
+          <md-button ng-click="vm.createEquipe()" class="btn-adm md-primary md-raised md-hue-3">
+            Cadastrar Equipe Técnica
+          </md-button>
+          <md-button ng-click="vm.createProjeto()" class="btn-adm md-primary md-raised md-hue-3">
+            Cadastrar Projeto de Pesquisa
+          </md-button>
+          <md-button ng-click="vm.close()" class="btn-adm md-primary md-raised md-hue-3">
+           Fechar
+          </md-button>
+        </md-content>
+    </section>
+  </md-content>
+</md-dialog>

@@ -4,6 +4,7 @@ a{color:#00B7FF}
 a:hover{color:red}
 .btn-adm,.publicacao{margin:0 auto}
 .btn-adm{width:100%}
+.painel-adm-content{height:350px;width:400px}
 .gridListdemoBasicUsage,md-grid-list{margin:8px}
 .gray,.gridListdemoBasicUsage{background:#0092ff}
 .green,.gridListdemoBasicUsage{background:#b9f6ca}

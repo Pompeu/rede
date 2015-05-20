@@ -70,11 +70,6 @@
         controller: 'PublicacoesCtrl',
         controllerAs: 'vm'
       })
-      .when('/paineladm', {
-        templateUrl: '../partials/painel-adm.html',
-        controller: 'PainelCtrl',
-        controllerAs: 'vm'
-      })
       .otherwise({ redirectTo: '/timeline' });   
   }
 })();

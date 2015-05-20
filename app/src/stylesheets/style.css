@@ -26,6 +26,12 @@ a:active {
 .btn-adm {
   width: 100%;
 }
+
+.painel-adm-content {
+  height:350px;
+  width:400px;
+}
+
 .gridListdemoBasicUsage, md-grid-list {
   margin: 8px; }
 .gridListdemoBasicUsage, .gray {
