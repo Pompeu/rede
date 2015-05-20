@@ -36,7 +36,6 @@
     vm.tryLogin = false;
     vm.cancel = function() {
       $mdDialog.cancel();
-      return false;
     };
 
     vm.logar = function(user,ev) {

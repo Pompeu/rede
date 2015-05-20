@@ -34,6 +34,11 @@
 
     function FormAreaCtrl($mdDialog) {
       var fa = this;
+      fa.area = {};
+
+      fa.salvar = function() {
+        alert(JSON.stringify(fa.area));
+      };
 
       fa.close = function() {
         $mdDialog.cancel();
