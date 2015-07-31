@@ -57,4 +57,11 @@ app.use('/api/publicacao',jwtCheck, publicacao);
 app.use('/api/equipetecnica', equipetecnica);
 app.use('/api/bancaeditais', bancaeditais);
 
+app.use('*', function(req,res, next) {
+  res.status(404).send({
+    err : "url not fount",
+    go : "try use /api/* or check documentation"
+  });
+});
+
 module.exports = app;
