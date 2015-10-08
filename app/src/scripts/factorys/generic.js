@@ -1,23 +1,23 @@
 (function(){
-  'use strict';
-  angular
-    .module('RedeApp')
-    .factory('generic', generic);
+		'use strict';
+		angular
+		.module('RedeApp')
+		.factory('generic', generic);
 
-    generic.$inject = ['$http'];
+		generic.$inject = ['$http'];
 
-    function generic($http) {
+		function generic($http) {
 
-      var service = {
-        get : get,
-        post : post,
-        put: put,
-        del : del
-      };
+			var service = {
+				 get : get,
+				post : post,
+				put: put,
+				del : del
+			};
 
-      return service;
+			return service;
 
-      function get(resorce , id) {
+			function get(resorce , id) {
         if(id){
           return $http.get('/api/'+resorce+'/'+id);
         }        

@@ -1,4 +1,4 @@
-<md-dialog aria-label="Login Users" >
+<md-dialog aria-label="form area" >
   <md-content class="area-form md-primary md-sticky-no-effect md-padding">
     <md-dialog-content>
        <md-toolbar md-scroll-shrink>
@@ -30,11 +30,9 @@
           areaForm.$valid)}">
             salvar
           </md-button>
-          <div ng-controller="PainelBtnCtrl as vm">
-            <md-button ng-click="vm.showMenu()"class="md-raised md-warn">
-              cancelar
-            </md-button>
-          </div>
+					<md-button ng-click="fa.close()"class="md-raised md-warn">
+						cancelar
+					</md-button>
         </div>
       </form>
     </md-dialog-content> 

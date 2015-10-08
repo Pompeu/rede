@@ -1,15 +1,15 @@
 {
   "name": "angular-jwt",
-  "version": "0.0.4",
+  "version": "0.0.9",
   "description": "Library to help you work with JWTs on AngularJS",
+  "main": "index.js",
   "author": {
     "name": "Martin Gontovnikas",
     "email": "martin@gon.to"
   },
-  "dependencies": {
-    "karma-mocha-reporter": "^0.3.1"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "karma-mocha-reporter": "^0.3.1",
     "chai": "^1.9.1",
     "chai-jquery": "^1.2.3",
     "gulp": "^3.8.7",

@@ -11,7 +11,7 @@
  
   function theming($mdThemingProvider) {
 
-   $mdThemingProvider.definePalette('redePalette', {
+  /* $mdThemingProvider.definePalette('redePalette', {
     '50': 'e8f5e9',
     '100': 'c8e6c9',
     '200': 'a5d6a7',
@@ -36,6 +36,7 @@
     $mdThemingProvider
       .theme('default')
       .primaryPalette('redePalette');
+		*/			
   }
 
   function rotas ($routeProvider) {

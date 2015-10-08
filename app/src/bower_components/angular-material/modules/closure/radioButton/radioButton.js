@@ -2,14 +2,10 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.8.3
+ * v0.11.2
  */
 goog.provide('ng.material.components.radioButton');
 goog.require('ng.material.core');
-(function() {
-'use strict';
-
-
 /**
  * @ngdoc module
  * @name material.components.radioButton
@@ -61,7 +57,7 @@ angular.module('material.components.radioButton', [
  * </hljs>
  *
  */
-function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming) {
+function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming, $timeout) {
   RadioGroupController.prototype = createRadioGroupControllerProto();
 
   return {
@@ -76,18 +72,50 @@ function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming) {
     var rgCtrl = ctrls[0];
     var ngModelCtrl = ctrls[1] || $mdUtil.fakeNgModel();
 
+    rgCtrl.init(ngModelCtrl);
+
+    scope.mouseActive = false;
+    element.attr({
+              'role': 'radiogroup',
+              'tabIndex': element.attr('tabindex') || '0'
+            })
+            .on('keydown', keydownListener)
+            .on('mousedown', function(event) {
+              scope.mouseActive = true;
+              $timeout(function() {
+                scope.mouseActive = false;
+              }, 100);
+            })
+            .on('focus', function() {
+              if(scope.mouseActive === false) { rgCtrl.$element.addClass('md-focused'); }
+            })
+            .on('blur', function() { rgCtrl.$element.removeClass('md-focused'); });
+
+    /**
+     *
+     */
+    function setFocus() {
+      if (!element.hasClass('md-focused')) { element.addClass('md-focused'); }
+    }
+
+    /**
+     *
+     */
     function keydownListener(ev) {
-      switch(ev.keyCode) {
+      var keyCode = ev.which || ev.keyCode;
+      switch(keyCode) {
         case $mdConstant.KEY_CODE.LEFT_ARROW:
         case $mdConstant.KEY_CODE.UP_ARROW:
           ev.preventDefault();
           rgCtrl.selectPrevious();
+          setFocus();
           break;
 
         case $mdConstant.KEY_CODE.RIGHT_ARROW:
         case $mdConstant.KEY_CODE.DOWN_ARROW:
           ev.preventDefault();
           rgCtrl.selectNext();
+          setFocus();
           break;
 
         case $mdConstant.KEY_CODE.ENTER:
@@ -98,15 +126,6 @@ function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming) {
           break;
       }
     }
-
-    rgCtrl.init(ngModelCtrl);
-
-    element.attr({
-              'role': 'radiogroup',
-              'tabIndex': element.attr('tabindex') || '0'
-            })
-            .on('keydown', keydownListener);
-
   }
 
   function RadioGroupController($element) {
@@ -166,8 +185,10 @@ function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming) {
         // If disabled, then NOT valid
         return !angular.element(button).attr("disabled");
       };
+
       var selected = parent[0].querySelector('md-radio-button.md-checked');
       var target = buttons[increment < 0 ? 'previous' : 'next'](selected, validate) || buttons.first();
+
       // Activate radioButton's click listener (triggerHandler won't create a real click event)
       angular.element(target).triggerHandler('click');
 
@@ -176,7 +197,7 @@ function mdRadioGroupDirective($mdUtil, $mdConstant, $mdTheming) {
   }
 
 }
-mdRadioGroupDirective.$inject = ["$mdUtil", "$mdConstant", "$mdTheming"];
+mdRadioGroupDirective.$inject = ["$mdUtil", "$mdConstant", "$mdTheming", "$timeout"];
 
 /**
  * @ngdoc directive
@@ -238,15 +259,29 @@ function mdRadioButtonDirective($mdAria, $mdUtil, $mdTheming) {
     $mdTheming(element);
     configureAria(element, scope);
 
-    rgCtrl.add(render);
-    attr.$observe('value', render);
+    initialize();
 
-    element
-      .on('click', listener)
-      .on('$destroy', function() {
-        rgCtrl.remove(render);
-      });
+    /**
+     *
+     */
+    function initialize(controller) {
+      if ( !rgCtrl ) {
+        throw 'RadioGroupController not found.';
+      }
 
+      rgCtrl.add(render);
+      attr.$observe('value', render);
+
+      element
+        .on('click', listener)
+        .on('$destroy', function() {
+          rgCtrl.remove(render);
+        });
+    }
+
+    /**
+     *
+     */
     function listener(ev) {
       if (element[0].hasAttribute('disabled')) return;
 
@@ -255,20 +290,41 @@ function mdRadioButtonDirective($mdAria, $mdUtil, $mdTheming) {
       });
     }
 
+    /**
+     *  Add or remove the `.md-checked` class from the RadioButton (and conditionally its parent).
+     *  Update the `aria-activedescendant` attribute.
+     */
     function render() {
       var checked = (rgCtrl.getViewValue() == attr.value);
       if (checked === lastChecked) {
         return;
       }
+
       lastChecked = checked;
       element.attr('aria-checked', checked);
+
       if (checked) {
+        markParentAsChecked(true);
         element.addClass(CHECKED_CSS);
+
         rgCtrl.setActiveDescendant(element.attr('id'));
+
       } else {
+        markParentAsChecked(false);
         element.removeClass(CHECKED_CSS);
       }
+
+      /**
+       * If the radioButton is inside a div, then add class so highlighting will work...
+       */
+      function markParentAsChecked(addClass ) {
+        if ( element.parent()[0].nodeName != "MD-RADIO-GROUP") {
+          element.parent()[ !!addClass ? 'addClass' : 'removeClass'](CHECKED_CSS);
+        }
+
+      }
     }
+
     /**
      * Inject ARIA-specific attributes appropriate for each radio button
      */
@@ -296,4 +352,4 @@ function mdRadioButtonDirective($mdAria, $mdUtil, $mdTheming) {
 }
 mdRadioButtonDirective.$inject = ["$mdAria", "$mdUtil", "$mdTheming"];
 
-})();
+ng.material.components.radioButton = angular.module("material.components.radioButton");

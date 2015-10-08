@@ -7,7 +7,7 @@
 
   runConfigs.$inject = ['$http','$rootScope', 'store'];
   LoginCtrl.$inject = ['$mdDialog'];  
-  DialogController.$inject = ['store','$window','$mdDialog', 'generic' ,'$mdToast' ,'$rootScope', '$http'];
+  DialogController.$inject = ['store','$mdDialog', 'generic' ,'$mdToast' ,'$rootScope', '$http','$timeout'];
   ToastCtrl.$inject = ['$mdToast','$rootScope'];
 
   function runConfigs($http ,$rootScope, store) {
@@ -31,7 +31,7 @@
     };
   }
 
-  function DialogController(store ,$window, $mdDialog, generic ,$mdToast ,$rootScope, $http) {
+  function DialogController(store, $mdDialog, generic ,$mdToast ,$rootScope, $http, $timeout) {
     var vm = this;
     vm.tryLogin = false;
     vm.cancel = function() {
@@ -53,10 +53,14 @@
         }else if(user.err){
           $rootScope.err = user.err;
           vm.showCustomToast();
+					$timeout(function(){ 
+						vm.tryLogin = false
+					},2000);
         }
       })
       .error(function(err) {
-        console.log(err);
+         $rootScope.err = err;
+         vm.showCustomToast();
       });
     };
     
@@ -78,7 +82,7 @@
         controller: ToastCtrl,
         controllerAs: 'vm',
         templateUrl: '../../partials/tmpl/toastok.tmpl.html',
-        hideDelay: 3000,
+        hideDelay: 2000,
         position: vm.getToastPosition()
       });
     };    

@@ -15,7 +15,7 @@
       link: function (scope, iElement, iAttrs) {
 
       },
-      templateUrl: '/partials/tmpl/buttons/painel-adm-btn.html',
+      templateUrl: 'js/painel/painel-adm-btn.html',
       controller : PainelBtnCtrl,
       controllerAs : 'vm'
     };
@@ -28,7 +28,7 @@
       $mdDialog.show({
         controller: MenuCtrl,
         controllerAs: 'mc',
-        templateUrl: '../../partials/tmpl/painel-adm.html',
+        templateUrl: 'js/painel/painel-adm.html',
         targetEvent: ev,
       });    
     };

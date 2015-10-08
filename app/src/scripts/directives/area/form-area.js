@@ -13,7 +13,7 @@
         link: function (scope, iElement, iAttrs) {
           
         },        
-        templateUrl: '/partials/tmpl/buttons/painel-adm-btn-area.html',
+        templateUrl: 'js/area/painel-adm-btn-area.html',
         controller : PainelBtnCtrl,
         controllerAs : 'bc'
       };
@@ -26,7 +26,7 @@
           $mdDialog.show({
           controller: FormAreaCtrl,
           controllerAs: 'fa',
-          templateUrl: '/partials/tmpl/forms/form-area.html',
+          templateUrl: 'js/area/form-area.html',
           targetEvent: ev,
         }); 
       };
@@ -41,6 +41,7 @@
       };
 
       fa.close = function() {
+				alert('cancel');
         $mdDialog.cancel();
       };
     }

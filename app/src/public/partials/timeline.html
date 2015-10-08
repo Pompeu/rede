@@ -8,7 +8,7 @@
         <md-grid-tile-header>
           Selecione A Área 
         </md-grid-tile-header>
-        <md-select ng-model="area" md-on-open="vm.loadAreas()" style="min-width: 200px;">
+        <md-select aria-label="select area" ng-model="area" md-on-open="vm.loadAreas()" style="min-width: 200px;">
           <md-select-label>
             {{ area ? area.nomeArea : 'Selecione uma Area' }}
           </md-select-label>
