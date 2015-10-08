@@ -40,25 +40,25 @@
 
     vm.logar = function(user,ev) {
       vm.tryLogin = true;
-      generic.post('login',user)
-      .success(function(user) {
-        if(user.status && user.result) {          
-          user.result.img = 'image/pompeu.jpg';
-          store.set('user', user.result);
-          $rootScope.user =  user.result;
-          $http.defaults.headers.common.Authorization = 'Bearer '+user.result.id_token;
-          vm.showCustomToast();
-          vm.tryLogin = false;
-          vm.cancel();
-        }else if(user.err){
-          $rootScope.err = user.err;
-          vm.showCustomToast();
-					$timeout(function(){ 
-						vm.tryLogin = false
-					},2000);
+      generic
+				.post('login',user)
+				.then(function success (user) {
+					if(user.status && user.result) {          
+						user.result.img = 'image/pompeu.jpg';
+						store.set('user', user.result);
+						$rootScope.user =  user.result;
+						$http.defaults.headers.common.Authorization = 'Bearer '+user.result.id_token;
+						vm.showCustomToast();
+						vm.tryLogin = false;
+						vm.cancel();
+					}else if(user.err){
+						$rootScope.err = user.err;
+						vm.showCustomToast();
+						$timeout(function(){ 
+							vm.tryLogin = false
+						},2000);
         }
-      })
-      .error(function(err) {
+      }, function error (err) {
          $rootScope.err = err;
          vm.showCustomToast();
       });

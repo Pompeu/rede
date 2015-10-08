@@ -1,9 +1,9 @@
 (function(){
   'use strict';
   angular.module('RedeApp')
-  .directive('painelAdm',painelAdm )
-  .controller('PainelBtnCtrl',PainelBtnCtrl)
-  .controller('MenuCtrl',MenuCtrl);
+		.directive('painelAdm',painelAdm )
+		.controller('PainelBtnCtrl',PainelBtnCtrl)
+		.controller('MenuCtrl',MenuCtrl);
 
   PainelBtnCtrl.$inject =['$mdDialog'];
   MenuCtrl.$inject =['$mdDialog'];

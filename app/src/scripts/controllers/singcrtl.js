@@ -19,27 +19,28 @@
     };    
   }
 
-  DialogController.$inject = ['$mdDialog', '$http'];
+  DialogController.$inject = ['$mdDialog', 'generic'];
 
-  function DialogController($mdDialog, $http) {
+  function DialogController($mdDialog, generic) {
     var vm = this;
     vm.message = {};
+
     vm.cancel = function() {
       $mdDialog.cancel();
       return false;
     };
 
     vm.criar = function(user) {
-      $http.post('/api/user/',user) 
-      .success(function(user) {
-        console.log(user);
-        if(user){
-          $mdDialog.cancel();
-        }
-      })
-      .error(function(err) {
-        console.log(err);
-      });
+      generic
+				.post('api/user/',user) 
+				.then(function sucess(user) {
+					console.log(user);
+					if(user){
+						$mdDialog.cancel();
+					}
+				},function error(err) {
+					console.log(err);
+				});
       return false;        
     };
   }
