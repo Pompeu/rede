@@ -1,6 +1,6 @@
 node_modules/
 configs/
-app/src/bower_components/
+/app/src/bower_components/
 atividades/*
 npm-debug.log
 .agni/*
