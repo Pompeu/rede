@@ -9,7 +9,7 @@ const express     = require('express'),
 			compression = require('compression'),
 			cors        = require('cors'),
 			jwt         = require('express-jwt'),
-			secret =  require('./configs/apikey')().value,
+			secret =  require('./configs/apikey').value,
 			jwtCheck = jwt({secret: secret});
 
 //globals
