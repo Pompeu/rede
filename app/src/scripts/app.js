@@ -13,14 +13,15 @@
 			.state('index', {
 				url : '/',
 				templateUrl: '../partials/timeline.html',
-        controller: 'TimeLineCtrl',
-        controllerAs: 'vm'
+				controller: 'TimeLineCtrl',
+				controllerAs: 'vm'
 			})
 	}
 
-	verify.$inject = ['store','$http'];
+	verify.$inject = ['$rootScope','windowSize'];
 
-	function verify (store, $http) {
+	function verify ($rootScope, windowSize) {
+		$rootScope.isMobile = windowSize.isMobile();
 	}
 
 })();

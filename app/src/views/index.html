@@ -10,7 +10,8 @@
 </head>
 <body ng-app="RedeApp">
 	<div layout="column" ng-cloak>
-		<md-content>
+		<header-mobile> </header-mobile>
+		<md-content ng-if="$root.isMobile" class="md-padding" hide show-gt-sm flex>
 			<md-toolbar>
 				<div class="md-toolbar-tools">
 					<label>
@@ -28,7 +29,6 @@
 							Sing Up
 						</md-button>
 					</label>
-					
 					<painel-adm ng-if="$root.user"></painel-adm>
 					<log-out ng-if="$root.user"></log-out>	
 				</div>
