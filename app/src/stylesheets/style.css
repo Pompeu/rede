@@ -1,13 +1,8 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  /* background: url("/image/bk600x499.png"); */
-  background-color: red;
-  padding-left: 10px; 
 }
 
 a {
-
   color: #00B7FF;
 }
 
@@ -20,42 +15,53 @@ a:hover{
 a:active {
   text-decoration: none
   }
+md-grid-list {
+  margin: 8px; 
+}
+.red {
+ background:  #84ffff; 	
+}
+.div-main {
+	width: 300px;
+	background: url("../image/graph.svg");
+	background-repeat: no-repeat;
+}
+
 .publicacao, .btn-adm {
   margin: 0 auto;
 }
+
 .btn-adm {
   width: 100%;
 }
+
+.btn-logout {
+	padding: 1px 6px 1px 6px;
+}
+
+.btn-logout > img {
+  width: 25px;
+  height: 25px;
+}
+
+.btn-logout > img,
+.btn-logout > span {
+  vertical-align: middle;
+}
+
 .area-form{
   height:450px;
   width:350px;
 }
 .painel-adm-content {
-  height:350px;
+  height:360px;
   width:400px;
 }
-
-.gridListdemoBasicUsage, md-grid-list {
-  margin: 8px; }
-.gridListdemoBasicUsage, .gray {
-  background: #0092ff; }
-.gridListdemoBasicUsage, .green {
-  background: #b9f6ca; }
-.gridListdemoBasicUsage, .yellow {
-  background: #ffff8d; }
-.gridListdemoBasicUsage, .blue {
-  background: #84ffff; }
-.gridListdemoBasicUsage, .purple {
-  background: #b388ff; }
-.gridListdemoBasicUsage, .red {
-  background: #ff8a80; }
-.gridListdemoBasicUsage, md-grid-tile {
-  transition: all 400ms ease-out 50ms; }
-.selectdemoOptionsWithAsyncSearch p {
-padding: 0 20px;
-text-align: center; }
-.selectdemoOptionsWithAsyncSearch p.md-caption {
-margin-top: -7px;
-color: #777; }
-.selectdemoOptionsWithAsyncSearch .demo-content {
-min-height: 348px; }
+.dialog-login {
+	height:350px;
+  width:300px;
+}
+.dialog-singup {
+  width:400px;
+	height:500px;
+}

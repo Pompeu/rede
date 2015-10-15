@@ -6,7 +6,7 @@
 
   IndexCrtl.$inject = ['$rootScope', "$window"];
 
-  function IndexCrtl($rootScope , $window) {
+  function IndexCrtl ($rootScope, $window) {
     var vm = this;
     vm.sair =function() {
       $rootScope.user = null;

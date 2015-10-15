@@ -31,19 +31,20 @@ function authHandler(req, res, next) {
 	function authUserHandler (err , result) {
 		debug('auth  User Auth handler');
 		if(result && result.length == 1){
-			bcrypt.compare(password, result[0].password, function(err, res) {
-	    	if(res){
-	    		delete result[0].password;
-	    		successHandler({ id_token : createToken(result[0])});
-	    	} 
-	    	else failHandler(err);
-			});							
+			bcrypt.compare(password, result[0].password, compareHanlder);
 		}else{
 			failHandler(err);
 		}
 	}
-
 	User.db.find({ email : email}, authUserHandler);
+}
+
+function compareHanlder(err , res) {
+	if(res){
+		delete result[0].password;
+		successHandler({ id_token : createToken(result[0])});
+	} 
+	else failHandler(err);
 }
 
 function createToken(user) {

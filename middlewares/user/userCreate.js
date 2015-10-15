@@ -1,8 +1,7 @@
 // file: middlewares/userCreate.js - created at 2015-01-01, 02:39
-
+'use strict';
 
 function userCreateHandler(req, res, next) {
-	'use strict';
 	debug('user create middlerware handler');
 	var bcrypt = require('bcryptjs');
 	var user = models.User;	
@@ -11,7 +10,7 @@ function userCreateHandler(req, res, next) {
 	res.locals.out = {err : null , result : {} , status : false};	
 
 	function failHandler(err) {
-	  	debug('create user fail handler');
+	  	debug('create user fail handler'+err);
 	  	res.locals.out.err = err;
 	  	next();
 	}
@@ -26,16 +25,17 @@ function userCreateHandler(req, res, next) {
 	function createHandler(err, result) {
 		debug('create user handler');
 		if(!err){
-	  		successHandler(result);
-	  	}else{
-	  		failHandler(err);
-	  	}
+	  	successHandler(result);
+	  }else{
+	  	failHandler(err);
+	  }
 	}
 
 	bcrypt.hash(body.password, 8, function(err, hash) {
+		debug('hash password');
 		body.password = hash;
 		user.save(body,createHandler);
-	});	
+	});
 	
 }
 module.exports = exports = userCreateHandler;

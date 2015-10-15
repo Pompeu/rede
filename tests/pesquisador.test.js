@@ -50,9 +50,9 @@ describe('pequisador restful testing', function () {
 	  		expect(err).to.not.exist;
 	  		expect(res).to.exist;
 	  		expect(res.body.status).to.true;
-			expect(res.body.err).to.null;
-			expect(res.body.result).to.an('Array');
-			done();
+				expect(res.body.err).to.null;
+				expect(res.body.result).to.an('Array');
+				done();
 	  	}
 
 	  	superagent
@@ -65,9 +65,9 @@ describe('pequisador restful testing', function () {
   			expect(err).to.not.exist;
 	  		expect(res).to.exist;
 	  		expect(res.body.status).to.true;
-			expect(res.body.err).to.null;
-			expect(res.body.result).to.an('object');
-			done();
+				expect(res.body.err).to.null;
+				expect(res.body.result).to.an('object');
+				done();
   		};
 
   		superagent
@@ -79,27 +79,27 @@ describe('pequisador restful testing', function () {
   		var bodyNew = {
   			id : id,
   			nome : 'Itacir Ferreira Pompeu',
-			telefoneProfissional : '6434441827',
-			telefoneContato : '6434441827',
-			emailProfissional : 'itacir@hotmail.com',
-			formacaoNivel : 'Superior Incompleto',
-			formacaoAno : '2016',
-			enderecoProfissional : 'Rua  24 de junho 104 Centro',
-			diretorioPEsquisa :   'Algoritmos Geneticos',
-			externo : true,
-			instituicao : 'Instito Federal Goiano Campus Morrinhos',
-			homePage :  'http://bloog-limp.herokuapp.com/',
-			facebook : 'https://www.facebook.com/itacir.pompeu',
+				telefoneProfissional : '6434441827',
+				telefoneContato : '6434441827',
+				emailProfissional : 'itacir@hotmail.com',
+				formacaoNivel : 'Superior Incompleto',
+				formacaoAno : '2016',
+				enderecoProfissional : 'Rua  24 de junho 104 Centro',
+				diretorioPEsquisa :   'Algoritmos Geneticos',
+				externo : true,
+				instituicao : 'Instito Federal Goiano Campus Morrinhos',
+				homePage :  'http://bloog-limp.herokuapp.com/',
+				facebook : 'https://www.facebook.com/itacir.pompeu',
   		}
 
   		function endHandler(err, res) {
   			expect(err).to.not.exist;
 	  		expect(res).to.exist;
 	  		expect(res.body.status).to.true;
-			expect(res.body.err).to.null;
-			expect(res.body.result).to.an('object');
-			expect(res.body.result).to.not.eql(body);
-			done();
+				expect(res.body.err).to.null;
+				expect(res.body.result).to.an('object');
+				expect(res.body.result).to.not.eql(body);
+				done();
   		}
 
   		superagent
@@ -111,8 +111,8 @@ describe('pequisador restful testing', function () {
 	it('expect delete one pequisador from db',function(done) {
 		function endHandler (err , res) {
 			expect(err).to.not.exist;
-	  		expect(res).to.exist;
-	  		expect(res.body.status).to.true;
+	  	expect(res).to.exist;
+	  	expect(res.body.status).to.true;
 			expect(res.body.err).to.null;
 			done();
 		}

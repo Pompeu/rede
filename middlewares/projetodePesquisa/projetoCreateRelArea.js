@@ -3,7 +3,7 @@ function projetoCreateRelAreaHandler(req, res, next) {
   // start here with projetoCreateRelArea.js
   'use strict';
   debug('create realation projetos with area middlerware');
-  var  rel =  req.body;
+  var rel =  req.body;
   var projetoPesquisa = models.ProjetodePesquisa;
 
   res.locals.out = {err : null , result : {} , status : false}; 
@@ -22,7 +22,6 @@ function projetoCreateRelAreaHandler(req, res, next) {
   }
 
   function createHandler(err, result) {
-  
     debug('create realation projetos with area  createHandler');
     if(!err){
       successHandler(result);
@@ -35,7 +34,7 @@ function projetoCreateRelAreaHandler(req, res, next) {
     .db
     .relate(rel.projetoID,
     'PERTENCE',rel.areaID ,
-    { Projeto : "Projeto pertence a Area"},
+    { Projeto : "Projeto Pertence a Area"},
     createHandler);
 
 }

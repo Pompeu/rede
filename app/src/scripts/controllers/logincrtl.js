@@ -5,11 +5,8 @@
     .controller('LoginCtrl',LoginCtrl)    
     .run(runConfigs);
 
-  runConfigs.$inject = ['$http','$rootScope', 'store'];
-  LoginCtrl.$inject = ['$mdDialog'];  
-  DialogController.$inject = ['store','$mdDialog', 'generic' ,'$mdToast' ,'$rootScope', '$http','$timeout'];
-  ToastCtrl.$inject = ['$mdToast','$rootScope'];
 
+  runConfigs.$inject = ['$http','$rootScope', 'store'];
   function runConfigs($http ,$rootScope, store) {
     var user = $rootScope.user = store.get('user');
     $rootScope.$on("$locationChangeStart",
@@ -19,6 +16,7 @@
     });
   }
 
+  LoginCtrl.$inject = ['$mdDialog'];  
   function LoginCtrl ($mdDialog) {
     var vm = this;    
     vm.showLogin = function(ev) {
@@ -31,39 +29,42 @@
     };
   }
 
-  function DialogController(store, $mdDialog, generic ,$mdToast ,$rootScope, $http, $timeout) {
+  DialogController.$inject = ['$log','store','$mdDialog', 'generic' ,'$mdToast' ,'$rootScope', '$http'];
+  function DialogController($log,store, $mdDialog, generic ,$mdToast ,$rootScope, $http) {
     var vm = this;
     vm.tryLogin = false;
     vm.cancel = function() {
       $mdDialog.cancel();
     };
 
-    vm.logar = function(user,ev) {
+    vm.logar = function(user) {
       vm.tryLogin = true;
-      generic
-				.post('login',user)
-				.then(function success (user) {
-					if(user.status && user.result) {          
-						user.result.img = 'image/pompeu.jpg';
-						store.set('user', user.result);
-						$rootScope.user =  user.result;
-						$http.defaults.headers.common.Authorization = 'Bearer '+user.result.id_token;
-						vm.showCustomToast();
-						vm.tryLogin = false;
-						vm.cancel();
-					}else if(user.err){
-						$rootScope.err = user.err;
-						vm.showCustomToast();
-						$timeout(function(){ 
-							vm.tryLogin = false
-						},2000);
-        }
-      }, function error (err) {
-         $rootScope.err = err;
-         vm.showCustomToast();
-      });
-    };
-    
+      generic.post('login',user)
+				.then(success,error);
+		};
+
+		function success (user) {
+			$log.debug(user);
+			if(user.data.status && user.data.result) {
+				user.data.result.img = 'image/pompeu.jpg';
+				store.set('user', user.data.result);
+				$rootScope.user =  user.data.result;
+				$http.defaults.headers.common.Authorization = 'Bearer '+user.data.result.id_token;
+				vm.showCustomToast();
+				vm.tryLogin = false;
+				vm.cancel();
+			}else if(user.data.err){
+				$log.debug(user.data);
+				$rootScope.err = user.data.err;
+				vm.showCustomToast();
+			}
+		}
+
+		function error (err) {
+			$log.debug(err);
+			$rootScope.err = err;
+			vm.showCustomToast();
+		}
     vm.toastPosition = {
       bottom: false,
       top: true,
@@ -88,6 +89,7 @@
     };    
   }
 
+  ToastCtrl.$inject = ['$mdToast','$rootScope'];
   function ToastCtrl($mdToast,$rootScope) {
     var vm = this;
     vm.err = null;

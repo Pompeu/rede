@@ -18,11 +18,11 @@ user.fields = [
 ];
 
 user.schema = {
-	name  : { type : String , required: true},
-	sname : { type : String , required: true},
-	password : { type : String , required: true},
-	email  : { type : String ,  match: emailRE, required: true},
-	dateCadastro : { type : Date , default: Date.now() },
+	name  : { type : String, required: true},
+	sname : { type : String, required: true},
+	password : { type : String, required: true},
+	email  : { type : String,  match: emailRE, required: true},
+	dateCadastro : { type : Date, default: Date.now() },
 };
 
 module.exports = exports = user;

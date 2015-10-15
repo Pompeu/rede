@@ -1,3 +1,5 @@
+'use stritic';
+
 var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
@@ -27,20 +29,20 @@ gulp.task('css', function() {
     .pipe(gulp.dest('app/public/css'))
     .pipe(connect.reload());
 });
+
 gulp.task('scripts', function() {
   return gulp.src([
     'app/src/bower_components/angular/angular.min.js',
-    'app/src/bower_components/angular-route/angular-route.min.js',
+		'app/src/bower_components/ui-router/release/angular-ui-router.min.js',
     'app/src/bower_components/angular-animate/angular-animate.min.js',
     'app/src/bower_components/angular-aria/angular-aria.min.js',
     'app/src/bower_components/angular-material/angular-material.min.js',
-    'app/src/bower_components/hammerjs/hammer.min.js',
     'app/src//bower_components/a0-angular-storage/dist/angular-storage.min.js',
     'app/src/bower_components/angular-jwt/dist/angular-jwt.min.js',
     'app/src/scripts/app.js',
     'app/src/scripts/factorys/*.js',    
     'app/src/scripts/controllers/*.js',
-    'app/src/scripts/directives/*.js'])
+    'app/src/scripts/directives/**/*.js'])
     .pipe(concat('all.min.js'))
     .pipe(gulp.dest('app/public/js'))
     .pipe(connect.reload());
@@ -53,13 +55,12 @@ gulp.task('scriptprod', function() {
     'app/src/bower_components/angular-animate/angular-animate.min.js',
     'app/src/bower_components/angular-aria/angular-aria.min.js',
     'app/src/bower_components/angular-material/angular-material.min.js',
-    'app/src/bower_components/hammerjs/hammer.min.js',
     'app/src//bower_components/a0-angular-storage/dist/angular-storage.min.js',
     'app/src/bower_components/angular-jwt/dist/angular-jwt.min.js',
     'app/src/scripts/app.js',
     'app/src/scripts/factorys/*.js',    
     'app/src/scripts/controllers/*.js',
-    'app/src/scripts/directives/*.js'])
+    'app/src/scripts/directives/**/*.js'])
     .pipe(concat('all.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('app/public/js'))
@@ -91,6 +92,13 @@ gulp.task('html-min', function() {
     .pipe(connect.reload());
 });
 
+gulp.task('directives', () => {
+	return gulp.src('app/src/scripts/directives/**/*.html')
+		.pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('app/public/js'))
+    .pipe(connect.reload());
+})
+
 gulp.task('html-partials-min', function() {
   return gulp.src('app/src/public/partials/**/*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
@@ -100,7 +108,7 @@ gulp.task('html-partials-min', function() {
 
 gulp.task('watch',function() {
   gulp.watch('app/src/**/*.js',['scripts']);
-  gulp.watch('app/src/**/*.html',['html','html-min' ,'html-partials-min']);
+  gulp.watch('app/src/**/*.html',['html','html-min' ,'html-partials-min','directives']);
   gulp.watch('app/src/**/*.css',['css']);
 });
 
@@ -118,5 +126,5 @@ gulp.task('producao',
     'html-partials-min','html']);
 
 gulp.task('default',
-  ['watch','css' ,'scripts','html-min',
+  ['watch','css' ,'scripts','html-min','directives',
   'html-partials-min','html','serve']);

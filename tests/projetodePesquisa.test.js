@@ -1,30 +1,32 @@
 // file: tests/projetodePesquisaCreate.test.js - created at 2015-01-13, 01:07
-var expect = require('chai').expect;
-var superagent = require('superagent');
-var ch = require('charlatan');
-var url = require('url');
-var baseURL = 'http://localhost:3000/api/projetodepesquisa';
-var urlAuth = 'http://localhost:3000/api/login';
+'use strict';
 
-describe('projeto de Pesquisa api rest testing', function () {
-	var id_token = 'Bearer ';
-	var id = null;
+let expect = require('chai').expect;
+let superagent = require('superagent');
+let ch = require('charlatan');
+let url = require('url');
+const baseURL = 'http://localhost:3000/api/projetodepesquisa';
+const urlAuth = 'http://localhost:3000/api/login';
+
+describe('projeto de Pesquisa api rest testing', () => {
+	let id_token = 'Bearer ';
+	let id = null;
 	
-	var login = {
+	const login = {
 		email : 'itacir@hotmail.com',
 		password : '552525ia',
 	};
 
-	before(function() {
+	beforeEach("loging",function() {
     superagent
-	  .post(url.resolve(urlAuth,'login'))
-	  .send(login)
-	  .end(function (err , res) {
-	  	id_token +=  res.body.result.id_token;
+			.post(url.resolve(urlAuth,'login'))
+			.send(login)
+			.end(function (err , res) {
+				id_token +=  res.body.result.id_token;
 	  });
   });	
 
-	var body = {
+	const body = {
 		nome : ch.Company.name(),
 		anoInicio : new Date().getFullYear(),
 		anoFim : new Date(2016,4),
@@ -42,7 +44,7 @@ describe('projeto de Pesquisa api rest testing', function () {
 
 	};
 
-	it('expect create a projeto pesquisa', function (done) {
+	it('expect create a projeto pesquisa', () => {
 
 		function endHandler(err, res) {
 			expect(err).to.not.exist;
@@ -61,7 +63,7 @@ describe('projeto de Pesquisa api rest testing', function () {
 	  		.end(endHandler)
  	});
 
-	it('expect get all projeto from DB', function (done) {
+	it('expect get all projeto from DB', () => {
 		function endHandler (err, res) {
 			expect(err).to.not.exist;
   		expect(res).to.exist;
@@ -76,7 +78,7 @@ describe('projeto de Pesquisa api rest testing', function () {
 	  		.end(endHandler)
 	});
 
-	it('expect get one projeto by id',function (done) {
+	it('expect get one projeto by id',() => {
 
 		function endHandler(err, res) {
 			expect(err).to.not.exist;
@@ -92,8 +94,8 @@ describe('projeto de Pesquisa api rest testing', function () {
 	  		.end(endHandler);
 	});
 
-	it('expect update one projeto pesquisa by id',function (done) {
-		var bodyNew = {
+	it('expect update one projeto pesquisa by id',() => {
+		let bodyNew = {
 			id : id ,
 			nome : ch.Company.name(),
 			anoInicio : new Date().getFullYear(),
@@ -130,7 +132,7 @@ describe('projeto de Pesquisa api rest testing', function () {
 	  		.end(endHandler);
 	});
 
-	it('expect delete one projeto pesquisa by id',function (done) {
+	it('expect delete one projeto pesquisa by id',() => {
 		
 		function endHandler(err, res) {
 			expect(err).to.not.exist;
@@ -144,9 +146,11 @@ describe('projeto de Pesquisa api rest testing', function () {
 			.del(url.resolve(baseURL,'projetodepesquisa/'+id))
 			.end(endHandler);
 	});
-	var rel;
-	var id_rel;
-	it('expect project pequisa create RealationShip with Area',function (done) {
+
+	let rel;
+	let id_rel;
+	
+	it('expect project pequisa create RealationShip with Area',() => {
 				
 		rel = {
 			projetoID : ch.Number.positive(from = 148, to = 155),
@@ -170,10 +174,9 @@ describe('projeto de Pesquisa api rest testing', function () {
 			.end(endHandler);
 	});
 
-	it('expet project pequisa remove RealationShip with Area',function (done) {
+	it('expect project_pesquisa remove RealationShip with Area',() => {
 		
 		function endHandler(err, res) {
-			console.log(res);
 			expect(err).to.not.exist;
 			expect(res).to.exist;
 			expect(res.body.status).to.true;
@@ -186,5 +189,4 @@ describe('projeto de Pesquisa api rest testing', function () {
 			.set('Authorization', id_token)
 			.end(endHandler);
 	});
-
 });

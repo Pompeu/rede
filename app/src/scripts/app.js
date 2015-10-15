@@ -4,7 +4,7 @@
   .module('RedeApp',
   ['ui.router','ngMaterial','angular-jwt','angular-storage'])
   .config(rotas)
- 
+	.run(verify) 
   rotas.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 	function rotas ($stateProvider, $urlRouterProvider) {
@@ -17,4 +17,10 @@
         controllerAs: 'vm'
 			})
 	}
+
+	verify.$inject = ['store','$http'];
+
+	function verify (store, $http) {
+	}
+
 })();

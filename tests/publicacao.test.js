@@ -1,13 +1,28 @@
 // file: tests/publicacao.test.js - created at 2015-01-16, 12:44
-var expect = require('chai').expect;
-var superagent = require('superagent');
-var ch = require('charlatan');
-var url = require('url');
-var baseURL = 'http://localhost:3000/api/publicacao';
+'use strict';
 
-describe('publicacao api restful testing', function () {
+let expect = require('chai').expect;
+let superagent = require('superagent');
+let ch = require('charlatan');
+let url = require('url');
+let baseURL = 'http://localhost:3000/api/publicacao';
+let baseURLLogin = 'http://localhost:3000/api/login';
+
+
+describe('publicacao api restful testing', () => {
   var id = null;
   var body = null;
+	var key = 'Bearer ';
+
+	before((done) => {
+		superagent
+  		.post(url.resolve(baseURLLogin,'login'))
+  		.send({email : 'itacir@hotmail.com' , password : '552525ia'})
+  		.end((err , res) => {
+				key +=  res.body.result.id_token;
+				done();
+			});
+	});
 
   it('expect create a publicaccao', function (done) {
   	
@@ -32,6 +47,7 @@ describe('publicacao api restful testing', function () {
 
   	superagent
   		.post(url.resolve(baseURL,'publicacao'))
+			.set('Authorization', key)
   		.send(body)
   		.end(endHandler);
   });
@@ -47,6 +63,7 @@ describe('publicacao api restful testing', function () {
   	}
   	superagent
   		.get(url.resolve(baseURL,'publicacao'))
+			.set('Authorization', key)
   		.end(endHandler);
   });
 
@@ -61,12 +78,13 @@ describe('publicacao api restful testing', function () {
   	}
   	superagent
   		.get(url.resolve(baseURL,'publicacao/'+id))
+			.set('Authorization', key)
   		.end(endHandler);
   });
    
    it('expect update one publicacao by id from db' , function (done) {
    	
-   	bodyNew = {
+   	let bodyNew = {
   		ano  : ch.Helpers.rand(2015, 1900),
   		tipo : ch.Name.title(),
   		formato : ch.Company.bs(),
@@ -85,6 +103,7 @@ describe('publicacao api restful testing', function () {
 
   	superagent
   		.put(url.resolve(baseURL,'publicacao/'+id))
+			.set('Authorization', key)
   		.send(bodyNew)
   		.end(endHandler);
   });
@@ -99,6 +118,7 @@ describe('publicacao api restful testing', function () {
   	}
   	superagent
   		.del(url.resolve(baseURL,'publicacao/'+id))
+			.set('Authorization', key)
   		.end(endHandler);
   });
 });

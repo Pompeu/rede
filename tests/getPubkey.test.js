@@ -9,7 +9,7 @@ describe('getPubkey', function () {
     
     function end(key) {
       key.should.be.an("String");
-      key.should.have.length(372);
+      key.should.have.length(716);
       done();
     }
 

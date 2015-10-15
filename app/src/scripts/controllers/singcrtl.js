@@ -25,23 +25,26 @@
     var vm = this;
     vm.message = {};
 
-    vm.cancel = function() {
+    vm.cancel = function cancel() {
       $mdDialog.cancel();
       return false;
     };
 
-    vm.criar = function(user) {
+    vm.criar = function criar(user) {
       generic
-				.post('api/user/',user) 
-				.then(function sucess(user) {
-					console.log(user);
-					if(user){
-						$mdDialog.cancel();
-					}
-				},function error(err) {
-					console.log(err);
-				});
-      return false;        
-    };
+				.post('user',user) 
+				.then(success, error);
+		}		
+
+		function success(user) {
+			if(user){
+				$mdDialog.cancel();
+				return false;
+			}
+		}
+
+		function error(err) {
+			vm.message = err;
+		}
   }
 })();

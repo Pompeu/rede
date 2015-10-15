@@ -13,7 +13,7 @@ Pesquisador.fields = [
 		'formacaoNivel',
 		'formacaoAno',
 		'enderecoProfissional',
-		'diretorioPEsquisa',
+		'diretorioPesquisa',
 		'externo',
 		'instituicao',
 		'homePage',

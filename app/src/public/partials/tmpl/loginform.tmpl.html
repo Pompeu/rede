@@ -1,12 +1,12 @@
-<md-dialog aria-label="Login Users" layout-align="end start">
-  <md-content>
+<md-dialog class="dialog-login" aria-label="Login Users">
+	<md-content>
     <md-subheader ng-controller="SignCtrl as vm">
-      <a ng-click="vm.showSignUp($event)" href>
+      <a href ng-click="vm.showSignUp($event)" >
         <md-icon md-svg-src="/image/person.svg"></md-icon>
-        <h1>Sign in</h1>       
+        <h1>Sign in</h1>
       </a>
     </md-subheader>  
-  <md-content class="md-primary md-sticky-no-effect md-padding">
+  <md-content class="md-primary md-sticky-no-effect">
     <form name="loginform">
       <md-input-container md-no-float>
         <md-icon for="email" aria-label="img email" md-svg-src="/image/email.svg"></md-icon>
@@ -21,6 +21,6 @@
     </form>
     <div ng-if="vm.tryLogin" layout="row" layout-margin layout-fill layout-padding   layout-align="center">
       <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-    </div>
-  </md-content>
+		</md-content>
+	</md-content>
 </md-dialog>
