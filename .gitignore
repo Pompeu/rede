@@ -8,3 +8,4 @@ npm-debug.log
 npm*
 *.swp
 app/src/bower_components/*
+*.swo
