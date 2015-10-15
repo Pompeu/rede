@@ -1,18 +1,18 @@
 // file: middlewares/auth.js - created at 2015-01-05, 08:44
-var jwt = require('jsonwebtoken'),
-		_  = require('lodash'),
-		bcrypt = require('bcryptjs'),
-		getSecret =  require('../../configs/apikey');
+'use strict';
+
+const jwt = require('jsonwebtoken'),
+			bcrypt = require('bcryptjs'),
+			getSecret =  require('../../configs/apikey');
 
 function authHandler(req, res, next) {
 	// start here with auth.js
-	'use strict';	
 	debug('auth handler middlerware');	
 
-	var email =  req.body.email;
-	var password = req.body.password;
-	var User = models.User;
-	
+	let email =  req.body.email;
+	let password = req.body.password;
+	let User = models.User;
+
 	res.locals.out = {err : null , result : { } , status : false};
 	
 	function successHandler(result) {
@@ -24,6 +24,7 @@ function authHandler(req, res, next) {
 
 	function failHandler(err) {
 		debug('auth fail handler');
+		res.status(401);
 		res.locals.out.err = err || 'login or passoword error';
 		next();
 	}
@@ -35,21 +36,24 @@ function authHandler(req, res, next) {
 		}else{
 			failHandler(err);
 		}
-	}
-	User.db.find({ email : email}, authUserHandler);
-}
 
-function compareHanlder(err , res) {
-	if(res){
-		delete result[0].password;
-		successHandler({ id_token : createToken(result[0])});
-	} 
-	else failHandler(err);
+		function compareHanlder(err, res) {
+			debug('Compare Hanlder');
+			if(res){
+				successHandler({ id_token : createToken(result[0])});
+			} 
+			else failHandler(err);
+		}
+	}
+
+	User.read({ email : email}, authUserHandler);
+
 }
 
 function createToken(user) {
-	var key = getSecret();
-	return jwt.sign(user,key.value , { expiresInMinutes: 60*5 });
+	debug('Create Token');
+	delete user.password;
+	return jwt.sign(user,getSecret.value , { expiresInMinutes: 60*5 });
 }
 
-module.exports = exports = authHandler;
+module.exports = authHandler;
