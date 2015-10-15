@@ -1,9 +1,9 @@
 // file: models/projetodePesquisa.js - created at 2015-01-13, 01:07
-var model = require('seraph-model');
+'use strict';
 
-var db = require('./neo');
-
-var projetodePesquisa = model(db,'projetodePesquisa');
+const model = require('seraph-model');
+const db = require('./neo');
+const projetodePesquisa = model(db,'projetodePesquisa');
 
 projetodePesquisa.fields = [
 		'nome',
@@ -24,9 +24,9 @@ projetodePesquisa.fields = [
 
 projetodePesquisa.schema = {
 	nome  : { type : String , required: true},
-	anoInicio : { type : String , required: true},
-	anoFim : { type : String , required: true},
-	codigoProtocoloInstituicao  : { type : String , required: true},
+	anoInicio : { type : Date , required: true},
+	anoFim : { type : Date, required: true},
+	codigoProtocoloInstituicao  : { type : Number , required: true},
 	resumo : { type : String , required: true },
 	financiamentoExterno : { type : Boolean , required: true },
 	financiamentoAgencia : { type : String },
