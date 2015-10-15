@@ -13,3 +13,4 @@ exports.equipeTecnica = require('./equipeTecnica.test');
 exports.getPubkey = require('./getPubkey.test');
 exports.db = require('./db.test');
 exports.neo = require('./neo.test');
+exports.validatorRex = require('./validator-rex.test');
