@@ -19,11 +19,11 @@
     };    
   }
 
-  DialogController.$inject = ['$mdDialog', 'generic'];
+  DialogController.$inject = ['showToast','$mdDialog', 'generic','$log', '$rootScope'];
 
-  function DialogController($mdDialog, generic) {
+  function DialogController(showToast,$mdDialog,generic,$log,$rootScope) {
     var vm = this;
-    vm.message = {};
+    vm.tryLogin = false;
 
     vm.cancel = function cancel() {
       $mdDialog.cancel();
@@ -31,20 +31,24 @@
     };
 
     vm.criar = function criar(user) {
+			vm.tryLogin = true;
       generic
 				.post('user',user) 
 				.then(success, error);
 		}		
 
 		function success(user) {
-			if(user){
+			if(user.data.status){
+				showToast.show();
 				$mdDialog.cancel();
-				return false;
 			}
 		}
 
 		function error(err) {
-			vm.message = err;
+			vm.tryLogin = false;
+			$log.debug(err.status);
+			$rootScope.err = err.status == -1? "server is offline" : err;
+			showToast.show();
 		}
   }
 })();

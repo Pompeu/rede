@@ -1,6 +1,6 @@
-'use stritic';
+'use strict';
 
-var gulp = require('gulp'),
+var gulp = require('./heroku_biuld.js'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     connect = require('gulp-connect'),
@@ -51,7 +51,7 @@ gulp.task('scripts', function() {
 gulp.task('scriptprod', function() {
   return gulp.src([
     'app/src/bower_components/angular/angular.min.js',
-    'app/src/bower_components/angular-route/angular-route.min.js',
+		'app/src/bower_components/ui-router/release/angular-ui-router.min.js',
     'app/src/bower_components/angular-animate/angular-animate.min.js',
     'app/src/bower_components/angular-aria/angular-aria.min.js',
     'app/src/bower_components/angular-material/angular-material.min.js',
@@ -68,9 +68,17 @@ gulp.task('scriptprod', function() {
 });
 
 gulp.task('heroku', function() {
-    return gulp.src(
-        '**/*.*')
-        .pipe(gulp.dest('heroku'));
+    return gulp.src([
+				'configs/*',
+				'bin/*',
+        'app/public/**/*',
+				'routes/**/*',
+				'controllers/**/*',
+				'middlewares/**/*',
+				'models/**/*',
+				'app.js',
+				'package.json'])
+        .pipe(gulp.dest('../heroku-rede/'));
 });
 
 gulp.task('uglify', function() {
@@ -121,9 +129,10 @@ gulp.task('serve',function() {
   });
 });
 
+
 gulp.task('producao', 
-    ['scriptprod', 'css','html-min',
-    'html-partials-min','html']);
+    ['scriptprod','css','html-min',
+    'html-partials-min','directives']);
 
 gulp.task('default',
   ['watch','css' ,'scripts','html-min','directives',

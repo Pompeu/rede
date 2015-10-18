@@ -1,10 +1,10 @@
 var express = require('express'),
     router = express.Router(),
-    path =  require('path');   
+		fs = require('fs');
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '../app/public/views/index.html'));  
+	fs.createReadStream('./app/public/views/index.html').pipe(res);
 });
 
 

@@ -11,7 +11,7 @@
 			var URL = "http://localhost:3000/api/";
 
 			var service = {
-				 get : get,
+				get : get,
 				post : post,
 				put: put,
 				del : del

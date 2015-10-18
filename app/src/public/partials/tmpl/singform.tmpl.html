@@ -5,7 +5,7 @@
       <h1>Cadastrar</h1>    
   </md-subheader> 
   <md-content class="md-primary md-sticky-no-effect">
-    <form ng-submit="vm.criar(vm.user)" name="loginform">
+    <form name="loginform">
       <md-input-container md-no-float>
         <md-icon md-svg-src="/image/person.svg"></md-icon>
         <input md-maxlength="20" type="text"
@@ -30,7 +30,7 @@
         placeholder="Password" required  ng-model="vm.user.password">
       </md-input-container>
 
-      <md-button class="md-raised md-primary">Sing IN</md-button>
+      <md-button class="md-raised md-primary" ng-click="vm.criar(vm.user)">Sing IN</md-button>
       <md-button class="md-raised md-warn" ng-click="vm.cancel()">Cancel</md-button>
     </form>
     <md-content>

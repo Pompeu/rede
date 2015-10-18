@@ -2,6 +2,8 @@
 	angular.module('RedeApp')
 		.factory('windowSize', windowSize);
 
+		windowSize.$inject = ['$window'];
+
 		function windowSize ($window) {
 			var service = {
 				isMobile : isMobile
