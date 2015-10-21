@@ -4,9 +4,8 @@ function createAreaHandler(req, res, next) {
   'use strict';
   debug('Area create handler middlerware');
   
-  var area = models.Area;
-
-  var body = req.body;
+  const area = models.Area;
+	const body = req.body;
 
   res.locals.out = {err : null , result : {} , status : false};	
 
@@ -18,7 +17,7 @@ function createAreaHandler(req, res, next) {
   }
 
   function failHandler(err) {
-  	debug('Area create fail handler '+err);
+  	debug('Area create fail handler ');
   	res.locals.out.err = err;
   	next();
   }
