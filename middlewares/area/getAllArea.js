@@ -4,7 +4,9 @@ function getAllAreaHandler(req, res, next) {
   'use strict';
   debug('Area getAll handler middlerware');
   
-  var area = models.Area;
+  const area = models.Area;
+	const limit = req.params.limit || 20;
+	const offset = req.params.offset || 0;
 
   res.locals.out = {err : null , result : [] , status : false};	
 
@@ -16,20 +18,16 @@ function getAllAreaHandler(req, res, next) {
   }
 
   function failHandler(err) {
-  	debug('Area getAll fail handler '+err);
+  	debug('Area getAll fail handler ');
   	res.locals.out.err = err;
   	next();
   }
 
   function getHandler(err, result) {
   	debug('Area getAll handler');
-  	if(!err){
-  		successHandler(result);
-  	}else{
-  		failHandler(err);
-  	}
+  	!err ?successHandler(result) : failHandler(err);
   }
 
-  area.findAll(getHandler);
+  area.findAll({limit : limit, offset : offset} ,getHandler);
 }
 module.exports = exports = getAllAreaHandler;
