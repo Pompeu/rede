@@ -65,3 +65,18 @@ md-grid-list {
   width:400px;
 	height:500px;
 }
+
+.timeline-childs {
+  background : gray;
+  position : relative;
+  height : 590px;
+  margin : 1px;
+  padding : 3px;
+}
+
+.timeline-childs > section { 
+  height : 450px;
+  margin : 1px;
+  background : blue;
+}
+

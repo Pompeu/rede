@@ -11,7 +11,7 @@
 <body ng-app="RedeApp">
 	<div layout="column" ng-cloak>
 		<header-mobile> </header-mobile>
-		<md-content ng-if="$root.isMobile" class="md-padding" hide show-gt-sm flex>
+		<md-content ng-if="$root.isMobile" hide show-gt-sm flex>
 			<md-toolbar>
 				<div layout="row" layout-align="space-around center" class="md-toolbar-tools">
 					<label>
@@ -38,6 +38,6 @@
 		</md-content>
 	</div>
 	<div ui-view></div>
-	<script src="/js/all.min.js"></script>
+	<script defer src="/js/all.min.js"></script>
 </body>
 </html>

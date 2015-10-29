@@ -1,35 +1,15 @@
-<div class="timeline" ng-cloak>
-	<md-grid-list
-        md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
-        md-row-height-gt-md="1:1" md-row-height="2:2"
-        md-gutter="12px" md-gutter-gt-sm="8px" >
-  	<md-grid-tile class="red"
-        md-rowspan="2" md-colspan="3" md-colspan-sm="1">
-      <md-grid-tile-footer>
-        <h3>#1: (3r x 2c)</h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-		<md-grid-tile class="red"
-        md-rowspan="2" md-colspan="2" md-colspan-sm="1">
-      <md-grid-tile-footer>
-        <h3>#2: (2r x 2c)</h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-		<md-grid-tile class="red"
-        md-rowspan="2" md-colspan="1" md-colspan-sm="1">
-      <md-grid-tile-footer>
-        <h3>#2: (2r x 2c)</h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-		<md-grid-tile class="red"
-        md-rowspan="1" md-colspan="6" md-colspan-sm="1">
-			<md-grid-tile-header>
-		    <h2>This is a header</h2>
-  		</md-grid-tile-header>
-      <md-grid-tile-footer>
-        <h3>#2: (2r x 2c)</h3>
-      </md-grid-tile-footer>
-    </md-grid-tile>
-
-	</md-grid-list>
+<div class="timeline md-padding" ng-cloak layout="row" layout-wrap>
+ <div class="timeline-childs" flex="auto" flex-sm="grow">
+  <header><h1>Projeto Pesquisa</h1></header>
+  <section>
+    <rc-projetoslist> </rc-projectoslist>
+  </section>
+  <footer>
+    <h3>rede de conhecimentos</h3>
+  </footer>
+ </div>
+ <div class="timeline-childs" flex="auto" flex-sm="grow">
+ 
+ </div>
+ <div class="timeline-childs" flex="grow"></div>
 </div>
