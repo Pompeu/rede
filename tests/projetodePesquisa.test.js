@@ -44,7 +44,7 @@ describe('projeto de Pesquisa api rest testing', () => {
 
 	};
 
-	it('expect create a projeto pesquisa', () => {
+	it('expect create a projeto pesquisa', done => {
 
 		function endHandler(err, res) {
 			expect(err).to.not.exist;
@@ -63,13 +63,14 @@ describe('projeto de Pesquisa api rest testing', () => {
 	  		.end(endHandler)
  	});
 
-	it('expect get all projeto from DB', () => {
+	it('expect get all projeto from DB', done => {
 		function endHandler (err, res) {
 			expect(err).to.not.exist;
   		expect(res).to.exist;
   		expect(res.body.status).to.true;
 			expect(res.body.err).to.null;
 			expect(res.body.result).to.an('Array');
+			expect(res.body.result.length).to.eql(20);
 			done();
 		}
 
@@ -78,7 +79,7 @@ describe('projeto de Pesquisa api rest testing', () => {
 	  		.end(endHandler)
 	});
 
-	it('expect get one projeto by id',() => {
+	it('expect get one projeto by id', done => {
 
 		function endHandler(err, res) {
 			expect(err).to.not.exist;
@@ -87,14 +88,14 @@ describe('projeto de Pesquisa api rest testing', () => {
 			expect(res.body.err).to.null;
 			expect(res.body.result).to.an('object');
 			done();
-  		}
+  	}
 
   		superagent
 	  		.get(url.resolve(baseURL,'projetodepesquisa/'+id))
 	  		.end(endHandler);
 	});
 
-	it('expect update one projeto pesquisa by id',() => {
+	it('expect update one projeto pesquisa by id', done => {
 		let bodyNew = {
 			id : id ,
 			nome : ch.Company.name(),
@@ -132,7 +133,8 @@ describe('projeto de Pesquisa api rest testing', () => {
 	  		.end(endHandler);
 	});
 
-	it('expect delete one projeto pesquisa by id',() => {
+/*	
+	it('expect delete one projeto pesquisa by id',done => {
 		
 		function endHandler(err, res) {
 			expect(err).to.not.exist;
@@ -149,12 +151,12 @@ describe('projeto de Pesquisa api rest testing', () => {
 
 	let rel;
 	let id_rel;
-	
-	it('expect project pequisa create RealationShip with Area',() => {
+
+	it('expect project pequisa create RealationShip with Area', done => {
 				
 		rel = {
-			projetoID : ch.Number.positive(from = 148, to = 155),
-			areaID : ch.Number.positive(from = 140, to = 145)
+			projetoID : ch.Number.positive(148, 155),
+			areaID : ch.Number.positive(140, 145)
 		};
 		
 		function endHandler(err, res) {
@@ -170,11 +172,12 @@ describe('projeto de Pesquisa api rest testing', () => {
 
 		superagent
 			.post(url.resolve(baseURL,'projetodepesquisa/area/rel/'))
+			.set('Authorization', id_token)
 			.send(rel)
 			.end(endHandler);
 	});
 
-	it('expect project_pesquisa remove RealationShip with Area',() => {
+	it('expect project_pesquisa remove RealationShip with Area',done => {
 		
 		function endHandler(err, res) {
 			expect(err).to.not.exist;
@@ -188,5 +191,5 @@ describe('projeto de Pesquisa api rest testing', () => {
 			.del(url.resolve(baseURL,'projetodepesquisa/area/rel/'+id_rel))
 			.set('Authorization', id_token)
 			.end(endHandler);
-	});
+	});*/
 });
