@@ -1,7 +1,6 @@
-<div style="background:red">
-  <md-whiteframe class="md-whiteframe-1d md-padding" layout="column" flex>
-    <header> <strong> Titulo </strong> </header>
-    <section> <strong> Autor </strong> </section>
-    <a href> Resumo </a>
-  </md-whiteframe>
-</div>
+<md-content ng-click="open()">
+  <div class="md-whiteframe-21dp">
+    <h3> Titulo : {{title}} </h3>
+    <div ng-if="isOpened" ng-transclude></div>
+  </div>
+ </md-content>
