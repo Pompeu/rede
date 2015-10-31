@@ -8,7 +8,7 @@
 
 		function generic($http) {
 
-			var URL = "http://localhost:3000/api/";
+			var URL = "/api/";
 
 			var service = {
 				get : get,
