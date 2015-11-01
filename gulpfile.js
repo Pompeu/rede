@@ -64,22 +64,8 @@ gulp.task('scriptprod', function() {
     .pipe(concat('all.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('app/public/js'))
-    .pipe(connect.reload());
 });
 
-gulp.task('heroku', function() {
-    return gulp.src([
-				'configs/*',
-				'bin/*',
-        'app/public/**/*',
-				'routes/**/*',
-				'controllers/**/*',
-				'middlewares/**/*',
-				'models/**/*',
-				'app.js',
-				'package.json'])
-        .pipe(gulp.dest('../heroku-rede/'));
-});
 
 gulp.task('uglify', function() {
     return gulp.src('app/public/js/all.min.js')
@@ -130,7 +116,7 @@ gulp.task('serve',function() {
 });
 
 
-gulp.task('producao', 
+gulp.task('prod', 
     ['scriptprod','css','html-min',
     'html-partials-min','directives']);
 
