@@ -120,6 +120,10 @@ gulp.task('prod',
     ['scriptprod','css','html-min',
     'html-partials-min','directives']);
 
+gulp.task('dev',
+  ['watch','css' ,'scripts','html-min','directives',
+  'html-partials-min','html']);
+
 gulp.task('default',
   ['watch','css' ,'scripts','html-min','directives',
   'html-partials-min','html','serve']);

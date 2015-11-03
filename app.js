@@ -36,7 +36,7 @@ app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, './app/public')));
+app.use(express.static(path.join(__dirname, '/app/public/')));
 app.use(function(req, res, next) {
   res.setHeader('Cache-Control', 'public, max-age=31104000');
   next();
@@ -53,7 +53,7 @@ app.use('/',routes);
 app.use('/api/user', user);
 app.use('/api/login',auth);
 app.use('/api/pesquisador', pesquisador);
-app.use('/api/projetodepesquisa', projetodepesquisa);
+app.use('/api/projetosdepesquisa', projetodepesquisa);
 app.use('/api/area', area);
 app.use('/api/empresa', empresa);
 app.use('/api/publicacao',jwtCheck, publicacao);

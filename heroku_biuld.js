@@ -60,7 +60,6 @@ gulp.task('main', () => {
 
 let tasks = Object.keys(gulp.tasks).map(key => key);
 
-
 gulp.task('build',tasks);
 
 module.exports = gulp;
