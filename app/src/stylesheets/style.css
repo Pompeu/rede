@@ -68,7 +68,12 @@ md-grid-list {
 .timeline > div{
   padding: 5px;
 }
+
 .timeline-childs {
   height : 590px;
+}
+
+.timeline-list {
+  height : 500px;
 }
 

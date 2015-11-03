@@ -30,6 +30,7 @@
 			vm.logout  = function (ev){
 				$rootScope.user = null;
 				$window.localStorage.removeItem('user');
+        $rootScope.$emit('logout:event', false);
 			};
 		}
 })();

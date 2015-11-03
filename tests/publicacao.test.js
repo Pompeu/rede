@@ -14,7 +14,7 @@ describe('publicacao api restful testing', () => {
   var body = null;
 	var key = 'Bearer ';
 
-	before((done) => {
+	before( done => {
 		superagent
   		.post(url.resolve(baseURLLogin,'login'))
   		.send({email : 'itacir@hotmail.com' , password : '552525ia'})
@@ -24,7 +24,7 @@ describe('publicacao api restful testing', () => {
 			});
 	});
 
-  it('expect create a publicaccao', function (done) {
+  it('expect create a publicaccao', done => {
   	
   	body = {
   		ano  : ch.Helpers.rand(2015, 2000),
@@ -52,7 +52,7 @@ describe('publicacao api restful testing', () => {
   		.end(endHandler);
   });
 
-  it('expect get all publicacao from db' , function (done) {
+  it('expect get all publicacao from db' , done => {
   	function endHandler	(err , res) {
   		expect(err).to.not.exist;
   		expect(res).to.exist;   
@@ -67,7 +67,7 @@ describe('publicacao api restful testing', () => {
   		.end(endHandler);
   });
 
-   it('expect get one publicacao by id from db' , function (done) {
+   it('expect get one publicacao by id from db' , done => {
   	function endHandler	(err , res) {
   		expect(err).to.not.exist;
   		expect(res).to.exist;   
@@ -82,7 +82,7 @@ describe('publicacao api restful testing', () => {
   		.end(endHandler);
   });
    
-   it('expect update one publicacao by id from db' , function (done) {
+   it('expect update one publicacao by id from db' , done => {
    	
    	let bodyNew = {
   		ano  : ch.Helpers.rand(2015, 1900),
@@ -108,7 +108,7 @@ describe('publicacao api restful testing', () => {
   		.end(endHandler);
   });
 
-   it('expect delete one publicacao by id from db' , function (done) {
+  it('expect delete one publicacao by id from db' , done => {
   	function endHandler	(err , res) {
 		  expect(err).to.not.exist;
   		expect(res).to.exist;

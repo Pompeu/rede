@@ -6,11 +6,13 @@
   function rcProjetoslist() {
     var directive = {
       controller : ProjetoListController,
+      restrict: 'A',
     };
 
     return directive;
 
-      }
+  }
+
   function ProjetoListController () {
       var vm = this;
       vm.projetos = [];

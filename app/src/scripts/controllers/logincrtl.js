@@ -50,6 +50,7 @@
 				user.data.result.img = 'image/pompeu.jpg';
 				store.set('user', user.data.result);
 				$rootScope.user =  user.data.result;
+        $rootScope.$emit('login:event', true)
 				$http.defaults.headers.common.Authorization = 'Bearer '+user.data.result.id_token;
 				showToast.show();
 				vm.tryLogin = false;

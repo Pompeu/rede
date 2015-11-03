@@ -4,6 +4,7 @@ var express = require('express'),
 
 /* GET home page. */
 router.get('/', function (req, res) {
+  res.set('Content-Type', 'text/html');
 	fs.createReadStream('./app/public/views/index.html').pipe(res);
 });
 

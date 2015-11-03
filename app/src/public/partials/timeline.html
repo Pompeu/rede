@@ -1,35 +1,31 @@
 <div class="timeline md-padding" ng-cloak layout="row" layout-wrap flex>
-  <div class="md-whiteframe-1dp timeline-childs" flex="50" flex-sm="100">
+  <div ng-controller="ProjetosPresquisaController as vm" class="md-whiteframe-1dp timeline-childs" flex="50" flex-sm="100">
      <md-toolbar> 
        <div class="md-toolbar-tools">
          <h2 flex>Utimos Projetos de Pesquisa</h2>
        </div>
      </md-toolbar>
-      <rc-projetoslist flex="auto" flex-sm="grow">
-        <rc-projeto title="Rede de conhecimentos" >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-        </rc-projeto>
-        <rc-projeto title="Noticias Ifgoiano">
-          <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </rc-projeto>
-      </rc-projetoslist>
+        <md-content class="timeline-list" rc-projetoslist flex="auto" flex-sm="grow">
+          <rc-projeto  ng-repeat="projeto in vm.projetos" title="{{projeto.nome}}" >
+           </p> {{projeto.resumo}} </p>
+          </rc-projeto>
+      </md-content>
   </div>
-  <div class="md-whiteframe-1dp timeline-childs" flex="50" flex-sm="100">
+  <div class="md-whiteframe-1dp timeline-childs"  ng-controller="PublicacoesCtrl as vm" flex="50" flex-sm="100">
     <md-toolbar> 
       <div class="md-toolbar-tools">
         <h2 flex>Ultimos Publicações</h2>
       </div>
     </md-toolbar>
-    <rc-projetoslist flex="auto">
-        <rc-projeto title="Rede de conhecimentos" flex layout-padding>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+    <md-content rc-projetoslist class="timeline-list" flex="auto" flex-sm="grow">
+        <rc-projeto  ng-repeat="p in vm.publicacoes" title="{{p.name}}">
+          <div>
+           <p>Ano da Publicação {{p.ano}}</p>
+           <p>tipo da publicação {{p.tipo}}</p>
+           <p>Formato da publicaçâo {{p.formato}}</p>
+          </div>
         </rc-projeto>
-        <rc-projeto title="Noticias Ifgoiano">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </rc-projeto>
-     </rc-projetoslist>
+    </md-content>
   </div>
   <div class="md-whiteframe-1dp timeline-childs" flex="grow">
     <md-toolbar> 

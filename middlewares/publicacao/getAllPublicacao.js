@@ -4,7 +4,9 @@ function getAllPublicacaoHandler(req, res, next) {
   'use strict';
   debug('get all publicacao handler middleware');
 
-  var publicacao = models.Publicacao;
+  const publicacao = models.Publicacao;
+  let limit = req.params.limit || 20;
+	let offset = req.params.offset || 0;
 
   res.locals.out = {err : null , result : [] , status : false};	
 
@@ -23,13 +25,9 @@ function getAllPublicacaoHandler(req, res, next) {
 
   function getAllHandler(err, result) {
   	debug('get all publicacao handler');
-  	if(!err){
-  		successHandler(result);
-  	}else{
-  		failHandler(err);
-  	}
+  	err ? failHandler(err) : successHandler(result);
   }
 
-  publicacao.findAll({},getAllHandler);
+	publicacao.findAll({ limit : limit , offset : offset}, getAllHandler);
 }
 module.exports = exports = getAllPublicacaoHandler;

@@ -46,14 +46,14 @@ function authHandler(req, res, next) {
 		}
 	}
 
-	User.read({ email : email}, authUserHandler);
+	User.where({ email : email}, authUserHandler);
 
 }
 
 function createToken(user) {
 	debug('Create Token');
 	delete user.password;
-	return jwt.sign(user,getSecret.value , { expiresInMinutes: 60*5 });
+	return jwt.sign(user,getSecret.value , { expiresIn : 60*5 });
 }
 
 module.exports = authHandler;

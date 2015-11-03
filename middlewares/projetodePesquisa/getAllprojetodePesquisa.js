@@ -5,8 +5,8 @@ function getAllprojetodePesquisaHandler(req, res, next) {
   debug('get all projetopesquisa handler');
 
 	const projetopesquisa = models.ProjetodePesquisa;
-	const limit = req.params.limit || 20;
-	const offset = req.params.offset || 0;
+	let limit = req.params.limit || 20;
+	let offset = req.params.offset || 0;
 
   res.locals.out = {err : null , result : [] , status : false};	
 
@@ -25,12 +25,10 @@ function getAllprojetodePesquisaHandler(req, res, next) {
 
   function getAllHandler(err, result) {
   	debug('get all projetopesquisa handler');
-  	!err ?successHandler(result) : failHandler(err);
-
+  	err ? failHandler(err) : successHandler(result) ;
   }
 
-  projetopesquisa
-		.findAll({ limit : limit , offset : offset}, getAllHandler);
+  projetopesquisa.findAll({ limit : limit , offset : offset}, getAllHandler);
   
 }
 

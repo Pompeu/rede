@@ -5,7 +5,7 @@ let expect = require('chai').expect;
 let superagent = require('superagent');
 let ch = require('charlatan');
 let url = require('url');
-const baseURL = 'http://localhost:3000/api/projetodepesquisa';
+const baseURL = 'http://localhost:3000/api/projetosdepesquisa';
 const urlAuth = 'http://localhost:3000/api/login';
 
 describe('projeto de Pesquisa api rest testing', () => {
@@ -17,12 +17,13 @@ describe('projeto de Pesquisa api rest testing', () => {
 		password : '552525ia',
 	};
 
-	beforeEach("loging",function() {
+	beforeEach("loging", done => {
     superagent
 			.post(url.resolve(urlAuth,'login'))
 			.send(login)
-			.end(function (err , res) {
+			.end((err , res) => {
 				id_token +=  res.body.result.id_token;
+        done();
 	  });
   });	
 
@@ -58,7 +59,7 @@ describe('projeto de Pesquisa api rest testing', () => {
 		}
 
 	  	superagent
-	  		.post(url.resolve(baseURL,'projetodepesquisa'))
+	  		.post(url.resolve(baseURL,'projetosdepesquisa'))
 	  		.send(body)
 	  		.end(endHandler)
  	});
@@ -75,7 +76,7 @@ describe('projeto de Pesquisa api rest testing', () => {
 		}
 
 		superagent
-	  		.get(url.resolve(baseURL,'projetodepesquisa'))
+	  		.get(url.resolve(baseURL,'projetosdepesquisa'))
 	  		.end(endHandler)
 	});
 
@@ -91,7 +92,7 @@ describe('projeto de Pesquisa api rest testing', () => {
   	}
 
   		superagent
-	  		.get(url.resolve(baseURL,'projetodepesquisa/'+id))
+	  		.get(url.resolve(baseURL,'projetosdepesquisa/'+id))
 	  		.end(endHandler);
 	});
 
@@ -128,12 +129,11 @@ describe('projeto de Pesquisa api rest testing', () => {
 		}
 
 		superagent
-	  		.put(url.resolve(baseURL,'projetodepesquisa/'+id))
+	  		.put(url.resolve(baseURL,'projetosdepesquisa/'+id))
 	  		.send(bodyNew)
 	  		.end(endHandler);
 	});
 
-/*	
 	it('expect delete one projeto pesquisa by id',done => {
 		
 		function endHandler(err, res) {
@@ -145,10 +145,10 @@ describe('projeto de Pesquisa api rest testing', () => {
 		}	
 
 		superagent
-			.del(url.resolve(baseURL,'projetodepesquisa/'+id))
+			.del(url.resolve(baseURL,'projetosdepesquisa/'+id))
 			.end(endHandler);
 	});
-
+/*
 	let rel;
 	let id_rel;
 
@@ -171,7 +171,7 @@ describe('projeto de Pesquisa api rest testing', () => {
 		}
 
 		superagent
-			.post(url.resolve(baseURL,'projetodepesquisa/area/rel/'))
+			.post(url.resolve(baseURL,'projetosdepesquisa/area/rel/'))
 			.set('Authorization', id_token)
 			.send(rel)
 			.end(endHandler);
@@ -188,7 +188,7 @@ describe('projeto de Pesquisa api rest testing', () => {
 		}
 
 		superagent
-			.del(url.resolve(baseURL,'projetodepesquisa/area/rel/'+id_rel))
+			.del(url.resolve(baseURL,'projetosdepesquisa/area/rel/'+id_rel))
 			.set('Authorization', id_token)
 			.end(endHandler);
 	});*/

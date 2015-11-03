@@ -26,11 +26,7 @@ function createPesquisadorHandler(req, res, next) {
 
   function createHandler(err, result) {
   	debug('create pesquisador handler');
-  	if(!err){
-  		successHandler(result);
-  	}else{
-  		failHandler(err);
-  	}
+  	err ? failHandler(err) : 	successHandler(result);
   }
 
   pesquisador.save(body , createHandler);

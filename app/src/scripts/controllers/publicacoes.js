@@ -4,18 +4,35 @@
   .module('RedeApp')
   .controller('PublicacoesCtrl', PublicacoesCtrl);
   
-  PublicacoesCtrl.$inject = ['generic', '$location' , '$window'];
+  PublicacoesCtrl.$inject = ['generic','$rootScope'];
 
-  function PublicacoesCtrl (generic,$location , $window) {
+  function PublicacoesCtrl (generic, $rootScope) {
     var vm = this;
     vm.publicacoes = [];
+    vm.message = "";
+    vm.isLoged = false;
 
-    generic.get('publicacao')
-      .success(function(publicacao) {
-        vm.publicacoes = publicacao.result;
-      })
-      .error(function(err) {
-        $location.url('/');        
-      });
+    $rootScope.$on('login:event', function (event, data) {
+      vm.isLoged = data;
+      vm.isLoged ? generic.get('publicacao').then(success,fail): fail();
+    });
+
+    $rootScope.$on('logout:event', function(event, data) {
+      vm.isLoged = data;
+      vm.publicacoes = null;  
+    });
+
+    if($rootScope.user || vm.isLoged){
+       generic.get('publicacao').then(success,fail);
+    } 
+
+    function success(publicacao) {
+      vm.publicacoes = publicacao.data.result;
+      vm.message = null;
+    }
+
+    function fail (err) {
+      vm.message = "você deve esta logado para ver as publicações"
+    }
   } 
 })();

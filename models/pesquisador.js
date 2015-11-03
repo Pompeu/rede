@@ -25,7 +25,7 @@ Pesquisador.schema = {
 		telefoneProfissional : { type : String, match : validator.phone, required: true},
 		telefoneContato : { type : String,match : validator.phone, required: true},
 		emailProfissional : { type : String,match : validator.email, required: true},
-		formacaoNivel : { type : Date, required: true  },
+		formacaoNivel : { type : String , required: true  },
 		formacaoAno : { type : Date, required: true},
 		enderecoProfissional : { type : String, required: true},
 		diretorioPesquisa : { type : String, required: true},

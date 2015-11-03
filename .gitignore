@@ -1,12 +1,12 @@
 node_modules/
 configs/
 atividades/*
+app/public/*
+app/src/bower_components/*
 npm-debug.log
 .agni/*
 .ideia/*
 .sw*
 npm*
 *.swp
-app/src/bower_components/*
 *.swo
-app/public/*
