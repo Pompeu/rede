@@ -1,10 +1,8 @@
 // file: models/area.js - created at 2015-01-15, 02:19
 
-var model = require('seraph-model');
-
-var db = require('./neo');
-
-var area = model(db,'area');
+const model = require('seraph-model'),
+      db = require('./neo'),
+      area = model(db,'area');
 
 area.fildes = [
 	'nomeArea' ,

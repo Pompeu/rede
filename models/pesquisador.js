@@ -1,9 +1,9 @@
 // file: models/pesquisador.js - created at 2015-01-07, 06:44
 'use strict';
-const model = require('seraph-model');
-const db = require('./neo');
-const Pesquisador = model(db,'Pesquisador');
-const validator = require('../plugins/index').validator;
+const model = require('seraph-model'),
+      db = require('./neo'),
+      Pesquisador = model(db,'Pesquisador'),
+      validator = require('../plugins/index').validator;
 
 Pesquisador.fields = [
 		'nome',
