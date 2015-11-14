@@ -7,7 +7,6 @@ function createEmpresaHandler(req, res, next) {
   var empresa =  models.Empresa;
 
   var body = req.body;
-
   res.locals.out = {err : null , result : {} , status : false};	
 
   function successHandler(result) {
@@ -28,6 +27,7 @@ function createEmpresaHandler(req, res, next) {
   	if(!err){
   		successHandler(result);
   	}else{
+      console.log(err);
   		failHandler(err);
   	}
   }

@@ -22,7 +22,8 @@ gulp.task('img', function () {
 gulp.task('css', function() {
   return gulp.src([
     'app/src/stylesheets/style.css',
-    'app/src/bower_components/angular-material/angular-material.min.css'
+    'app/src/bower_components/angular-material/angular-material.min.css',
+    'app/src/bower_components/angular-ui-tree/dist/angular-ui-tree.min.css'
   ])
     .pipe(concat('all.min.css'))
     .pipe(minifyCSS({keepBreaks:true}))
@@ -39,6 +40,7 @@ gulp.task('scripts', function() {
     'app/src/bower_components/angular-material/angular-material.min.js',
     'app/src//bower_components/a0-angular-storage/dist/angular-storage.min.js',
     'app/src/bower_components/angular-jwt/dist/angular-jwt.min.js',
+    'app/src/bower_components/angular-ui-tree/dist/angular-ui-tree.min.js',
     'app/src/scripts/app.js',
     'app/src/scripts/factorys/*.js',    
     'app/src/scripts/controllers/*.js',

@@ -7,7 +7,7 @@ function createEquipeTecnicaHandler(req, res, next) {
 
   var EquipeTecnica = models.EquipeTecnica;
   var body = req.body;
-
+  
   res.locals.out = {err : null , result : {} , status : false};	
 
   function successHandler(result) {
