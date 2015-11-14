@@ -1,27 +1,30 @@
 // file: tests/pequisador.test.js - created at 2015-01-07, 06:47
-var expect = require('chai').expect;
-var superagent = require('superagent');
-var ch = require('charlatan');
-var url = require('url');
-var baseURL = 'http://localhost:3000/api/equipetecnica';
+'use strict';
+
+const expect = require('chai').expect,
+      superagent = require('superagent'),
+      ch = require('charlatan'),
+      url = require('url'),
+      baseURL = 'http://localhost:3000/api/equipetecnica';
 
 describe('EquipeTecnica restful testing', function () {
 
-	var body = {
-		nome : 'Itacir Ferreira Pompeu',
-		telefoneProfissional : '6434441827',
-		telefoneContato : '6434441827',
-		emailProfissional : 'itacir@hotmail.com',
-		formacaoNivel : 'Superior Incompleto',
-		formacaoAno : '2016',
-		enderecoProfissional : 'Rua  24 de junho 104 Centro',
-		diretorioPEsquisa :   'Algoritmos Geneticos',
-		externo : false,
-		instituicao : 'Instito Federal Goiano Campus Morrinhos',
-		homePage :  'http://bloog-limp.herokuapp.com/',
-		facebook : 'https://www.facebook.com/itacir.pompeu'
-	}
-	var id = null;
+    let id = null;
+    const body = {
+      nome : 'Itacir Ferreira Pompeu',
+      telefoneProfissional : '6434441827',
+      telefoneContato : '6434441827',
+      emailProfissional : 'itacir@hotmail.com',
+      formacaoNivel : 'Superior Incompleto',
+      formacaoAno : '2016',
+      enderecoProfissional : 'Rua  24 de junho 104 Centro',
+      diretorioPesquisa :   'Algoritmos Geneticos',
+      externo : false,
+      instituicao : 'Instito Federal Goiano Campus Morrinhos',
+      homePage :  'http://bloog-limp.herokuapp.com/',
+      facebook : 'https://www.facebook.com/itacir.pompeu'
+    };
+
   	it('expect save one EquipeTecnica in db', function (done) {
   	
 	  	function endHandler(err, res) {  		
@@ -84,7 +87,7 @@ describe('EquipeTecnica restful testing', function () {
 				formacaoNivel : 'Superior Incompleto',
 				formacaoAno : '2016',
 				enderecoProfissional : 'Rua  24 de junho 104 Centro',
-				diretorioPEsquisa :   'Algoritmos Geneticos',
+				diretorioPesquisa :   'Algoritmos Geneticos',
 				externo : true,
 				instituicao : 'Instito Federal Goiano Campus Morrinhos',
 				homePage :  'http://bloog-limp.herokuapp.com/',

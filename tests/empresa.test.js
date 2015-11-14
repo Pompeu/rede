@@ -10,24 +10,24 @@ describe('empresa api restful testing', function () {
 	
 	var body = {
 		nome : ch.Name.name(),
-		telefoneContato : ch.PhoneNumber.cellPhone(),
+		telefoneContato : ch.numerify('###########'), 
 		endreco : ch.Address.streetAddress(),
 		externo : true,
 		emailContato : ch.Internet.email(),
-		emailProfissinal : ch.Internet.email(),
-		logomarcar : ch.Lorem.words(wordCount = 5, supplemental = false),
+		emailProfissional: ch.Internet.email(),
+		logomarca : ch.Lorem.words(wordCount = 5, supplemental = false),
 		homePage: ch.Internet.domainWord(),
 	};
 
   	it('expect create one empresa ', function (done) {
   		function endHandler(err, res) {
 	  		expect(err).to.not.exist;
-			expect(res).to.exist;		
-			expect(res.body.status).to.true;
-			expect(res.body.err).to.null;
-			expect(res.body.result).to.an('object');
-			expect(res.body.result.id).to.an('Number');
-			id = res.body.result.id;
+        expect(res).to.exist;		
+        expect(res.body.status).to.true;
+        expect(res.body.err).to.null;
+        expect(res.body.result).to.an('object');
+        expect(res.body.result.id).to.an('Number');
+        id = res.body.result.id;
 	  		done();
 	  	}
 
@@ -40,11 +40,11 @@ describe('empresa api restful testing', function () {
   	it('expect get one empresa by id from db',function (done) {
   		function endHandler(err, res) {
 	  		expect(err).to.not.exist;
-			expect(res).to.exist;		
-			expect(res.body.status).to.true;
-			expect(res.body.err).to.null;
-			expect(res.body.result).to.an('object');
-			expect(res.body.result.id).to.eql(id);			
+        expect(res).to.exist;		
+        expect(res.body.status).to.true;
+        expect(res.body.err).to.null;
+        expect(res.body.result).to.an('object');
+        expect(res.body.result.id).to.eql(id);			
 	  		done();
 	  	}
 
@@ -57,10 +57,10 @@ describe('empresa api restful testing', function () {
   	it('expect get all empresas from db',function (done) {
   		function endHandler(err, res) {
 	  		expect(err).to.not.exist;
-			expect(res).to.exist;		
-			expect(res.body.status).to.true;
-			expect(res.body.err).to.null;
-			expect(res.body.result).to.an('Array');						
+        expect(res).to.exist;		
+        expect(res.body.status).to.true;
+        expect(res.body.err).to.null;
+        expect(res.body.result).to.an('Array');						
 	  		done();
 	  	}
 
@@ -70,45 +70,46 @@ describe('empresa api restful testing', function () {
 				.end(endHandler);
   	});
   	it('expect update one empresa with id',function (done) {
+
   		var bodyNew = {
   			id : id ,
-			nome : ch.Name.name(),
-			telefoneContato : ch.PhoneNumber.cellPhone(),
-			endreco : ch.Address.streetAddress(),
-			externo : true,
-			emailContato : ch.Internet.email(),
-			emailProfissinal : ch.Internet.email(),
-			logomarcar : ch.Lorem.words(wordCount = 5, supplemental = false),
-			homePage: ch.Internet.domainWord(),
-		}
+        nome : ch.Name.name(),
+		    telefoneContato : ch.numerify('###########'), 
+        endreco : ch.Address.streetAddress(),
+        externo : true,
+        emailContato : ch.Internet.email(),
+        emailProfissional: ch.Internet.email(),
+        logomarca : ch.Lorem.words(wordCount = 5, supplemental = false),
+        homePage: ch.Internet.domainWord(),
+      };
 
   		function endHandler(err, res) {
   			expect(err).to.not.exist;
-			expect(res).to.exist;		
-			expect(res.body.status).to.true;
-			expect(res.body.err).to.null;
-			expect(res.body.result).to.an('object');
-			expect(res.body.result.id).to.eql(id);
-			expect(res.body.result.logomarcar).to.eql(bodyNew.logomarcar);
-			done();
+        expect(res).to.exist;		
+        expect(res.body.status).to.true;
+        expect(res.body.err).to.null;
+        expect(res.body.result).to.an('object');
+        expect(res.body.result.id).to.eql(id);
+        expect(res.body.result.logomarca).not.to.eql(bodyNew.logomarca);
+        done();
   		}
 
   		superagent
-			.put(url.resolve(baseURL,'empresa/'+id))
-			.send(bodyNew)
-			.end(endHandler);
+        .put(url.resolve(baseURL,'empresa/'+id))
+        .send(bodyNew)
+        .end(endHandler);
   	});
 
   	it('expect delete one empresa from db',function(done) {
-		function endHandler (err , res) {
-			expect(err).to.not.exist;
-	  		expect(res).to.exist;
-	  		expect(res.body.status).to.true;
-			expect(res.body.err).to.null;
-			done();
-		}
-		superagent
-  			.del(url.resolve(baseURL,'empresa/'+id))
-  			.end(endHandler);
-	});
+      function endHandler (err , res) {
+        expect(err).to.not.exist;
+        expect(res).to.exist;
+        expect(res.body.status).to.true;
+        expect(res.body.err).to.null;
+        done();
+      }
+      superagent
+          .del(url.resolve(baseURL,'empresa/'+id))
+          .end(endHandler);
+	  });
 });
