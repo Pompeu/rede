@@ -7,7 +7,8 @@ router
   .get('/',middlewares.getAllprojetodePesquisa,  controllers.getAllprojetodePesquisa)
 	.get('/:id',middlewares.getprojetodePesquisa,  controllers.getprojetodePesquisa)
 	.put('/:id',middlewares.updateprojetodePesquisa,  controllers.updateprojetodePesquisa)
-	.delete('/:id',middlewares.deleteprojetodePesquisa,  controllers.deleteprojetodePesquisa);
+	.delete('/:id',middlewares.deleteprojetodePesquisa,  controllers.deleteprojetodePesquisa)
+	.delete('/area/rel/:id',middlewares.projetoDelRelArea,  controllers.projetoDelRelArea)
 
 
 module.exports = router;
