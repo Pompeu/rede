@@ -33,6 +33,7 @@ exports.getprojetodePesquisa 	= require('./projetodePesquisa/getprojetodePesquis
 exports.updateprojetodePesquisa = require('./projetodePesquisa/updateprojetodePesquisa');
 exports.deleteprojetodePesquisa = require('./projetodePesquisa/deleteprojetodePesquisa');
 exports.projetoCreateRelArea = require('./projetodePesquisa/projetoCreateRelArea');
+exports.projetoDelRelArea = require('./projetodePesquisa/projetoDelRelArea');
 /* banca de editais module */
 exports.createEmpresa 	= require('./empresa/createEmpresa');
 exports.getEmpresa 		= require('./empresa/getEmpresa');
