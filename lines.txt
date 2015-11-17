@@ -1,0 +1,1 @@
+wc -l bin/www models/* app.js tests/* controllers/**/* middlewares/**/* routes/* plugins/* heroku_biuld.js  configs/* gulpfile.js app/src/**/*.js app/src/scripts/directives/**/*

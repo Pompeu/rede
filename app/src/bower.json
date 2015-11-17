@@ -28,6 +28,7 @@
     "angular-jwt": "~0.0.9",
     "a0-angular-storage": "^0.0.6",
     "angular-route": "~1.4.7",
-    "ui-router": "~0.2.15"
+    "ui-router": "~0.2.15",
+    "angular-ui-tree": "~2.10.0"
   }
 }

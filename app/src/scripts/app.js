@@ -2,7 +2,7 @@
   'use strict';
   angular
   .module('RedeApp',
-  ['ui.router','ngMaterial','angular-jwt','angular-storage','rc.projetoslist'])
+  ['ui.router','ui.tree','ngMaterial','angular-jwt','angular-storage','rc.projetoslist','rc-search'])
   .config(rotas)
 	.run(verify) 
   rotas.$inject = ['$stateProvider', '$urlRouterProvider'];

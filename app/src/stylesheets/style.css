@@ -77,3 +77,8 @@ md-grid-list {
   height : 500px;
 }
 
+md-autocomplete {
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+}
