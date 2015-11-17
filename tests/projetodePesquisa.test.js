@@ -148,15 +148,15 @@ describe('projeto de Pesquisa api rest testing', () => {
 			.del(url.resolve(baseURL,'projetosdepesquisa/'+id))
 			.end(endHandler);
 	});
-/*
+
 	let rel;
 	let id_rel;
 
 	it('expect project pequisa create RealationShip with Area', done => {
 				
 		rel = {
-			projetoID : ch.Number.positive(148, 155),
-			areaID : ch.Number.positive(140, 145)
+			projetoID : ch.Number.positive(60, 79),
+			areaID : ch.Number.positive(10, 29)
 		};
 		
 		function endHandler(err, res) {
@@ -166,7 +166,7 @@ describe('projeto de Pesquisa api rest testing', () => {
 			expect(res.body.err).to.null;
 			id_rel = res.body.result.id;
 			expect('PERTENCE').to.eql(res.body.result.type);
-			expect('Projeto pertence a Area').to.eql(res.body.result.properties.Projeto);
+			expect('Projeto Pertence a Area').to.eql(res.body.result.properties.Projeto);
 			done();
 		}
 
@@ -191,5 +191,5 @@ describe('projeto de Pesquisa api rest testing', () => {
 			.del(url.resolve(baseURL,'projetosdepesquisa/area/rel/'+id_rel))
 			.set('Authorization', id_token)
 			.end(endHandler);
-	});*/
+	});
 });
