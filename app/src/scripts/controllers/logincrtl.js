@@ -30,8 +30,8 @@
     };
   }
 
-  DialogController.$inject = ['showToast','$log','store','$mdDialog','generic','$rootScope','$http'];
-  function DialogController(showToast,$log,store,$mdDialog,generic,$rootScope,$http) {
+  DialogController.$inject = ['showToast','store','$mdDialog','generic','$rootScope','$http'];
+  function DialogController(showToast,store,$mdDialog,generic,$rootScope,$http) {
     var vm = this;
     vm.tryLogin = false;
     vm.cancel = function() {
@@ -45,16 +45,16 @@
 		};
 
 		function success (user) {
-			$log.debug(user);
+
 			if(user.data.status && user.data.result) {
 				user.data.result.img = 'image/pompeu.jpg';
 				store.set('user', user.data.result);
 				$rootScope.user =  user.data.result;
-        $rootScope.$emit('login:event', true)
 				$http.defaults.headers.common.Authorization = 'Bearer '+user.data.result.id_token;
 				showToast.show();
 				vm.tryLogin = false;
 				vm.cancel();
+        $rootScope.$emit('login:event', true)
 			}else if(user.data.err){
 				vm.tryLogin = false;
 				$log.debug(user.data);
@@ -65,7 +65,6 @@
 
 		function error (err) {
 			vm.tryLogin = false;
-			$log.debug(err.status);
 			$rootScope.err = err.status == -1? "server is offline" : err;
 			showToast.show();
 		}
