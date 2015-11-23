@@ -34,6 +34,7 @@ exports.updateprojetodePesquisa = require('./projetodePesquisa/updateprojetodePe
 exports.deleteprojetodePesquisa = require('./projetodePesquisa/deleteprojetodePesquisa');
 exports.projetoCreateRelArea = require('./projetodePesquisa/projetoCreateRelArea');
 exports.projetoDelRelArea = require('./projetodePesquisa/projetoDelRelArea');
+exports.projetoGetAllRelArea = require('./projetodePesquisa/projetoGetAllRelArea');
 
 /* controller empresa module*/
 exports.createEmpresa 	= require('./empresa/createEmpresa');
