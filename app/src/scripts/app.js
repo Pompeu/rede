@@ -15,7 +15,7 @@
 				templateUrl: '../partials/timeline.html',
 				controller: 'TimeLineCtrl',
 				controllerAs: 'vm'
-			})
+			});
 	}
 
 	verify.$inject = ['$rootScope','windowSize'];

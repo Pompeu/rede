@@ -1,5 +1,5 @@
 (function () {
-	'strict';
+	'use strict';
 
 	angular.module('RedeApp')
 		.factory('showToast', showToast);
@@ -25,7 +25,6 @@
 		
 		function getToastPosition (cords) {
 			var position = setPosition(cords);
-			console.log(position)
 			return Object.keys(position).filter(function (pos){
 				return position[pos];
 			}).join(' ');

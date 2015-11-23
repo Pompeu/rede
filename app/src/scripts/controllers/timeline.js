@@ -12,10 +12,9 @@
 
     vm.loadAreas = function() {
       generic.get('area')
-        .success(function(areas) {
+        .then(function(areas) {
           vm.areas = areas.result;
-        })
-        .error(function(err) {
+        },function(err) {
           alert(err);
         });
     };

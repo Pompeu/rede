@@ -9,7 +9,7 @@
   function PublicacoesCtrl (generic, $rootScope) {
     var vm = this;
     vm.publicacoes = [];
-    vm.message = "";
+    vm.message = "você deve esta logado para ver as publicações"
     vm.isLoged = false;
 
     $rootScope.$on('login:event', function (event, data) {
@@ -22,7 +22,7 @@
       vm.publicacoes = null;  
     });
 
-    if($rootScope.user || vm.isLoged){
+    if($rootScope.user){
        generic.get('publicacao').then(success,fail);
     } 
 
@@ -32,7 +32,7 @@
     }
 
     function fail (err) {
-      vm.message = "você deve esta logado para ver as publicações"
+      vm.message = err.statusCode
     }
   } 
 })();
