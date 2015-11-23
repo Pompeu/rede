@@ -17,7 +17,7 @@ describe('projeto de Pesquisa api rest testing', () => {
 		password : '552525ia',
 	};
 
-	beforeEach("loging", done => {
+	before("loging", done => {
     superagent
 			.post(url.resolve(urlAuth,'login'))
 			.send(login)
@@ -192,4 +192,25 @@ describe('projeto de Pesquisa api rest testing', () => {
 			.set('Authorization', id_token)
 			.end(endHandler);
 	});
+
+	it('expect project_pesquisa get all RealationShip with Area', done => {
+		
+		function endHandler(err, res) {
+			expect(err).to.not.exist;
+			expect(res).to.exist;
+			expect(res.body.status).to.true;
+			expect(res.body.err).to.null;
+			expect(res.body.result).to.be.an("array");
+			expect(res.body.result[0]).has.property('area');
+			expect(res.body.result[0]).has.property('projeto');
+			expect(res.body.result[0]).has.property('rel');
+			done();
+		}
+
+		superagent
+			.get(url.resolve(baseURL,'projetosdepesquisa/area/rel/'))
+			.set('Authorization', id_token)
+			.end(endHandler);
+	});
+
 });
