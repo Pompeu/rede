@@ -4,6 +4,7 @@ var router = express.Router();
 router
 	.post('/',middlewares.projetodePesquisaCreate,  controllers.projetodePesquisaCreate)
 	.post('/area/rel/',middlewares.projetoCreateRelArea,  controllers.projetoCreateRelArea)
+	.get('/area/rel/',middlewares.projetoGetAllRelArea,  controllers.projetoGetAllRelArea)
   .get('/',middlewares.getAllprojetodePesquisa,  controllers.getAllprojetodePesquisa)
 	.get('/:id',middlewares.getprojetodePesquisa,  controllers.getprojetodePesquisa)
 	.put('/:id',middlewares.updateprojetodePesquisa,  controllers.updateprojetodePesquisa)
