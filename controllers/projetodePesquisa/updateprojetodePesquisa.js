@@ -1,6 +1,6 @@
 // file: controllers/updateprojetodePesquisa.js - created at 2015-01-13, 03:26
+'use strict';
 function updateprojetodePesquisaHandler(req, res) {
-  	'use strict';
     debug('update projeto pesquisa handler controller');
   	res.send(res.locals.out);
 }

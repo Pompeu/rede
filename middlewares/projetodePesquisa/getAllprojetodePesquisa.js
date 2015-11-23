@@ -1,7 +1,7 @@
 // file: middlewares/getAllprojetodePesquisa.js - created at 2015-01-13, 02:36
+'use strict';
 function getAllprojetodePesquisaHandler(req, res, next) {
   // start here with getAllprojetodePesquisa.js
-  'use strict';
   debug('get all projetopesquisa handler');
 
 	const projetopesquisa = models.ProjetodePesquisa;
