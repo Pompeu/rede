@@ -4,26 +4,25 @@
   .module('RedeApp')
   .controller('ProjetosPresquisaController',ProjetosPresquisaController);
 
-  ProjetosPresquisaController.$inject = ['generic',"$log"];
+  ProjetosPresquisaController.$inject = ['generic','$log'];
 
   function ProjetosPresquisaController(generic, $log) {
     var vm = this;
-    vm.projetos = []
-    vm.areas = areas();
-
     generic
-        .get('projetosdepesquisa')
+        .get('projetosdepesquisa/area/rel')
         .then(success)
         .catch(fail);
     
     function success(p) {
       vm.projetos = p.data.result;
+      vm.areas = vm.projetos
+            .map(function(data){ return data.area.nomeArea})
+            .filter(function (data, index, self) {
+               return self.indexOf(data) === index;
+             });
     }
     function fail (err) {
       $log.debug(JSON.stringify(err.statusText))
-    }
-    function areas () {
-      return ['','cienciaa', 'math', 'agraria'];
     }
   } 
 })();

@@ -2,7 +2,7 @@
 
 (function(){
   angular
-    .module('RedeApp')
+    .module('tree',['ui.tree'])
     .controller('TreeController', TreeController);
 
   TreeController.$inject = ['$scope'];
