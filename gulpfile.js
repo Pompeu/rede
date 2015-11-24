@@ -1,6 +1,6 @@
 'use strict';
 
-var gulp = require('./heroku_biuld.js'),
+const gulp = require('./heroku_biuld.js'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     connect = require('gulp-connect'),
@@ -23,16 +23,13 @@ gulp.task('css', function() {
   return gulp.src([
     'app/src/stylesheets/style.css',
     'app/src/bower_components/angular-material/angular-material.min.css',
-    'app/src/bower_components/angular-ui-tree/dist/angular-ui-tree.min.css'
   ])
     .pipe(concat('all.min.css'))
     .pipe(minifyCSS({keepBreaks:true}))
     .pipe(gulp.dest('app/public/css'))
     .pipe(connect.reload());
 });
-
-gulp.task('scripts', function() {
-  return gulp.src([
+var jsScritps = [
     'app/src/bower_components/angular/angular.min.js',
 		'app/src/bower_components/ui-router/release/angular-ui-router.min.js',
     'app/src/bower_components/angular-animate/angular-animate.min.js',
@@ -40,30 +37,29 @@ gulp.task('scripts', function() {
     'app/src/bower_components/angular-material/angular-material.min.js',
     'app/src//bower_components/a0-angular-storage/dist/angular-storage.min.js',
     'app/src/bower_components/angular-jwt/dist/angular-jwt.min.js',
-    'app/src/bower_components/angular-ui-tree/dist/angular-ui-tree.min.js',
     'app/src/scripts/app.js',
     'app/src/scripts/factorys/*.js',    
     'app/src/scripts/controllers/*.js',
-    'app/src/scripts/directives/**/*.js'])
+    'app/src/scripts/directives/**/*.js'];
+gulp.task('scripts', function() {
+  return gulp.src(jsScritps)
     .pipe(concat('all.min.js'))
     .pipe(gulp.dest('app/public/js'))
     .pipe(connect.reload());
 });
 
 gulp.task('scriptprod', function() {
-  return gulp.src('app/public/js/all.min.js')
+  return gulp.src(jsScritps)
     .pipe(uglify())
     .pipe(concat('all.min.js'))
     .pipe(gulp.dest('app/public/js'))
 });
 
 
-gulp.task('uglify', function() {
-    return gulp.src('app/public/js/all.min.js')
+gulp.task('uglify', () =>
+     gulp.src(jsScritps)
     .pipe(uglify())
-    .pipe(gulp.dest('app/public/js'))
-    .pipe(connect.reload());
-});
+    .pipe(gulp.dest('app/public/js')));
 
 gulp.task('html', function() {
   return gulp.src('app/**/*.html')
@@ -108,8 +104,8 @@ gulp.task('serve',function() {
 
 
 gulp.task('prod', 
-    ['scriptprod','css','html-min',
-    'html-partials-min','directives']);
+  ['css' ,'scriptprod','html-min','directives',
+  'html-partials-min']);
 
 gulp.task('dev',
   ['watch','css' ,'scripts','html-min','directives',
