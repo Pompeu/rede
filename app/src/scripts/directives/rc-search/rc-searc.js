@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  angular.module('rc-search',[])
+  angular.module('rc.search',[])
     .directive('rcSearch', rcSearch)
     .controller('ImputSearchController', ImputSearchController);
 

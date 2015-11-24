@@ -20,6 +20,7 @@
             .filter(function (data, index, self) {
                return self.indexOf(data) === index;
              });
+      vm.areas.push('');
     }
     function fail (err) {
       $log.debug(JSON.stringify(err.statusText))

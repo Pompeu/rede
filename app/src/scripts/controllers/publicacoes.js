@@ -28,6 +28,8 @@
 
     function success(publicacao) {
       vm.publicacoes = publicacao.data.result;
+      vm.tipos = vm.publicacoes.map(function(p) { return p.tipo})
+      vm.tipos.push("");
       vm.message = null;
     }
 
@@ -35,4 +37,4 @@
       vm.message = err.statusCode
     }
   } 
-})();
+}());
