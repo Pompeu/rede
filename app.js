@@ -1,43 +1,41 @@
+//dependencies
 'use strict';
 
-//dependencies
-const express     = require('express'),
-			path        = require('path'),
-			favicon     = require('serve-favicon'),
-			logger      = require('morgan'),
-			bodyParser  = require('body-parser'),
-			compression = require('compression'),
-			cors        = require('cors'),
-			jwt         = require('express-jwt'),
-			secret =  require('./configs/apikey').value,
-			jwtCheck = jwt({secret: secret});
+const express     = require('express');    
+const path        = require('path');
+const logger      = require('morgan');
+const bodyParser  = require('body-parser');
+const compression = require('compression');
+const cors        = require('cors');
+const jwt         = require('express-jwt');
+const secret      = require('./configs/apikey').value;
+const jwtCheck    = jwt({secret: secret});
 
 //globals
-const models = global.models = require('./models');
+const models      = global.models      = require('./models');
 const middlewares = global.middlewares = require('./middlewares');
 const controllers = global.controllers = require('./controllers');
 
 /*routes*/
-const user =  require('./routes/user');
-const auth =  require('./routes/auth');
-const pesquisador =  require('./routes/pesquisador');
-const bancaeditais =  require('./routes/bancaeditais');
-const projetodepesquisa =  require('./routes/projetodepesquisa');
-const area =  require('./routes/area');
-const empresa =  require('./routes/empresa');
-const publicacao =  require('./routes/publicacao');
-const equipetecnica =  require('./routes/equipetecnica');
-const routes = require('./routes/index');
+const user              = require('./routes/user');
+const auth              = require('./routes/auth');
+const pesquisador       = require('./routes/pesquisador');
+const bancaeditais      = require('./routes/bancaeditais');
+const projetodepesquisa = require('./routes/projetodepesquisa');
+const area              = require('./routes/area');
+const empresa           = require('./routes/empresa');
+const publicacao        = require('./routes/publicacao');
+const equipetecnica     = require('./routes/equipetecnica');
+const routes            = require('./routes/index');
+const app               = express();
 
-
-const app = express();
 app.use(cors());
 app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '/app/public/')));
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'public, max-age=31104000');
   next();
 });
@@ -65,6 +63,10 @@ app.use('*', (req,res, next) => {
     err : "url not fount",
     go : "try use /api/* or check documentation"
   });
+  next();
 });
 
 module.exports = app;
+
+
+
