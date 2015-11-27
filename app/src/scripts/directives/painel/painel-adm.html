@@ -1,28 +1,28 @@
-<md-dialog aria-label="Painel of admin">
-  <md-content class="painel-adm-content">
-    <section class="painel-adm" layout="column" flex>     
-        <md-toolbar md-scroll-shrink>
-          <div class="md-toolbar-tools">
-            <h1>Painel Administrativo</h1>
-          </div>
-        </md-toolbar>
-        <md-content class="md-padding" ng-controller="MenuCtrl as mc" layout-padding>
-          <btn-area></btn-area>         
-          <btn-banca></btn-banca>         
+<md-dialog class="painel-adm" aria-label="Painel of admin">
+  <md-content>
+    <section layout="column" flex>     
+      <md-toolbar md-scroll-shrink>
+        <div class="md-toolbar-tools">
+          <h1>Painel Administrativo</h1>
+        </div>
+      </md-toolbar>
+      <md-content  ng-controller="MenuCtrl as mc" layout-padding flex>
+        <btn-area></btn-area>         
+        <btn-banca></btn-banca>         
 
-          <md-button ng-click="mc.createEmpresa()" class="btn-adm md-primary md-raised md-hue-3">
-            Cadastrar Empresa
-          </md-button>
-          <md-button ng-click="mc.createEquipe()" class="btn-adm md-primary md-raised md-hue-3">
-            Cadastrar Equipe Técnica
-          </md-button>
-          <md-button ng-click="mc.createProjeto()" class="btn-adm md-primary md-raised md-hue-3">
-            Cadastrar Projeto de Pesquisa
-          </md-button>
-          <md-button ng-click="mc.close()" class="btn-adm md-primary md-raised md-hue-3">
-           Fechar
-          </md-button>
-        </md-content>
+        <md-button ng-click="mc.createEmpresa()" class="btn-adm md-primary md-raised md-hue-3">
+          Cadastrar Empresa
+        </md-button>
+        <md-button ng-click="mc.createEquipe()" class="btn-adm md-primary md-raised md-hue-3">
+          Cadastrar Equipe Técnica
+        </md-button>
+        <md-button ng-click="mc.createProjeto()" class="btn-adm md-primary md-raised md-hue-3">
+          Cadastrar Projeto de Pesquisa
+        </md-button>
+        <md-button ng-click="mc.close()" class="btn-adm md-primary md-raised md-hue-3">
+          Fechar
+        </md-button>
+      </md-content>
     </section>
   </md-content>
 </md-dialog>

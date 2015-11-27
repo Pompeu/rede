@@ -6,6 +6,6 @@
 
   function BancaCtrl() {
     var vm = this;
-    vm.main = 'Ola BancaCtrl';
+    vm.main = 'Ola controller :P';
   }
 })();

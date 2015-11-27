@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-	<meta http-equiv="Content-Type", content="text/html", charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible", content="IE=edge,chrome=1">
-	<meta name="viewport",content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
-	<link rel="stylesheet" href="css/all.min.css">
-	<title>Rede</title>
-</head>
-<body ng-app="RedeApp">
-	<div layout="column" ng-cloak>
-		<header-mobile> </header-mobile>
-		<md-content ng-if="$root.isMobile" hide show-gt-sm flex>
-			<md-toolbar>
-				<div layout="row" layout-align="space-around center" class="md-toolbar-tools">
-					<label>
-						<a href ui-sref="index">
-							<h1>Rede de Cenhecimentos</h1>
-						</a>
-					</label>
-          <rc-search> </rc-search>
-					<div layout="row" layout-align="end center">
-						<label ng-if="!$root.user" ng-controller="LoginCtrl as vm">
-							<md-button ng-click="vm.showLogin($event)" aria-label="sing in">
-									Sing IN
-							</md-button>
-						</label>
-						<label ng-if="!$root.user" ng-controller="SignCtrl as vm">
-							<md-button ng-click="vm.showSignUp($event)" aria-label="sing up">
-								Sing Up
-							</md-button>
-						</label>
-						<painel-adm ng-if="$root.user"></painel-adm>
-						<log-out ng-if="$root.user"></log-out>	
-					</div>
-				</div>
-			</md-toolbar>
-		</md-content>
-	</div>
-	<div ui-view></div>
-	<script defer src="/js/all.min.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type", content="text/html", charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible", content="IE=edge,chrome=1">
+    <meta name="viewport",content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/all.min.css">
+    <title>Rede</title>
+  </head>
+  <body ng-app="RedeApp">
+    <div layout="column" ng-cloak>
+      <header-mobile> </header-mobile>
+      <md-content ng-if="$root.isMobile" hide show-gt-sm flex>
+        <md-toolbar>
+          <div layout="row" layout-align="space-around center" class="md-toolbar-tools">
+            <label>
+              <a href ui-sref="index">
+                <h1>Rede de Cenhecimentos</h1>
+              </a>
+            </label>
+            <rc-search> </rc-search>
+            <div layout="row" layout-align="end center">
+              <label ng-if="!$root.user" ng-controller="LoginCtrl as vm">
+                <md-button ng-click="vm.showLogin($event)" aria-label="sing in">
+                  Sing IN
+                </md-button>
+              </label>
+              <label ng-if="!$root.user" ng-controller="SignCtrl as vm">
+                <md-button ng-click="vm.showSignUp($event)" aria-label="sing up">
+                  Sing Up
+                </md-button>
+              </label>
+              <painel-adm ng-if="$root.user"></painel-adm>
+              <log-out ng-if="$root.user"></log-out>	
+            </div>
+          </div>
+        </md-toolbar>
+      </md-content>
+    </div>
+    <div ui-view></div>
+    <script defer src="/js/all.min.js"></script>
+  </body>
 </html>

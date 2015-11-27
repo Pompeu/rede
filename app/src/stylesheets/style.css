@@ -8,23 +8,23 @@ a {
 
 a:link, a:visited {
   text-decoration: none
-  }
+}
 a:hover{
   color: #f00
-  }
+}
 a:active {
   text-decoration: none
-  }
+}
 md-grid-list {
   margin: 8px; 
 }
 .red {
- background:  #84ffff; 	
+  background:  #84ffff; 	
 }
 .div-main {
-	width: 300px;
-	background: url("../image/graph.svg");
-	background-repeat: no-repeat;
+  width: 300px;
+  background: url("../image/graph.svg");
+  background-repeat: no-repeat;
 }
 
 .publicacao, .btn-adm {
@@ -36,7 +36,7 @@ md-grid-list {
 }
 
 .btn-logout {
-	padding: 1px 6px 1px 6px;
+  padding: 1px 6px 1px 6px;
 }
 
 .btn-logout > img {
@@ -53,17 +53,16 @@ md-grid-list {
   height:450px;
   width:350px;
 }
-.painel-adm-content {
-  height:360px;
-  width:400px;
+.painel-adm {
+  max-width: 350px
 }
 .dialog-login {
-	height:350px;
+  height:350px;
   width:300px;
 }
 .dialog-singup {
   width:400px;
-	height:500px;
+  height:500px;
 }
 .timeline > div{
   padding: 5px;
