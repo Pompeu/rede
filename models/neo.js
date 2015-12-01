@@ -1,9 +1,6 @@
-function neo() {
-	'use strict';
-	let config = require('../configs/db')();
-	let db = require("seraph")(config);
+'use strict';
 
-	return db;
-}
+const config = require('../configs/db')();
 
-module.exports = neo();
+module.exports = (() => require("seraph")(config))();
+

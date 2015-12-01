@@ -3,10 +3,9 @@
 const fs = require('fs');
 
 function getPugKeyHandler(path,callback) {
-    
-  fs.readFile(path, 'utf8', function(err , data) {
-    if(err) return callback(err);
-    return callback(null,data.split(' ')[1]);
+
+  fs.readFile(path, 'utf8', (err , data) => {
+    err ? callback(err) : callback(null,data.split(' ')[1]);
   });
 
 }
