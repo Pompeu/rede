@@ -14,3 +14,4 @@ exports.getPubkey = require('./getPubkey.test');
 exports.db = require('./db.test');
 exports.neo = require('./neo.test');
 exports.validatorRex = require('./validator-rex.test');
+exports.deffer = require('./deffer.test');

@@ -1,24 +1,24 @@
 // file: tests/neo.test.js - created at 2015-05-03, 12:06
-var should = require('chai').should(),
-    neo = require('../models/neo');
+'use strict';
+
+require('chai').should();
+const neo4j = require('../models/neo');
 
 describe('neo module test', function () {
-  var neoDB = neo;
+  const neo = neo4j;
 
   it('neo should be a object', function () {
-    neoDB.should.be.an("object");
+    neo.should.be.an("object");
   });
 
   it('neo should be have options', function () {
-    neoDB.should.have.property("options");
+    neo.should.have.property("options");
   });
 
   it('neo should be have basic properts', function () {
-    var options = neoDB.options;
+    const options = neo.options;
     options.should.have.property("server");
     options.should.have.property("user");
     options.should.have.property("pass");
   });
-
-
 });
