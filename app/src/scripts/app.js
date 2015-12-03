@@ -4,9 +4,11 @@
   .module('RedeApp',
     ['ui.router','ngMaterial','angular-jwt',
       'angular-storage','rc.projetoslist',
-      'rc.search','rc.select'])
+      'rc.area','rc.search','rc.select',
+      'rc.logout','rc.menu'])
     .config(rotas)
-    .run(verify) 
+    .run(verify);
+
     rotas.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     function rotas ($stateProvider, $urlRouterProvider) {

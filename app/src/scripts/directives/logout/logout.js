@@ -1,36 +1,39 @@
 (function(){
+  'use strict';
 
-	'use strict';
-	angular.module('RedeApp')
-		.directive('logOut', logOut);
+  angular.module('rc.logout',[])
+  .directive('rcLogout', rcLogout);
 
-		function logOut () {
-			var directive = {
-				scope : {
-					max: "="
-				},
-				link : link,
-				templateUrl : "js/logout/logout-btn.html",
-				restrict : "EA",
-				controller : LogoutCrtl,
-				controllerAs : 'vm',
-				bindToController: true
-			}
+  function rcLogout () {
 
-			return directive;
+    var directive = {
+      templateUrl : "js/logout/logout-btn.html",
+      restrict : "E",
+      controller : Logout,
+      controllerAs : 'vm'
+    };
 
-			function link (scope, elem, attrs) {
-      }
-		}
+    return directive;
 
-		LogoutCrtl.$inject = ["$rootScope" , "$window"];
+  }
 
-		function LogoutCrtl ($rootScope, $window) { 
-			var vm = this;
-			vm.logout  = function (ev){
-				$rootScope.user = null;
-				$window.localStorage.removeItem('user');
+  Logout.$inject = ['$rootScope','$window','$mdDialog', '$state' ];
+
+  function Logout ($rootScope, $window, $mdDialog, $state) { 
+    var vm = this;
+    vm.logout  = function (ev){
+      var confirm = $mdDialog.confirm()
+      .title('Deseja sair ?')
+      .targetEvent(ev)
+      .cancel('FICA !!!')
+      .ok('sair');
+
+      $mdDialog.show(confirm).then(function() {
+        $rootScope.user = null;
+        $window.localStorage.removeItem('user');
         $rootScope.$emit('logout:event', false);
-			};
-		}
+        $state.go('index');
+      });
+    };
+  }
 })();

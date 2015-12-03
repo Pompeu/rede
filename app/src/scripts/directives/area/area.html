@@ -1,0 +1,16 @@
+<div ng-cloak ng-if="$root.user">
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom md-selected="vm.tabIndex">
+      <md-tab label="Areas">
+        <md-content class="md-padding">
+          <div ng-include="'js/area/list-area.html'"></div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Form">
+        <md-content class="md-padding">
+          <div ng-include="'js/area/form-area.html'"></div>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>

@@ -27,25 +27,22 @@ md-grid-list {
   background-repeat: no-repeat;
 }
 
-.publicacao, .btn-adm {
+.publicacao, .btn-adm .btn-profile {
   margin: 0 auto;
 }
 
-.btn-adm {
+.btn-adm .btn-profile {
   width: 100%;
 }
 
-.btn-logout {
-  padding: 1px 6px 1px 6px;
+.btn-profile > img {
+  margin-top : 0px;
+  width: 40px;
+  height: 40px;
 }
 
-.btn-logout > img {
-  width: 25px;
-  height: 25px;
-}
-
-.btn-logout > img,
-.btn-logout > span {
+.btn-profile > img,
+.btn-profile > span {
   vertical-align: middle;
 }
 
@@ -54,7 +51,7 @@ md-grid-list {
   width:350px;
 }
 .painel-adm {
-  max-width: 350px
+  max-width: 350px;
 }
 .dialog-login {
   height:350px;
@@ -81,3 +78,4 @@ md-autocomplete {
   -moz-border-radius: 50px;
   border-radius: 50px;
 }
+

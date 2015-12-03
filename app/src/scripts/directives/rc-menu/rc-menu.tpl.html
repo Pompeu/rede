@@ -1,0 +1,29 @@
+<div ng-cloak>
+  <div layout-align="center center" layout="column">
+    <md-menu>
+      <md-button ng-click="$mdOpenMenu($event)" 
+                 class="md-icon-button"
+                 aria-label="menu">
+        <md-icon md-svg-icon="image/menu.svg"></md-icon>
+      </md-button>
+      <md-menu-content width="4">
+        <md-menu-item  ng-if="!$root.user" ng-controller="LoginCtrl as vm">
+          <md-button ng-click="vm.showLogin($event)" aria-label="sing in">
+            Sing IN
+          </md-button>
+        </md-menu-item>
+        <md-menu-item ng-if="!$root.user" ng-controller="SignCtrl as vm">
+          <md-button ng-click="vm.showSignUp($event)" aria-label="sing up">
+            Sing Up
+          </md-button>
+        </md-menu-item>
+        <md-menu-item ng-if="$root.user">
+          <painel-adm ></painel-adm>
+        </md-menu-item>
+        <md-menu-item ng-if="$root.user">
+          <btn-area />
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+  </div>
+</div>

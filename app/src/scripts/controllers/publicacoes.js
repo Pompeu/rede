@@ -3,7 +3,7 @@
   angular
   .module('RedeApp')
   .controller('PublicacoesCtrl', PublicacoesCtrl);
-  
+
   PublicacoesCtrl.$inject = ['generic','$rootScope'];
 
   function PublicacoesCtrl (generic, $rootScope) {
@@ -23,18 +23,19 @@
     });
 
     if($rootScope.user){
-       generic.get('publicacao').then(success,fail);
+      generic.get('publicacao').then(success,fail);
     } 
 
     function success(publicacao) {
       vm.publicacoes = publicacao.data.result;
-      vm.tipos = vm.publicacoes.map(function(p) { return p.tipo})
+      vm.tipos = vm.publicacoes.map(function(p) { return p.tipo;});
       vm.tipos.push("");
       vm.message = null;
     }
 
     function fail (err) {
-      vm.message = err.statusCode
+      vm.message = err.statusCode;
+      $rootScope.user = null;
     }
   } 
 }());

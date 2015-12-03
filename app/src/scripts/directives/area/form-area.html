@@ -1,40 +1,29 @@
-<md-dialog aria-label="form area" >
-  <md-content class="area-form md-primary md-sticky-no-effect md-padding">
-    <md-dialog-content>
-       <md-toolbar md-scroll-shrink>
-          <div class="md-toolbar-tools">
-            <h2 class="md-toolbar-tools">Cadastro de Area</h2>
-          </div>
-        </md-toolbar>
-      <form name="areaForm">
-        <md-input-container md-no-float>          
-          <label>Nome Area</label>
-          <input type="text" ng-model="fa.area.nomeArea" placeholder="Nome Area" required>
-        </md-input-container>
-        <md-input-container md-no-float>
-          <label> Sub Codigo</label>
-          <input type="text" ng-model="fa.area.subCodigo" placeholder="Sub Codigo" required>
-        </md-input-container>
-        <md-input-container md-no-float>
-          <label > Sub Area</label>
-          <input type="text" ng-model="fa.area.subArea" placeholder="Sub Area" required>
-        </md-input-container>
-        <md-input-container md-no-float>
-          <label> Sub Nivel</label>
-          <input type="text" ng-model="fa.area.subNivel" placeholder="Sub Nivel" required>
-        </md-input-container>
-        <div flex layout="row" layout-align="end end">
-          <md-button ng-click="fa.salvar()" class="md-raised md-primary"
-          ng-class="{
-          'md-raised md-hue-1': (areaForm.$dirty &&
-          areaForm.$valid)}">
-            salvar
-          </md-button>
-					<md-button ng-click="fa.close()"class="md-raised md-warn">
-						cancelar
-					</md-button>
-        </div>
-      </form>
-    </md-dialog-content> 
-  </md-content>
-</md-dialog>
+<form name="areaform">
+  <input type="hidden" ng-model="vm.area.id">
+  <md-input-container md-no-float>          
+    <label>Nome Area</label>
+    <input type="text" ng-model="vm.area.nomeArea" required>
+  </md-input-container>
+  <md-input-container md-no-float>
+    <label> Sub Codigo</label>
+    <input type="text" ng-model="vm.area.subCodigo" required>
+  </md-input-container>
+  <md-input-container md-no-float>
+    <label > Sub Area</label>
+    <input type="text" ng-model="vm.area.subArea" required>
+  </md-input-container>
+  <md-input-container md-no-float>
+    <label> Sub Nivel</label>
+    <input type="text" ng-model="vm.area.subNivel" required>
+  </md-input-container>
+  <div flex layout="row" layout-align="end end">
+    <md-button ng-click="vm.salvar(vm.area)"
+               class="md-raised md-primary"
+               ng-disabled="areaform.$invalid || areaform.$pending">
+      salvar 
+    </md-button>
+    <md-button ng-click="vm.close()" class="md-raised md-warn">
+      cancelar
+    </md-button>
+  </div>
+</form> 

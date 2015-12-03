@@ -1,9 +1,9 @@
 (function(){
   'use strict';
   angular.module('RedeApp')
-		.directive('painelAdm',painelAdm )
-		.controller('PainelBtnCtrl',PainelBtnCtrl)
-		.controller('MenuCtrl',MenuCtrl);
+  .directive('painelAdm',painelAdm )
+  .controller('PainelBtnCtrl',PainelBtnCtrl)
+  .controller('MenuCtrl',MenuCtrl);
 
   PainelBtnCtrl.$inject =['$mdDialog'];
   MenuCtrl.$inject =['$mdDialog'];
@@ -23,7 +23,7 @@
 
   function PainelBtnCtrl($mdDialog) {
     var vm = this;
- 
+
     vm.showMenu = function(ev) {
       $mdDialog.show({
         controller: MenuCtrl,
@@ -31,14 +31,14 @@
         templateUrl: 'js/painel/painel-adm.html',
         targetEvent: ev,
       });    
-    };
-  }  
+      };
+    }  
 
-  function MenuCtrl ($mdDialog) {
-    var mc = this;
-    mc.close = function() {
-      $mdDialog.cancel();
-    };
-  }
+    function MenuCtrl ($mdDialog) {
+      var mc = this;
+      mc.close = function() {
+        $mdDialog.cancel();
+      };
+    }
 
-}());
+  }());
