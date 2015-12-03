@@ -17,17 +17,20 @@ module.exports.css = [
   'app/src/bower_components/angular-material/angular-material.min.css'
 ];
 
-module.exports.prodTasks = ['css' ,'scriptprod',
+module.exports.prodTasks = [
+  'css' ,'scriptprod',
   'html-min','directives',
   'html-partials-min'
 ];
 
-module.exports.devTaks = ['watch','css' ,'scripts',
+module.exports.devTaks = [
+  'watch','css' ,'scripts',
   'html-min','directives',
   'html-partials-min','html'
 ];
 
-module.exports.defultTaks = ['watch','css' ,'scripts',
+module.exports.defultTaks = [
+  'watch','css' ,'scripts',
   'html-min','directives',
   'html-partials-min','html','serve'
 ];

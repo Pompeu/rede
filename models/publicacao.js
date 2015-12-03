@@ -1,8 +1,8 @@
 // file: models/publicacao.js - created at 2015-01-16, 12:44
 'use strict';
-const model = require('seraph-model'),
-      db = require('./neo'),
-      publicacao = model(db,'publicacao');
+const model      = require('seraph-model');
+const db         = require('./neo');
+const publicacao = model(db,'publicacao');
 
 publicacao.fields = [
   'ano',

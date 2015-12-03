@@ -4,8 +4,8 @@
 require('chai').should();
 const validator = require('../plugins/index').validator;
 
-describe('validatorRex', function () {
-  it('should be valid  an email', function () {
+describe('validatorRex', () => {
+  it('should be valid  an email',  () => {
     validator.email.test('ia@net.com').should.be.ok;
     validator.email.test('ia1231net.com').should.be.not.ok;
   });

@@ -9,3 +9,4 @@ exports.Empresa = require('./empresa');
 exports.Area = require('./area');
 exports.Publicacao = require('./publicacao');
 exports.EquipeTecnica = require('./equipeTecnica');
+exports.Model = require('./model');
