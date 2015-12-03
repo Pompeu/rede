@@ -3,6 +3,6 @@ var router = express.Router();
 
 
 router
-  .post('/',middlewares.auth,controllers.auth);  
+.post('/',middlewares.auth,controllers.auth);  
 
 module.exports = router;
