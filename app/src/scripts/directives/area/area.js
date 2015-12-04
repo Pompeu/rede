@@ -25,9 +25,9 @@
     };
   }
 
-  AreaController.$inject = ['generic', '$mdDialog'];
+  AreaController.$inject = ['generic', '$mdDialog', '$mdToast'];
 
-  function AreaController(generic, $mdDialog) {
+  function AreaController(generic, $mdDialog, $mdToast) {
     var vm = this;
 
     generic.get('area').then(function(data) {
@@ -36,9 +36,23 @@
 
     vm.salvar = function(area) {
       generic.post('area', area).then(done => {
-        console.log(done)
+        showToast('new area added');
       },err =>{
-        console.log(err);
+      });
+    };
+
+    vm.action = function(ev, area) {
+      var confirm = $mdDialog.confirm()
+      .title('Deseja Editar ou Deletar')
+      .targetEvent(ev)
+      .cancel('Editar')
+      .ok('Deletar');
+
+      $mdDialog
+      .show(confirm).then( () => {
+        vm.remove(ev, area);
+      }, () =>{
+        vm.edit(area);
       });
     };
 
@@ -54,14 +68,17 @@
       .cancel('Não')
       .ok('Sim');
 
-      $mdDialog
-      .show(confirm).then( conf => {
-        console.log(conf); 
-      }, err =>{
-        console.log(err);
+      $mdDialog.show(confirm).then(() => {
+        vm.areas = vm.areas.filter(a => a.id !== area.id);
+        showToast('area removed');
       });
     };
-
+    function showToast (msg) {
+      $mdToast.show(
+        $mdToast.simple()
+        .position('right bottom')
+        .content(msg));
+    }
     vm.close = function() {
       vm.area = {};
       vm.tabIndex = 0;

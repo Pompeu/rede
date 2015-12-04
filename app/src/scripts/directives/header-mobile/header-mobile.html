@@ -6,6 +6,19 @@
         class="md-flex">
       Rede de Conhecimentos
     </h2>
+    <div ng-if="$root.isMobile" layout="row" layout-align="end center">
+      <label ng-if="!$root.user" ng-controller="LoginCtrl as vm">
+        <md-button ng-click="vm.showLogin($event)" aria-label="sing in">
+          Sing IN
+        </md-button>
+      </label>
+      <label ng-if="!$root.user" ng-controller="SignCtrl as vm">
+        <md-button ng-click="vm.showSignUp($event)" aria-label="sing up">
+          Sing Up
+        </md-button>
+      </label>
+    </div>
+
   </div>
   <rc-logout></rc-logout>	
 </md-toolbar> 

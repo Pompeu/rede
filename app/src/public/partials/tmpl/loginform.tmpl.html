@@ -1,26 +1,46 @@
 <md-dialog class="dialog-login" aria-label="Login Users">
-	<md-content>
+  <div>
     <md-subheader ng-controller="SignCtrl as vm">
       <a href ng-click="vm.showSignUp($event)" >
         <md-icon md-svg-src="/image/person.svg"></md-icon>
         <h1>Sign in</h1>
       </a>
     </md-subheader>  
-  <md-content class="md-primary md-sticky-no-effect">
-    <form name="loginform">
-      <md-input-container md-no-float>
-        <md-icon for="email" aria-label="img email" md-svg-src="/image/email.svg"></md-icon>
-        <input id="email" md-maxlength="30" aria-label="Login Users Email" type="email" required placeholder="Email" ng-model="vm.user.email">       
-      </md-input-container>
-      <md-input-container md-no-float>       
-        <md-icon for="password" aria-label="img password" md-svg-src="/image/password.svg"></md-icon>       
-        <input id="password" md-minlength="8" md-maxlength="8" aria-label="Login Users PassWord" required type="password" placeholder="PassWord" ng-model="vm.user.password">
-      </md-input-container>
-      <md-button class="md-raised md-primary" ng-click="vm.logar(vm.user,$event)">logar</md-button>
-      <md-button class="md-raised md-warn" ng-click="vm.cancel()">cancel</md-button>
-    </form>
-    <div ng-if="vm.tryLogin" layout="row" layout-margin layout-fill layout-padding   layout-align="center">
-      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-		</md-content>
-	</md-content>
+    <md-content class="md-primary md-sticky-no-effect">
+      <form name="loginform">
+        <md-input-container md-no-float>
+          <md-icon for="email"
+                   aria-label="img email" md-svg-src="/image/email.svg">
+          </md-icon>
+          <input type="email"
+                 placeholder="Email" 
+                 md-maxlength="30"
+                 aria-label="Login Users Email"
+                 required ng-model="vm.user.email">       
+        </md-input-container>
+        <md-input-container md-no-float>       
+          <md-icon for="password" 
+                   aria-label="img password" md-svg-src="/image/password.svg">
+          </md-icon>       
+          <input type="password"
+                 placeholder="password" 
+                 ng-model="vm.user.password" required
+                 aria-label="Login Users PassWord"
+                 md-maxlength="8" md-minlength="8">
+        </md-input-container>
+        <md-button class="md-raised md-primary" ng-click="vm.logar(vm.user,$event)">
+          logar
+        </md-button>
+        <md-button type="reset" class="md-raised md-warn" ng-click="vm.cancel()">
+          cancel
+        </md-button>
+      </form>
+      <div ng-if="vm.tryLogin"
+           layout="row"
+           layout-margin layout-fill
+           layout-padding layout-align="center">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+    </md-content>
+  </div>
 </md-dialog>

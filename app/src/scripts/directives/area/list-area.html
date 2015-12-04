@@ -1,19 +1,27 @@
-<div ng-cloak>
+<div id="listarea" ng-cloak>
   <md-content>
     <md-list>
+      <md-input-container class="md-icon-float md-block">          
+        <label>Buscar Area</label>
+        <md-icon md-svg-src="image/ic_search_24px.svg" class="name"></md-icon>
+        <input type="text" ng-model="area.nomeArea">
+      </md-input-container>
       <md-subheader class="md-no-sticky">Lista das area</md-subheader>
-      <md-list-item class="md-3-line" ng-repeat="area in vm.areas">
-        <div class="md-list-item-text" layout="column">
+
+      <md-list-item class="md-3-line" 
+                    ng-repeat="area in vm.areas | filter : area.nomeArea">
+        <div ng-click="vm.action($event,area)"
+             class="md-list-item-text" layout="column">
           <h2> Area : {{area.nomeArea}} </h2>
           <h3> Código : {{area.subCodigo}} </h3>
           <h4> Sub area : {{area.subArea}} </h4>
         </div>
-        <md-button class="md-primary"
-                   ng-click="vm.edit(area)">
-          edit </md-button>
-        <md-button class="md-warn" 
-                   ng-click="vm.remove($event,area)"> 
-          remove </md-button>
+        <div ng-if="false">
+          <md-button class="md-primary" ng-click="vm.edit(area)">
+            edit </md-button>
+          <md-button class="md-warn" ng-click="vm.remove($event,area)"> 
+            remove </md-button>
+        </div>
       </md-list-item>
       <md-divider>
       </md-divider>

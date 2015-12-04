@@ -18,7 +18,11 @@
           </md-button>
         </md-menu-item>
         <md-menu-item ng-if="$root.user">
-          <painel-adm ></painel-adm>
+          <label>
+            <md-button aria-label="profile">
+              PROFILE
+            </md-button>
+          </label>
         </md-menu-item>
         <md-menu-item ng-if="$root.user">
           <btn-area />

@@ -1,5 +1,5 @@
 <div class="timeline md-padding" ng-cloak layout="row" layout-wrap flex>
-  <div ng-controller="ProjetosPresquisaController as vm" class="md-whiteframe-1dp timeline-childs" flex="50" flex-sm="100">
+  <div ng-controller="ProjetosPresquisaController as vm" class="md-whiteframe-1dp timeline-childs" flex="auto" flex-sm="100">
     <md-toolbar> 
       <div class="md-toolbar-tools">
         <h2 flex> Projetos de Pesquisa</h2>
@@ -14,11 +14,10 @@
       </rc-projeto>
     </md-content>
   </div>
-  <div class="md-whiteframe-1dp timeline-childs"  ng-controller="PublicacoesCtrl as vm" flex="50" flex-sm="100">
+  <div ng-if="$root.user" class="md-whiteframe-1dp timeline-childs"  ng-controller="PublicacoesCtrl as vm" flex="50" flex-sm="100">
     <md-toolbar> 
       <div ng-if="vm.publicacoes.length > 0" class="md-toolbar-tools">
         <h1 flex>Publicações</h1>
-        <h2 flex>Escolha o tipo</h2>
         <rc-select aria="select type" item="vm.tipo" items="vm.tipos"></rc-select>
       </div>
     </md-toolbar>
