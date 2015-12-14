@@ -90,6 +90,9 @@
     // Custom Globals
     "globals"       : {
       "angular" : false,
-      "debug"   : false
+      "debug"   : false,
+      "models"  : false,
+      "controllers" : false,
+      "middlerwares" : false
     }        // additional predefined global variables
 }

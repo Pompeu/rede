@@ -35,9 +35,10 @@
     });
 
     vm.salvar = function(area) {
-      generic.post('area', area).then(done => {
+      generic.post('area', area).then(function(done) {
         showToast('new area added');
-      },err =>{
+      },function(err) {
+        showToast(err);
       });
     };
 
@@ -49,9 +50,9 @@
       .ok('Deletar');
 
       $mdDialog
-      .show(confirm).then( () => {
+      .show(confirm).then( function () {
         vm.remove(ev, area);
-      }, () =>{
+      }, function (){
         vm.edit(area);
       });
     };
@@ -68,8 +69,8 @@
       .cancel('Não')
       .ok('Sim');
 
-      $mdDialog.show(confirm).then(() => {
-        vm.areas = vm.areas.filter(a => a.id !== area.id);
+      $mdDialog.show(confirm).then(function () {
+        vm.areas = vm.areas.filter(function(a) { return  a.id !== area.id;});
         showToast('area removed');
       });
     };

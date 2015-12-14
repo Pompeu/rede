@@ -88,6 +88,6 @@ gulp.task('serve',function() {
   });
 });
 
-gulp.task('prod',paths.prodTaks );
+gulp.task('prod',paths.prodTaks);
 gulp.task('dev',paths.devTaks);
 gulp.task('default',paths.defultTaks);

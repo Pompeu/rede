@@ -1,7 +1,7 @@
 //dependencies
 'use strict';
 
-const express     = require('express');    
+const express     = require('express');
 const path        = require('path');
 const logger      = require('morgan');
 const bodyParser  = require('body-parser');
@@ -12,9 +12,9 @@ const secret      = require('./configs/apikey').value;
 const jwtCheck    = jwt({secret: secret});
 
 //globals
-const models      = global.models      = require('./models');
-const middlewares = global.middlewares = require('./middlewares');
-const controllers = global.controllers = require('./controllers');
+global.models      = require('./models');
+global.middlewares = require('./middlewares');
+global.controllers = require('./controllers');
 
 /*routes*/
 const user              = require('./routes/user');
@@ -43,7 +43,6 @@ app.disable('x-powered-by');
 app.enable('etag');
 
 
-
 /* routes api comuns*/
 app.use('/',routes);
 
@@ -67,6 +66,3 @@ app.use('*', (req,res, next) => {
 });
 
 module.exports = app;
-
-
-
